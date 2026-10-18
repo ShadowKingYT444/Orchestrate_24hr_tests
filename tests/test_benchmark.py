@@ -224,7 +224,7 @@ class JudgeTests(unittest.TestCase):
         with self.assertRaises(ValueError):import_review(self.bundle,review)
 
     def test_no_evidence_or_nonfinite_scores_rejected(self):
-        for change in ({'score':float('nan')},{'score':True},{'score':101},{'evidence':[]}):
+        for change in ({'score':float('nan')},{'score':True},{'score':101},{'score':10**400},{'evidence':[]}):
             review=copy.deepcopy(self.review);review['categories']['code']['architecture'].update(change)
             with self.assertRaises(ValueError):import_review(self.bundle,review)
 

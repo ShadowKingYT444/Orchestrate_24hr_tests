@@ -31,6 +31,14 @@ Have your chosen model/human review that bundle, then use benchmark judge-import
 
 The **real May winner's public agent** was also qualitatively graded: all 27 Python files and all 29 saved outputs against the supplied corpus, with numerical code/output estimates and exact evidence. That is source/saved-output review, not a live paid rerun. [Real-agent grading results](docs/REAL_WORLD_JUDGING.md).
 
+## Build, calibration and October adaptation
+
+[How this was built from scratch, with the fast October adaptation checklist](docs/BUILD_AND_ADAPT.md) covers the initial project tree, build order, function/data contracts, scoring, commands and release-day changes.
+
+[The frozen calibration study](docs/CALIBRATION.md) corrects published-rubric interpretation without fitting offsets. May code's observed gap falls from 8.5875 to 3.30 points; an external August project has code/log gaps of +1.35/−1.00. **The external output comparison fails: its local contribution interval is 22.4080–24.5898/30 versus official 13.8. Output estimates are not calibrated official-score or rank predictions.** A separate label-hidden public-sample audit checks the semantic judge's action/type decisions. Original judgments and failed results remain available.
+
+The fresh sample judge matched **27/27 actions** and **24/27 message types**; three voice cases remain unknown. [Frozen audit and disagreements](calibration/label-audit-results-v1.md). Replay both studies offline with `python examples/replay_calibration.py`.
+
 ## Artifact checks and historical profiles
 
 The original offline preflight tools remain useful alongside runtime judging: schema/coverage checks, archive safety and coding-export provenance. [Original real-artifact calibration](docs/REAL_WORLD_VALIDATION.md).

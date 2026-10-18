@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "records": {
+    "saai-may-development": {
+      "official_points": {
+        "code": 26.4,
+        "output": 22.8,
+        "coding_transcript": 8.2
+      },
+      "source_url": "https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/leaderboard",
+      "source_payload_sha256": "8d365766aa089ece2ff06e611b74297767db65f4ae76e04878e85a19ade5022f",
+      "retrieved_utc": "2026-10-18T07:41:10Z",
+      "source_kind": "Direct official public leaderboard HTML/embedded JSON",
+      "stage_maxima": {
+        "code": 30,
+        "output": 30,
+        "coding_transcript": 10
+      },
+      "artifact_identity_note": "These are official entrant scores, not proof the reviewed public files equal server-submitted artifacts."
+    },
+    "godvilan-august-external": {
+      "official_points": {
+        "code": 22.8,
+        "output": 13.8,
+        "coding_transcript": 9.8
+      },
+      "source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=388008&challenge_id=586433&page=3",
+      "source_payload_sha256": "1069e7b2269489924ee57710b1b2d66eb7d0e1f00b1d03bd332f5604bffc1c32",
+      "retrieved_utc": "2026-10-18T07:45:48Z",
+      "source_kind": "Direct official public leaderboard JSON",
+      "stage_maxima": {
+        "code": 30,
+        "output": 30,
+        "coding_transcript": 10
+      },
+      "artifact_identity_note": "These are official entrant scores, not proof the reviewed public files equal server-submitted artifacts."
+    },
+    "swayam-june-context": {
+      "official_points": {
+        "code": 27.6,
+        "output": 11.4,
+        "coding_transcript": 9.8
+      },
+      "source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=385706&challenge_id=581108&page=1",
+      "source_payload_sha256": "84301d8c6b86e2e8ad5bcb1ba845fd673ae47f62bb8b4c0201aac60bd5275c54",
+      "retrieved_utc": "2026-10-18T07:45:48Z",
+      "source_kind": "Direct official public leaderboard JSON",
+      "stage_maxima": {
+        "code": 30,
+        "output": 30,
+        "coding_transcript": 10
+      },
+      "artifact_identity_note": "These are official entrant scores, not proof the reviewed public files equal server-submitted artifacts."
+    }
+  },
+  "held_separate_from_review_bundles": true
+}

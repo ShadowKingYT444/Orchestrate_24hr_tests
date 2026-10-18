@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "dataset_sha256": "00ad8dd2e42f7ac4d0cc57d71f3902cce6bd18108556663ffd6cdaee6af7c9b8",
+  "protocol_sha256": [
+    "9bbdc6dbc56fbadccb1aaf5558892fba510a2d2c3e3d4db30f2c74b4bcec2482",
+    "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f"
+  ],
+  "study": "Published-rubric fidelity and exploratory external comparison, v1",
+  "targets_known_before_protocol": true,
+  "rows": [
+    {
+      "case_id": "saai-may-development",
+      "role": "development",
+      "edition": "may26",
+      "category": "code",
+      "maximum": 30,
+      "official_points": 26.4,
+      "candidate_commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+      "official_source_url": "https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/leaderboard",
+      "evidence_coverage": "All 29 tracked code/config files (27 Python) in frozen source snapshot.",
+      "artifact_correspondence": "Public source/output linked to the winner, stable since May1 code/output commit; original server-upload hashes not available. No genuine public coding transcript.",
+      "before": {
+        "points": 17.8125,
+        "rubric_version": "local-audit-v1-preserved",
+        "protocol_sha256": null,
+        "source_check": "Frozen hash/criterion math verified; use calibration verify with original bundle to recheck exact quotes.",
+        "signed_gap": -8.5875,
+        "absolute_gap": 8.5875
+      },
+      "after": {
+        "points": 23.1,
+        "rubric_version": "may26-published-aid-v2",
+        "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+        "source_check": "Frozen hash/criterion math verified; use calibration verify with original bundle to recheck exact quotes.",
+        "signed_gap": -3.3,
+        "absolute_gap": 3.3
+      }
+    },
+    {
+      "case_id": "saai-may-development",
+      "role": "development",
+      "edition": "may26",
+      "category": "output",
+      "maximum": 30,
+      "official_points": 22.8,
+      "candidate_commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+      "official_source_url": "https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/leaderboard",
+      "evidence_coverage": "All 29 saved answers reviewed against primary corpus; private golden labels and official adversarial aggregation absent.",
+      "artifact_correspondence": "Public source/output linked to the winner, stable since May1 code/output commit; original server-upload hashes not available. No genuine public coding transcript.",
+      "before": {
+        "points": 26.08189655,
+        "reviewed_mean_points": 26.08189655,
+        "whole_output_interval": [
+          26.08189655,
+          26.08189655
+        ],
+        "reviewed_cases": 29,
+        "unknown_cases": 0,
+        "total_cases": 29,
+        "method": "LOCAL corpus/context-grounded judgments, not private-gold accuracy",
+        "revision": "Retained unchanged; no post-target output regrade",
+        "signed_gap": 3.28189655,
+        "absolute_gap": 3.28189655
+      },
+      "after": {
+        "points": 26.08189655,
+        "reviewed_mean_points": 26.08189655,
+        "whole_output_interval": [
+          26.08189655,
+          26.08189655
+        ],
+        "reviewed_cases": 29,
+        "unknown_cases": 0,
+        "total_cases": 29,
+        "method": "LOCAL corpus/context-grounded judgments, not private-gold accuracy",
+        "revision": "Retained unchanged; no post-target output regrade",
+        "signed_gap": 3.28189655,
+        "absolute_gap": 3.28189655
+      }
+    },
+    {
+      "case_id": "saai-may-development",
+      "role": "development",
+      "edition": "may26",
+      "category": "coding_transcript",
+      "maximum": 10,
+      "official_points": 8.2,
+      "candidate_commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+      "official_source_url": "https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/leaderboard",
+      "evidence_coverage": "Absent; official transcript score does not create local transcript evidence.",
+      "artifact_correspondence": "Public source/output linked to the winner, stable since May1 code/output commit; original server-upload hashes not available. No genuine public coding transcript.",
+      "before": null,
+      "after": null
+    },
+    {
+      "case_id": "godvilan-august-external",
+      "role": "external_exploratory",
+      "edition": "august26",
+      "category": "code",
+      "maximum": 30,
+      "official_points": 22.8,
+      "candidate_commit": "3d54cc73874c17482e76a266836f70e7f7aa14fa",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=388008&challenge_id=586433&page=3",
+      "evidence_coverage": "Pinned source/config/technical files; no candidate execution.",
+      "artifact_correspondence": "Participant claims unchanged graded source/output/log; caches/data omitted. Posted log and later README disagree about ASR-cache ZIP inclusion; server archive equivalence unresolved. Log contains redactions/action summaries, not proven raw complete transcript.",
+      "before": null,
+      "after": {
+        "points": 24.15,
+        "rubric_version": "may26-published-aid-v2",
+        "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+        "source_check": "Frozen hash/criterion math verified; use calibration verify with original bundle to recheck exact quotes.",
+        "signed_gap": 1.35,
+        "absolute_gap": 1.35
+      }
+    },
+    {
+      "case_id": "godvilan-august-external",
+      "role": "external_exploratory",
+      "edition": "august26",
+      "category": "output",
+      "maximum": 30,
+      "official_points": 13.8,
+      "candidate_commit": "3d54cc73874c17482e76a266836f70e7f7aa14fa",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=388008&challenge_id=586433&page=3",
+      "evidence_coverage": "110 saved predictions align with original official inputs.102 text/image rows reviewed under predeclared local method;8 voice rows unknown unless original audio is interpreted. No hidden final labels.",
+      "artifact_correspondence": "Participant claims unchanged graded source/output/log; caches/data omitted. Posted log and later README disagree about ASR-cache ZIP inclusion; server archive equivalence unresolved. Log contains redactions/action summaries, not proven raw complete transcript.",
+      "before": null,
+      "after": {
+        "points": null,
+        "reviewed_mean_points": 24.16544118,
+        "whole_output_interval": [
+          22.40795455,
+          24.58977273
+        ],
+        "reviewed_cases": 102,
+        "unknown_cases": 8,
+        "total_cases": 110,
+        "method": "LOCAL corpus/context-grounded judgments, not private-gold accuracy",
+        "signed_gap_interval": [
+          8.60795455,
+          10.78977273
+        ],
+        "absolute_gap_interval": [
+          8.60795455,
+          10.78977273
+        ]
+      }
+    },
+    {
+      "case_id": "godvilan-august-external",
+      "role": "external_exploratory",
+      "edition": "august26",
+      "category": "coding_transcript",
+      "maximum": 10,
+      "official_points": 9.8,
+      "candidate_commit": "3d54cc73874c17482e76a266836f70e7f7aa14fa",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=388008&challenge_id=586433&page=3",
+      "evidence_coverage": "Posted 92,504-byte log conditionally reviewed as supplied; authenticity/completeness not proven.",
+      "artifact_correspondence": "Participant claims unchanged graded source/output/log; caches/data omitted. Posted log and later README disagree about ASR-cache ZIP inclusion; server archive equivalence unresolved. Log contains redactions/action summaries, not proven raw complete transcript.",
+      "before": null,
+      "after": {
+        "points": 8.8,
+        "rubric_version": "may26-published-aid-v2",
+        "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+        "source_check": "Frozen hash/criterion math verified; use calibration verify with original bundle to recheck exact quotes.",
+        "signed_gap": -1.0,
+        "absolute_gap": 1.0
+      }
+    },
+    {
+      "case_id": "swayam-june-context",
+      "role": "context_only",
+      "edition": "june26",
+      "category": "code",
+      "maximum": 30,
+      "official_points": 27.6,
+      "candidate_commit": "fc033c4026cd8b751dd121cf7dbce8925d18e58c",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=385706&challenge_id=581108&page=1",
+      "evidence_coverage": null,
+      "artifact_correspondence": "Explicitly cleaned-up public source with made-up demonstration data; graded output and original coding transcript absent. Not a matched calibration case.",
+      "before": null,
+      "after": null
+    },
+    {
+      "case_id": "swayam-june-context",
+      "role": "context_only",
+      "edition": "june26",
+      "category": "output",
+      "maximum": 30,
+      "official_points": 11.4,
+      "candidate_commit": "fc033c4026cd8b751dd121cf7dbce8925d18e58c",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=385706&challenge_id=581108&page=1",
+      "evidence_coverage": null,
+      "artifact_correspondence": "Explicitly cleaned-up public source with made-up demonstration data; graded output and original coding transcript absent. Not a matched calibration case.",
+      "before": null,
+      "after": null
+    },
+    {
+      "case_id": "swayam-june-context",
+      "role": "context_only",
+      "edition": "june26",
+      "category": "coding_transcript",
+      "maximum": 10,
+      "official_points": 9.8,
+      "candidate_commit": "fc033c4026cd8b751dd121cf7dbce8925d18e58c",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=385706&challenge_id=581108&page=1",
+      "evidence_coverage": null,
+      "artifact_correspondence": "Explicitly cleaned-up public source with made-up demonstration data; graded output and original coding transcript absent. Not a matched calibration case.",
+      "before": null,
+      "after": null
+    }
+  ],
+  "limits": [
+    "Official scores and entrant identities were known before this study; review inputs omit explicit targets but this is not truly blind.",
+    "Public source/output/logs are not byte-authenticated server submissions.",
+    "Two selected entrants across different tasks/editions cannot establish statistical calibration or ranking accuracy.",
+    "No numeric offset/rescaling is fitted. Opposite category gaps can cancel; do not treat a nearly matching subtotal as calibration success.",
+    "Unknown categories and unreviewed media are not zero. Partial-output intervals cover missing contributions only, not judgment uncertainty.",
+    "No downloaded candidate code/dependencies/tests were executed; no paid provider calls were made."
+  ],
+  "numeric_fit_applied": false,
+  "interpretation": "Observed differences between assessments. Not matched-upload prediction errors, a truly blind holdout, statistical calibration, or cross-edition ranking validation."
+}

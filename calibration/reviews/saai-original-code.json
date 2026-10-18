@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "kind": "frozen_evidence_review",
+  "rubric_version": "local-audit-v1-preserved",
+  "bundle_id": "c32f7af0229d700a658734fc1bf58c87e6c2b78c8e6df0b166052722c4b9b374",
+  "protocol_sha256": null,
+  "edition": null,
+  "preserved_original": true,
+  "review": {
+    "schema_version": 1,
+    "bundle_id": "c32f7af0229d700a658734fc1bf58c87e6c2b78c8e6df0b166052722c4b9b374",
+    "origin": "native_model_review",
+    "reviewer": "GPT-6.1-Sol xhigh; independent static evidence review; no leaderboard scores consulted",
+    "categories": {
+      "code": {
+        "architecture": {
+          "score": 75,
+          "rationale": "Strong (3/4): cleanly separates document normalization/chunking/indexing, hybrid retrieval, agent assembly, middleware, schemas, transport and TUI. Pydantic decisions and a single shared process_ticket entry point keep the vertical slice understandable. Not exceptional: global mutable tracing/caches couple components to one process; permissive dictionary postprocessing weakens typed boundaries. Current CLI/TUI paths are serialized, so concurrency concerns are future risks rather than observed failures.",
+          "evidence": [
+            {
+              "source": "code/schema.py",
+              "start_line": 11,
+              "end_line": 19,
+              "quote": "class SupportTicketDecision(BaseModel):"
+            }
+          ]
+        },
+        "prompt_and_tool_design": {
+          "score": 62.5,
+          "rationale": "Adequate-to-strong (2.5/4): explicit schema, classification boundaries, corpus-only grounding, search-read-cite sequence, escalation style and multilingual search guidance; real weighted BM25+dense retrieval with optional reranking and a constrained read-only search/read/grep interface. Half-point reflects substantive strengths offset by contradictions: stolen-card incidents appear in both escalation and reply guidance; mixed-intent support handling is requested but matched injection phrases unconditionally short-circuit; tool documentation makes reads conditional while the system makes them mandatory. No explicit trust boundary labels retrieved document text.",
+          "evidence": [
+            {
+              "source": "code/agent/prompts.py",
+              "start_line": 49,
+              "end_line": 53,
+              "quote": "canonical flow is always search -> read top hit -> reply."
+            }
+          ]
+        },
+        "robustness": {
+          "score": 50,
+          "rationale": "Adequate (2/4): resolved-path containment, SQL quoting, safe escalation on model failure or missing structured output, classifier timeout/fallback, ingestion retries and reranker-to-RRF fallback are implemented. Material static defects prevent strong: citation guard accepts attempted failed reads and retains citation-less replies after any read; rerank cache stores positional indices against sorted-ID keys and omits top_n/content, allowing wrong/truncated or excessive result lists on reuse; 8-call cap is only a prompt plus graph recursion bound, with no overall wall-clock/token/cost enforcement. Retrieval arms lack independent fallback, index builds are not atomic or validated on reuse, read/regex budgets are incompletely bounded, and classifier cache I/O can escape the safe-fallback block. These are source-derived risks/logical consequences, not runtime reproductions.",
+          "evidence": [
+            {
+              "source": "code/agent/middleware/citation_guard.py",
+              "start_line": 58,
+              "end_line": 62,
+              "quote": "if read_paths:"
+            }
+          ]
+        },
+        "experimental_rigor": {
+          "score": 37.5,
+          "rationale": "Weak-to-adequate (1.5/4): readable documented modules, centralized settings, stable CSV serialization, per-ticket traces and a real sample-label/citation-length diagnostic script. Half-point credits this useful observability above weak, but no tracked automated test suite, CI, lockfile or lint/type-check setup was found. Requirements are open-ended minima; the referenced lock is absent and direct tiktoken use is undeclared. Sample evaluator truncates comparison to min row count, warns instead of failing and returns 0 despite mismatches; no response-quality or failure-path verification is demonstrated. Runtime installability and hidden-test performance remain unverified.",
+          "evidence": [
+            {
+              "source": "code/runner/eval_sample.py",
+              "start_line": 44,
+              "end_line": 46,
+              "quote": "n = min(len(gt), len(pr))"
+            }
+          ]
+        }
+      },
+      "coding_transcript": null,
+      "output": null
+    },
+    "rating_anchor_scale": "0 absent; 1 weak; 2 adequate; 3 strong; 4 exceptional. Half-points indicate mixed adjacent-anchor evidence; score is anchor * 25.",
+    "confidence": "Medium-high on source structure/static findings, medium on anchor ratings, low on untested runtime compatibility/retrieval/performance. Read all 2750 Python lines plus requirements and code README; confirmed exact clean pinned checkout. No candidate imports, installs, execution/tests, provider calls, external communications, source edits or leaderboard-score consultation.",
+    "candidate_runtime_executed": false,
+    "official_score_prediction": false
+  },
+  "category_scores_100": {
+    "code": 59.375,
+    "coding_transcript": null,
+    "output": null
+  },
+  "source_manifest": [
+    {
+      "source": "code/README.md",
+      "sha256": "83d2f294c0cd017a150760deea0598e5647c5b3829aae81470fad9767fa839b8",
+      "line_count": 78
+    },
+    {
+      "source": "code/agent/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/agent/builder.py",
+      "sha256": "84ac140e6e2a43a51a64c9387da0970ccd9f28d3a15f1962e7c4d754ea29dc83",
+      "line_count": 60
+    },
+    {
+      "source": "code/agent/classifier.py",
+      "sha256": "d00a3acc9e8da3f5b446c5554a9bce010285d471ffc885a46fc0f4155c024ecb",
+      "line_count": 121
+    },
+    {
+      "source": "code/agent/middleware/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/agent/middleware/citation_guard.py",
+      "sha256": "a8ff3a6b31cb0cb6d0d0d27493829a5186da3fba15e49b8980b83c221332c72c",
+      "line_count": 72
+    },
+    {
+      "source": "code/agent/middleware/language_normalize.py",
+      "sha256": "79d34dcc89e246f1e7dcb3db42afb8653614add162eeb3a959d0d2fa0b649dd1",
+      "line_count": 61
+    },
+    {
+      "source": "code/agent/middleware/prompt_injection.py",
+      "sha256": "80a8dbbcbe2a33e6257854416d7e2494eb94cc6d4f844aadc368ba8222393e73",
+      "line_count": 66
+    },
+    {
+      "source": "code/agent/prompts.py",
+      "sha256": "4a160a1be3313736e8c0e534a8fea15f42d74e58e1f3977de8b0c78a9e3a16af",
+      "line_count": 186
+    },
+    {
+      "source": "code/config.py",
+      "sha256": "57f31b16905c8ab982a3ef3da1dc9acf23069125d72e0657a5d088c007f31bb2",
+      "line_count": 74
+    },
+    {
+      "source": "code/ingest/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/ingest/builder.py",
+      "sha256": "acbe8b533f4a466745136f653c9ca877a0e1812b652d49106bed8ad8c74df944",
+      "line_count": 168
+    },
+    {
+      "source": "code/ingest/chunker.py",
+      "sha256": "71377319487937160aad7f5ac47a5bf14d120599e17c88396331b56d521136c0",
+      "line_count": 181
+    },
+    {
+      "source": "code/ingest/parser.py",
+      "sha256": "db56eec60741ba0fc1ebf806f9c1c5a7e67deb53da8103fd80fdab8dd0a5d8df",
+      "line_count": 118
+    },
+    {
+      "source": "code/ingest/product_area.py",
+      "sha256": "4665e3c0943a1e45b6448ce41227d93e24928981f694e904fafef54a8aa7c58c",
+      "line_count": 115
+    },
+    {
+      "source": "code/main.py",
+      "sha256": "924ce5586c83a06533160842ddb63691654567ba0ce9e96c437e549a2ef57e9d",
+      "line_count": 107
+    },
+    {
+      "source": "code/requirements.txt",
+      "sha256": "b4ef9b02ebef089c4544fb0ba8cb8b513a9f2b4d9716094b1bb1b84c483d6150",
+      "line_count": 39
+    },
+    {
+      "source": "code/retrieval/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/retrieval/filters.py",
+      "sha256": "3e458bd3ac4ce20e76c4c09de2da0d5fce1797bf9265fde24cde2fea00a89fce",
+      "line_count": 33
+    },
+    {
+      "source": "code/retrieval/kb_tool.py",
+      "sha256": "a79f690f6316db99d468b3cf5d80af0604eece9a56f2e6387d426e07fedbb57c",
+      "line_count": 135
+    },
+    {
+      "source": "code/retrieval/reader.py",
+      "sha256": "cc6d58cd42732ed9c0c316d7e818fb38094af467e3efc8c7667fa6cd5ce3c844",
+      "line_count": 90
+    },
+    {
+      "source": "code/retrieval/search.py",
+      "sha256": "4de984a581bc0bd16cac322093ff66fd989af6aadfc2583da33d8f33a69c4b89",
+      "line_count": 213
+    },
+    {
+      "source": "code/runner/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/runner/csv_io.py",
+      "sha256": "c27bf293fbc08f19dc904f3350b8f4dc0638368f0d8085d2bd161bd5b9baea5b",
+      "line_count": 91
+    },
+    {
+      "source": "code/runner/eval_sample.py",
+      "sha256": "4a81c8deddd367a59203058a117bed2f087f6853093cd517944ccdba0609a863",
+      "line_count": 161
+    },
+    {
+      "source": "code/runner/pipeline.py",
+      "sha256": "bcbe8e37791307995186ffd34a50590f509a0c08b79b0b669eda6d70f3ed4cee",
+      "line_count": 376
+    },
+    {
+      "source": "code/schema.py",
+      "sha256": "117d9218601e3cd8f94523436916864a0a397cc08f9da9da6ba6971945c312ff",
+      "line_count": 96
+    },
+    {
+      "source": "code/tui/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/tui/app.py",
+      "sha256": "5ff31ea93911f94bedbc2ad72738334bf6de61a7a7f2c02040ed88c971ceb1fb",
+      "line_count": 226
+    }
+  ],
+  "evidence_verification": "Exact quotes/line ranges and source hashes checked against the supplied full bundle at freeze time; no server-upload identity or authenticity attestation.",
+  "artifact_sha256": "ad1696006142c0b2f91c467b6ed90b6e2e0b3cec56d91b341a8bf04cfa194cb2"
+}

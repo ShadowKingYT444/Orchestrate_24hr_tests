@@ -46,3 +46,9 @@ CLI source-submission hygiene additionally requires a README and rejects files u
 The original `local-audit-v1-preserved` numerical code review used an experimental-rigor emphasis that differed from published May engineering rigor. New judge bundles use `may26-published-aid-v2` with the published criterion meanings, while original scores remain unchanged. This is rubric correction, not a fitted numeric calibration. [Official-score comparison](OFFICIAL_SCORE_COMPARISON.md) records material gaps and unverified server-artifact identity. The `evaluate` advisory audit remains separate and unweighted.
 
 [Coding-agent integration](CODING_AGENTS.md) distinguishes developer coding events from task-agent runtime. The real installed Codex attempt failed before a model turn. Unit-mocked integration success does not establish live Codex behavior or complete benchmark coverage.
+
+## Frozen calibration and public-sample audit
+
+The v0.4 study preserves original judgments, freezes protocol/anchors before new reviews, separates known official targets from neutral review inputs, and records artifact identity/coverage. The project already knew target scores, so it is not a truly blind holdout or statistical validation. Improved code-rubric fidelity does not solve output-score calibration: the external output comparison fails. See [CALIBRATION.md](CALIBRATION.md).
+
+New tests include deterministic replay of frozen public review arithmetic and a short derived public categorical sample-audit ledger; full external messages/context/media and candidate source/log bundles are not redistributed. No downloaded competitor code or paid provider is executed by CI.

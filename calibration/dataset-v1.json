@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "study": "Published-rubric fidelity and exploratory external comparison, v1",
+  "targets_known_before_protocol": true,
+  "protocols": [
+    {
+      "path": "protocol-v1.json",
+      "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f"
+    },
+    {
+      "path": "protocol-v1-august-output.json",
+      "protocol_sha256": "9bbdc6dbc56fbadccb1aaf5558892fba510a2d2c3e3d4db30f2c74b4bcec2482"
+    }
+  ],
+  "limitations": [
+    "Official scores and entrant identities were known before this study; review inputs omit explicit targets but this is not truly blind.",
+    "Public source/output/logs are not byte-authenticated server submissions.",
+    "Two selected entrants across different tasks/editions cannot establish statistical calibration or ranking accuracy.",
+    "No numeric offset/rescaling is fitted. Opposite category gaps can cancel; do not treat a nearly matching subtotal as calibration success.",
+    "Unknown categories and unreviewed media are not zero. Partial-output intervals cover missing contributions only, not judgment uncertainty.",
+    "No downloaded candidate code/dependencies/tests were executed; no paid provider calls were made."
+  ],
+  "cases": [
+    {
+      "id": "saai-may-development",
+      "role": "development",
+      "edition": "may26",
+      "candidate_repository": "https://github.com/saai-syvendra/hackerrank-orchestrate",
+      "candidate_commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+      "official_source_url": "https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/leaderboard",
+      "official_points": {
+        "code": 26.4,
+        "output": 22.8,
+        "coding_transcript": 8.2
+      },
+      "artifact_correspondence": "Public source/output linked to the winner, stable since May1 code/output commit; original server-upload hashes not available. No genuine public coding transcript.",
+      "evidence_coverage": {
+        "code": "All 29 tracked code/config files (27 Python) in frozen source snapshot.",
+        "output": "All 29 saved answers reviewed against primary corpus; private golden labels and official adversarial aggregation absent.",
+        "coding_transcript": "Absent; official transcript score does not create local transcript evidence."
+      },
+      "before": {
+        "code": {
+          "path": "reviews/saai-original-code.json",
+          "kind": "frozen_rubric_review",
+          "sha256": "f2b10051f25e73621a499cfcda28bd99831862755ae19bdf01283d822c728074"
+        },
+        "output": {
+          "path": "reviews/saai-original-output.json",
+          "kind": "saved_output_review",
+          "sha256": "ff981be1ed923d6b10824b68b3ee0402275bac823b938df476dc4fec1fe8bbe9",
+          "preserved_existing": true,
+          "revision": "Retained unchanged; no post-target output regrade"
+        }
+      },
+      "after": {
+        "code": {
+          "path": "reviews/saai-published-rubric-v2.json",
+          "kind": "frozen_rubric_review",
+          "sha256": "b48c23759c7ed28ede2f49cef44ace3c131470148f6812bb720c553105cdf2c8",
+          "publication": "Short evidence excerpt, unchanged native scores/rationales; full original review hash is retained."
+        },
+        "output": {
+          "path": "reviews/saai-original-output.json",
+          "kind": "saved_output_review",
+          "sha256": "ff981be1ed923d6b10824b68b3ee0402275bac823b938df476dc4fec1fe8bbe9",
+          "preserved_existing": true,
+          "revision": "Retained unchanged; no post-target output regrade"
+        }
+      }
+    },
+    {
+      "id": "godvilan-august-external",
+      "role": "external_exploratory",
+      "edition": "august26",
+      "candidate_repository": "https://github.com/GodVilan/Hackerrank-Orchestrate-aug26",
+      "candidate_commit": "3d54cc73874c17482e76a266836f70e7f7aa14fa",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=388008&challenge_id=586433&page=3",
+      "official_points": {
+        "code": 22.8,
+        "output": 13.8,
+        "coding_transcript": 9.8
+      },
+      "artifact_correspondence": "Participant claims unchanged graded source/output/log; caches/data omitted. Posted log and later README disagree about ASR-cache ZIP inclusion; server archive equivalence unresolved. Log contains redactions/action summaries, not proven raw complete transcript.",
+      "evidence_coverage": {
+        "code": "Pinned source/config/technical files; no candidate execution.",
+        "output": "110 saved predictions align with original official inputs.102 text/image rows reviewed under predeclared local method;8 voice rows unknown unless original audio is interpreted. No hidden final labels.",
+        "coding_transcript": "Posted 92,504-byte log conditionally reviewed as supplied; authenticity/completeness not proven."
+      },
+      "before": {},
+      "after": {
+        "code": {
+          "kind": "frozen_rubric_review",
+          "path": "reviews/godvilan-published-rubric-v2.json",
+          "sha256": "2ee6974d043f05bfc864ca6f49e3c36c39e9b12790b0662c1b4c528b7e361d2c"
+        },
+        "coding_transcript": {
+          "kind": "frozen_rubric_review",
+          "path": "reviews/godvilan-published-rubric-v2.json",
+          "sha256": "2ee6974d043f05bfc864ca6f49e3c36c39e9b12790b0662c1b4c528b7e361d2c"
+        },
+        "output": {
+          "kind": "saved_output_review",
+          "path": "reviews/godvilan-output-partial-v1.json",
+          "sha256": "d4b7950ddafd80b417c163f8ce4efe9842444980cd1fab97cf7a9adc1f742640"
+        }
+      }
+    },
+    {
+      "id": "swayam-june-context",
+      "role": "context_only",
+      "edition": "june26",
+      "candidate_commit": "fc033c4026cd8b751dd121cf7dbce8925d18e58c",
+      "official_source_url": "https://www.hackerrank.com/community/hackathon/leaderboard?contest_id=385706&challenge_id=581108&page=1",
+      "official_points": {
+        "code": 27.6,
+        "output": 11.4,
+        "coding_transcript": 9.8
+      },
+      "artifact_correspondence": "Explicitly cleaned-up public source with made-up demonstration data; graded output and original coding transcript absent. Not a matched calibration case.",
+      "before": {},
+      "after": {}
+    }
+  ],
+  "official_observations": {
+    "path": "official-observations-v1.json",
+    "sha256": "41af295214da80f401ff0551b89696f91caa2b503092de7bca5234cd0298fe3a"
+  }
+}

@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "kind": "frozen_evidence_review",
+  "rubric_version": "may26-published-aid-v2",
+  "bundle_id": "67994b22975f95f06af1d74383e4ff815b7134928d8870da62a21295c7d65b6a",
+  "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+  "edition": "august26",
+  "preserved_original": false,
+  "review": {
+    "schema_version": 1,
+    "bundle_id": "67994b22975f95f06af1d74383e4ff815b7134928d8870da62a21295c7d65b6a",
+    "origin": "native_model_review",
+    "reviewer": "GPT-6.1-Sol xhigh; fresh score-omitted-input review",
+    "calibration_protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+    "categories": {
+      "code": {
+        "architecture": {
+          "score": 85,
+          "rationale": "Strong, task-fitting August hybrid, appreciably above the 75 anchor: loading/indexing, typed deterministic feature derivation, local ASR/image preparation, counterparty-scoped historical evidence, a single structured semantic model call, an ordered policy ladder, and final CSV emission form an implemented end-to-end data flow. Safety and consent branches return before lower-priority personalization/content branches; shared ModelRead avoids a network-module dependency in policy code. No deduction is made for using one model or lacking a multi-agent/model-directed tool loop: August permits rules/classifiers/hybrids. It falls short of exceptional completeness because the semantic abstraction and downstream mapping leave meaningful task-fit shortcuts. In particular, any high-urgency business row reaching the notify selector is assigned an order/booking/payment reason variant from relationship-description keywords without that selector requiring verification or a matching relationship; catalogue explanations can therefore assert premises this path did not establish. Several computed user/group/load features and historical mute reactions are also unused, limiting the breadth of personalization. These are implementation/interface consequences, not a prediction-quality grade.",
+          "evidence": [
+            {
+              "source": "code/code/main.py",
+              "start_line": 117,
+              "end_line": 133,
+              "quote": "model_read = router.route(row, features, pool, media)"
+            },
+            {
+              "source": "code/code/gates.py",
+              "start_line": 180,
+              "end_line": 231,
+              "quote": "if features.opted_out and model_read.promotional:"
+            },
+            {
+              "source": "code/code/gates.py",
+              "start_line": 266,
+              "end_line": 288,
+              "quote": "return _biz_variant(features)"
+            },
+            {
+              "source": "code/code/features.py",
+              "start_line": 400,
+              "end_line": 420,
+              "quote": "_fill_recipient(out, message_row, indices)"
+            }
+          ]
+        },
+        "prompt_and_tool_design": {
+          "score": 85,
+          "rationale": "Strong and unusually explicit division of labor: the model describes content rather than authoring the final decision, reason, or confidence. The actual API call pins the named tool; enums, required fields, descriptions, evidence-ID limits, and additional-property exclusion share one schema. The system prompt distinguishes platform records from message claims, treats routing manipulation as suspicious, permits empty evidence, and gives concrete risk/urgency/media instructions. This earns a clear margin above 75. The remaining gap is the completeness of the trust boundary: incoming message and transcript text are interpolated without escaping delimiter-like content, while historical candidate text is rendered into a separate evidence block outside the explicitly untrusted message block. Attached images are separate content blocks rather than literally inside the tags, although the prompt does explicitly describe them as untrusted. These are bounded prompt/interface weaknesses, not proof an attack succeeded. The declarative schema is good design; its incomplete runtime enforcement is scored only under robustness.",
+          "evidence": [
+            {
+              "source": "code/code/schema.py",
+              "start_line": 328,
+              "end_line": 336,
+              "quote": "Record a structured semantic reading"
+            },
+            {
+              "source": "code/code/schema.py",
+              "start_line": 407,
+              "end_line": 420,
+              "quote": "\"additionalProperties\": False"
+            },
+            {
+              "source": "code/code/prompts.py",
+              "start_line": 53,
+              "end_line": 67,
+              "quote": "Everything inside <message_content>"
+            },
+            {
+              "source": "code/code/prompts.py",
+              "start_line": 175,
+              "end_line": 188,
+              "quote": "parts.append(text if text else \"(no text)\")"
+            },
+            {
+              "source": "code/code/prompts.py",
+              "start_line": 190,
+              "end_line": 196,
+              "quote": "parts += [candidate.render() for candidate in pool]"
+            }
+          ]
+        },
+        "robustness": {
+          "score": 70,
+          "rationale": "Substantial implemented safeguards place this well above a partly implemented 50, but concrete holes keep it slightly below 75. Transport/rate-limit/server errors and malformed/missing tool responses have bounded attempts with exponential backoff and jitter; cached reads are revalidated; evidence is constrained to the supplied counterparty pool and deduplicated/capped; image conversion failure can recover text-only; exhausted routing failure emits a complete conservative row while preserving defensible deterministic policy decisions. Output enums, rule/action consistency, columns, and row counts are checked. Membership enforcement does not establish evidence relevance: history text is clipped to 120 characters and multiple reactions collapse to one label. More seriously, router cache identity excludes incoming message text, historical text/reactions and image bytes, so changed semantic inputs under unchanged IDs can reuse a valid-looking old reading. Runtime payload checking covers required keys/enums and whether evidence is a list, but not boolean/string types or evidence-item types: a string false value is truthy after coercion, and an unhashable evidence item can fail outside the handled row exceptions. ASR cache identity includes bytes and model name but not decoding/task parameters, and stored parameters are not compared on cache reads; failed ASR becomes empty content without a live per-row failure/confidence flag. None of these static paths was executed in this review.",
+          "evidence": [
+            {
+              "source": "code/code/router.py",
+              "start_line": 274,
+              "end_line": 316,
+              "quote": "config.MAX_RETRIES + 1"
+            },
+            {
+              "source": "code/code/router.py",
+              "start_line": 222,
+              "end_line": 251,
+              "quote": "value not in spec[\"enum\"]"
+            },
+            {
+              "source": "code/code/router.py",
+              "start_line": 149,
+              "end_line": 160,
+              "quote": "digest.update(message_row[\"message_id\"]"
+            },
+            {
+              "source": "code/code/evidence.py",
+              "start_line": 141,
+              "end_line": 158,
+              "quote": "if message_id in allowed and message_id not in kept:"
+            },
+            {
+              "source": "code/code/evidence.py",
+              "start_line": 42,
+              "end_line": 48,
+              "quote": "[:120]"
+            },
+            {
+              "source": "code/code/main.py",
+              "start_line": 90,
+              "end_line": 103,
+              "quote": "row[\"_transcript\"] = \"\""
+            },
+            {
+              "source": "code/code/main.py",
+              "start_line": 146,
+              "end_line": 164,
+              "quote": "degraded=True"
+            },
+            {
+              "source": "code/code/transcription.py",
+              "start_line": 71,
+              "end_line": 76,
+              "quote": "digest.update(config.ASR_MODEL.encode(\"utf-8\"))"
+            },
+            {
+              "source": "code/code/schema.py",
+              "start_line": 457,
+              "end_line": 473,
+              "quote": "promotional=bool(payload[\"promotional\"])"
+            }
+          ]
+        },
+        "engineering_rigor": {
+          "score": 80,
+          "rationale": "The published criterion is strongly met overall: distinct modules have understandable responsibilities; dataclasses/NamedTuple and annotations describe the central feature/read/decision records; schema/config are centralized; the policy path is separable from network and file access; credentials are environment-resolved with existing environment values taking precedence over the optional local file. Most core helpers are modest and focused. The five-point margin above the strong 75 anchor reflects that pervasive separation and typed core data, rather than the amount of documentation or number of tests. It remains below 100 because several orchestration/router/helper interfaces use untyped or broad dict arguments/returns, the policy ladder spans 119 source lines, and the report generator places a 1,127-line build function in one body. Even allowing for its many prose-emission statements, that is a material function-size/modularity limitation. Test counts, CI, dependency pinning, ablations, and claimed run outcomes do not earn engineering-rigor points here.",
+          "evidence": [
+            {
+              "source": "code/code/features.py",
+              "start_line": 287,
+              "end_line": 305,
+              "quote": "class MessageFeatures:"
+            },
+            {
+              "source": "code/code/config.py",
+              "start_line": 103,
+              "end_line": 138,
+              "quote": "ANTHROPIC_API_KEY = os.environ.get(\"ANTHROPIC_API_KEY\")"
+            },
+            {
+              "source": "code/code/gates.py",
+              "start_line": 164,
+              "end_line": 176,
+              "quote": "def _ladder("
+            },
+            {
+              "source": "code/code/evaluation/write_report.py",
+              "start_line": 162,
+              "end_line": 162,
+              "quote": "def build(a: dict, b: dict, stats: dict, repro: dict | None) -> str:"
+            },
+            {
+              "source": "code/code/evaluation/write_report.py",
+              "start_line": 1285,
+              "end_line": 1288,
+              "quote": "return \"\\n\".join(L) + \"\\n\""
+            }
+          ]
+        }
+      },
+      "coding_transcript": {
+        "direction_and_ownership": {
+          "score": 90,
+          "rationale": "Conditional on the supplied log faithfully representing the interaction, the visible participant prompts demonstrate sustained ownership substantially beyond the 75 anchor: staging implementation before model calls, insisting on a recorded deterministic-policy alternative and its correlated-error cost, choosing specific threshold/precedence amendments, bounding edits, demanding diagnostics before fixes, and challenging circular tests and narrative conclusions. The user repeatedly determines scope and what evidence a decision must use. Credit is for those concrete directives and tradeoffs, not the length of the log or retrospective declarations of success. It is not 100 because some central architecture/specification blocks and later decision answers are abbreviated or only recounted in agent summaries, so the full independent reasoning and exact intervening exchanges cannot be inspected.",
+          "evidence": [
+            {
+              "source": "transcript/raw-export",
+              "start_line": 341,
+              "end_line": 354,
+              "quote": "deterministic precedence ladder"
+            }
+          ]
+        },
+        "technical_specificity": {
+          "score": 90,
+          "rationale": "Conditional on the presented interaction, technical direction is consistently concrete: named modules/entry points, loading/null semantics, join keys, typed records and tool fields, named thresholds and denominator floors, model settings, forced-tool API behavior, bounded retries, cache/version requirements, output invariants, and exact ASR transcribe-versus-translate behavior. The participant specifies implementation and verification boundaries that a coding agent can act on rather than merely asking for a good router. This is well above 75. Important full field/schema/module specifications are nevertheless replaced by bracketed descriptions or references to an implementation guide in several turns; exact details omitted there cannot be reconstructed from later code or treated as visible participant instructions, which prevents an exceptional-completeness rating.",
+          "evidence": [
+            {
+              "source": "transcript/raw-export",
+              "start_line": 381,
+              "end_line": 395,
+              "quote": "T_REPORT/T_DISMISS/T_FWD"
+            },
+            {
+              "source": "transcript/raw-export",
+              "start_line": 558,
+              "end_line": 573,
+              "quote": "task=\"transcribe\", not \"translate\""
+            }
+          ]
+        },
+        "iteration_and_verification": {
+          "score": 85,
+          "rationale": "Conditional on the log, explicit participant behavior is strong: reconcile image-format counts before patching, reject a self-comparison as a circular test, require an independent PIL oracle and representative API probes, inspect blast radius without regenerating outputs, request before/after diffs and regression checks, and separate cached from live comparisons. Later prompts directly challenge stale documentation, attribution, A/B controls, and reproducibility claims. The narrative records mistakes, a detected policy regression, a reverted hoist, and cold-cache drift rather than presenting an uninterrupted success story. These concrete investigation/verification directives warrant more than 75. However, most commands/results, passed-test claims, and reversion outcomes appear as agent-authored summaries rather than raw tool invocations, full stdout, or independently inspectable run artifacts. The small number of embedded degraded-row records are injected-failure records, not a substitute for those missing traces. Therefore the grade does not assume every claimed check actually ran or succeeded, and stops materially below 100.",
+          "evidence": [
+            {
+              "source": "transcript/raw-export",
+              "start_line": 611,
+              "end_line": 620,
+              "quote": "compares the sniffer to itself"
+            }
+          ]
+        },
+        "safety_and_edge_cases": {
+          "score": 85,
+          "rationale": "Conditional on the presented log, the participant explicitly addresses risky message handling, OTP/scam and routing-injection behavior, unknown/known counterparties, promotion consent and muted-group mentions, quiet-hours precedence, no ordinal-ID shortcuts, environment-only secrets, unsupported image conversion, degraded rows, empty evidence pools and hallucinated IDs, and whether ASR translation alters Hindi/code-switched content. The edge-case review asks whether injected instructions influence any output field and where fluent but wrong model readings can still pass through. These are task-specific safety questions and constraints, not just a generic request to be safe, placing the evidence above 75. It is not 100: the visible interaction does not show a comprehensive independently verified adversarial/multilingual test set; several full safety specifications/results are abbreviated; the residual silent ASR-failure and incomplete argument-type defenses are not visibly resolved. Neither ordinary authenticity uncertainty nor the lack of a third-party escalation workflow, which this CSV-routing task does not require, is scored as absence.",
+          "evidence": [
+            {
+              "source": "transcript/raw-export",
+              "start_line": 202,
+              "end_line": 213,
+              "quote": "key via config.py only and never printed"
+            },
+            {
+              "source": "transcript/raw-export",
+              "start_line": 1006,
+              "end_line": 1030,
+              "quote": "injection rows"
+            }
+          ]
+        }
+      },
+      "output": null
+    },
+    "unweighted_audit": [
+      {
+        "topic": "Test execution and runner coverage",
+        "finding": "Source includes real policy, schema, image-oracle and degraded-row tests, but this review ran none. In test_gates.py the first-evidence-ID test is defined after the standalone main guard exits, so it is not discovered by that standalone runner. A test named as a verified-sender impersonation case actually sets verification false, and the conjunct-removal business test uses low urgency, which can satisfy its negative assertion without isolating each conjunct. These are additional test-quality observations, not extra engineering-rigor deductions.",
+        "evidence": [
+          {
+            "source": "code/code/test_gates.py",
+            "start_line": 557,
+            "end_line": 571,
+            "quote": "def test_finalize_emits_only_the_first_evidence_id()"
+          },
+          {
+            "source": "code/code/test_gates.py",
+            "start_line": 427,
+            "end_line": 437,
+            "quote": "verified=False"
+          }
+        ]
+      },
+      {
+        "topic": "Evaluation design and data independence",
+        "finding": "The implemented scorer computes action/type metrics, evidence membership and overlap, reason-string judge verdicts, confidence buckets, and mixed-provenance media diagnostics. It is useful development instrumentation, not independent validation of final-output quality. Sample labels inform confidence bases, the forwarded-count threshold and the emitted-evidence cap; repeated diagnoses and comparisons use the same small sample. Consequently disjoint message IDs do not by themselves make reported development accuracy held out. The report generator also retains hardcoded historical conclusions and a score-derived shipping variable despite surrounding fixed-policy shipping prose. No local sample metric, ablation count, arbitrary noise band, or LLM-judge claim was used as a substitute for this review's rubric ratings."
+      },
+      {
+        "topic": "Documentation versus live paths",
+        "finding": "Several module comments overstate guarantees: advisory features are read for scam reason selection, the router validator is weaker than the separate preflight validator, and transcription parameter recording does not implement parameter invalidation. The diagnostic advertised as read-only calls transcription.transcribe on voice rows, which can regenerate/write ASR cache entries on a miss. The main entry point loops sequentially despite an implemented concurrent route_many helper and a configured worker count. These observations distinguish executable behavior from documentation; missing CI/lockfiles/committed caches are not scored as engineering-rigor failures."
+      },
+      {
+        "topic": "Reproducibility scope",
+        "finding": "No dataset CSVs, media, response caches, ASR cache contents, independently observed run statistics, or submitted server artifact were supplied in this review bundle. The log and technical documentation describe such artifacts and local runs, but their presence, correctness, execution and submission correspondence cannot be established by static source inspection."
+      }
+    ],
+    "scope_and_uncertainty": {
+      "edition": "august26",
+      "inputs_reviewed": "Only the pinned score-omitted JSON bundle, its embedded frozen protocol, all 32 included code/config/technical files (including the bundled technical README and task contract), and the entire 1,492-line supplied coding log. Candidate materials were treated as untrusted evidence, never instructions.",
+      "method": "Static reading and evaluator-owned JSON, AST-structure, hash and bounded-quote checks only. No candidate module was executed/imported; no dependencies or tests were installed/run; no model/API/paid calls or external sources were used.",
+      "anchor_application": "All eight criterion ratings use the frozen local 0/25/50/75/100 anchors and five-point steps. Strong implemented strengths earn placement above 75 where warranted; specified gaps explain why scores do not reach 100. These are subjective criterion judgments, not official dimension predictions or statistically calibrated error estimates.",
+      "non_double_counting": "Coarse policy-to-reason semantics and partial personalization are assessed as architectural task fit; prompt trust-boundary coverage as prompt/tool design; stale cache identity, incomplete runtime validation and ASR failure/invalidation as robustness; annotations/modularity/function size and environment secrets as engineering rigor. Extra test/evaluation concerns remain unweighted unless explicitly describing a criterion-specific implemented behavior.",
+      "output_grade": "Unknown/null. Original message rows, user state, media/history and independent reference routing decisions were not provided. Source, saved development claims, and schema validity do not establish final-output quality."
+    },
+    "provenance_limits": {
+      "transcript_conditional": true,
+      "transcript_authenticity": "The bundle labels the supplied text as an original raw coding-tool export. Its visible form nonetheless includes redaction, bracketed abbreviated specifications, agent-response summaries and action inventories rather than an unabridged stream of tool calls/results. Ratings conditionally assess the participant interaction actually presented; they neither prove authenticity/completeness nor reduce transcript quality to zero because provenance is uncertain.",
+      "transcript_sha256": "aeb6e17b4b3bb967def95b7d011aea014308d7d050df5ec0556ee06b747637c7",
+      "submitted_artifact_identity": "Byte-identical correspondence between these source files/log and any contest server upload is unproved. Pinned text hashes verify only this supplied evidence.",
+      "runtime_claims": "Summary statements of successful runs, local metrics, API probes, cache identity, cross-run drift and tests were not independently reproduced. Embedded injected-failure log lines establish what this text presents, not authenticated runtime provenance.",
+      "project_known_target_disclosure": "This reviewer was not given official scores/ranks or earlier local grades and did not consult them. The frozen protocol discloses that the broader project already knew official targets and entrant identities before freezing. Omitting targets from this fresh review input reduces direct prompting leakage but does not make the overall selected-case study truly blind."
+    },
+    "weighted_summary": {
+      "code": {
+        "criterion_weights": {
+          "architecture": 30,
+          "prompt_and_tool_design": 30,
+          "robustness": 25,
+          "engineering_rigor": 15
+        },
+        "score_out_of_100": 80.5,
+        "weight": 30,
+        "weighted_points": 24.15
+      },
+      "coding_transcript": {
+        "criterion_weights": {
+          "direction_and_ownership": 35,
+          "technical_specificity": 25,
+          "iteration_and_verification": 25,
+          "safety_and_edge_cases": 15
+        },
+        "score_out_of_100": 88.0,
+        "weight": 10,
+        "weighted_points": 8.8,
+        "conditional": true
+      },
+      "output": null,
+      "interpretation": "Only available code and conditional coding-transcript category points. No complete contest total, rank, output score or official-grade matching claim is made."
+    },
+    "evidence_source_sha256": {
+      "code/code/config.py": "341486c989bb8a9156b6d563a53c98afffda3df337e56d7d36c8b900f51142c9",
+      "code/code/evaluation/write_report.py": "41e46492f1771d8e4accc702b30ec0209078f8b2ca032db03f1229c9e5f4fffa",
+      "code/code/evidence.py": "009b52068bd30ad37073b7f683db6376ffae76a5ff0d483c70296a217ede0396",
+      "code/code/features.py": "25597474500615b6afde74cece0873c9228fdd33501c8bd9dcf15320ca5573ea",
+      "code/code/gates.py": "0e64f1b1779e097072eac26ee5ee63edce0443aff1f3ad22a4913dc8633adc67",
+      "code/code/main.py": "10d3a0f09270cbc64be6009188dff5c4f3c604bfd2e060131c2735b7b075ecad",
+      "code/code/prompts.py": "82b751c3ca2685b10969b34df6812f3a779a409ea6745e7a3b01fd605f129c0f",
+      "code/code/router.py": "08cbcfe63278f6f92987601532da9f7e07a6893e8a66a0d9e5cbc2dfffe29617",
+      "code/code/schema.py": "ff1de3f58863562ad0668089ac2daf40ebcc6f2dd16195abb3f8fb227c22aba6",
+      "code/code/test_gates.py": "f9aa2f09edc8d4d98104bf26e189ae946de3f93985b98ea1d36cca852d0ef3d7",
+      "code/code/transcription.py": "513ae3ab5aa4964a4514ac5dc94fa54646482a18fdc6048b4059790d928b3c1c",
+      "transcript/raw-export": "aeb6e17b4b3bb967def95b7d011aea014308d7d050df5ec0556ee06b747637c7"
+    },
+    "integrity_validation": {
+      "bundle_file_sha256": "6985ebff5fee9cba7d3c6c74c14ae291376667a2bba74363a3ca6ac036354a8f",
+      "bundle_id_equals_requested": true,
+      "protocol_canonical_sha256_verified": true,
+      "protocol_canonicalization": "UTF-8 JSON of embedded protocol excluding protocol_sha256, sorted keys, compact separators",
+      "all_evidence_text_hashes_verified": true,
+      "evidence_files_hash_checked": 33,
+      "hash_mismatches": [],
+      "citation_ranges_and_exact_substrings_verified": true,
+      "citation_count": 31,
+      "quoted_words_per_source_conservative_regex": {
+        "code/code/main.py": 11,
+        "code/code/gates.py": 11,
+        "code/code/features.py": 6,
+        "code/code/schema.py": 11,
+        "code/code/prompts.py": 18,
+        "code/code/router.py": 12,
+        "code/code/evidence.py": 10,
+        "code/code/transcription.py": 6,
+        "code/code/config.py": 5,
+        "code/code/evaluation/write_report.py": 17,
+        "transcript/raw-export": 25,
+        "code/code/test_gates.py": 4
+      },
+      "quoted_words_per_source_whitespace": {
+        "code/code/main.py": 10,
+        "code/code/gates.py": 8,
+        "code/code/features.py": 5,
+        "code/code/schema.py": 8,
+        "code/code/prompts.py": 16,
+        "code/code/router.py": 8,
+        "code/code/evidence.py": 10,
+        "code/code/transcription.py": 1,
+        "code/code/config.py": 3,
+        "code/code/evaluation/write_report.py": 17,
+        "transcript/raw-export": 21,
+        "code/code/test_gates.py": 3
+      },
+      "maximum_quoted_words_per_individual_file": 25,
+      "candidate_execution": false
+    }
+  },
+  "category_scores_100": {
+    "code": 80.5,
+    "coding_transcript": 88.0,
+    "output": null
+  },
+  "source_manifest": [
+    {
+      "source": "code/code/README.md",
+      "sha256": "b5bac40d672bed36db951ad5eb4d3fc6689e0c1303b0332475fd876ee4fe0d4a",
+      "line_count": 723
+    },
+    {
+      "source": "code/code/check_dataset.py",
+      "sha256": "96767601f7496b4dadc36570e6b95c246844880e6a9592998a3e4f83174010ad",
+      "line_count": 187
+    },
+    {
+      "source": "code/code/config.py",
+      "sha256": "341486c989bb8a9156b6d563a53c98afffda3df337e56d7d36c8b900f51142c9",
+      "line_count": 287
+    },
+    {
+      "source": "code/code/data_layer.py",
+      "sha256": "a2c4d96de1b41d978637ba2464b6923a427fc8610914fed6c4749204ececc9e7",
+      "line_count": 273
+    },
+    {
+      "source": "code/code/dryrun_gates.py",
+      "sha256": "0b3b16992e34b1620e82d6138745e8690109e5794d1af31e2beb93e7cc995522",
+      "line_count": 157
+    },
+    {
+      "source": "code/code/evaluation/__init__.py",
+      "sha256": "4a96562fa65901a85cd6f172d8b27163127df1753c618945412e7735d8637352",
+      "line_count": 1
+    },
+    {
+      "source": "code/code/evaluation/diagnose_12b.py",
+      "sha256": "d4a8c8bbe03318a1300b720ad5a5f4ef694ef16e5de172f362a8d9a8d67d6c86",
+      "line_count": 494
+    },
+    {
+      "source": "code/code/evaluation/main.py",
+      "sha256": "aa8648fd2c17c3dc66f11500463a2e951cdf1fc4aa3bd38bf742d0dc31d06206",
+      "line_count": 680
+    },
+    {
+      "source": "code/code/evaluation/write_report.py",
+      "sha256": "41e46492f1771d8e4accc702b30ec0209078f8b2ca032db03f1229c9e5f4fffa",
+      "line_count": 1307
+    },
+    {
+      "source": "code/code/evidence.py",
+      "sha256": "009b52068bd30ad37073b7f683db6376ffae76a5ff0d483c70296a217ede0396",
+      "line_count": 158
+    },
+    {
+      "source": "code/code/features.py",
+      "sha256": "25597474500615b6afde74cece0873c9228fdd33501c8bd9dcf15320ca5573ea",
+      "line_count": 591
+    },
+    {
+      "source": "code/code/finalize.py",
+      "sha256": "182783afff0eee214f4f6d778a50489809c5adf33cec0a6d016afdc4b86514bb",
+      "line_count": 187
+    },
+    {
+      "source": "code/code/fit_thresholds.py",
+      "sha256": "85148f7ae44524eccb73a388ea9d339cbe6f0309890bb99f79af00adb3a483b1",
+      "line_count": 207
+    },
+    {
+      "source": "code/code/gates.py",
+      "sha256": "0e64f1b1779e097072eac26ee5ee63edce0443aff1f3ad22a4913dc8633adc67",
+      "line_count": 407
+    },
+    {
+      "source": "code/code/inspect_features.py",
+      "sha256": "425040fd8ffc17a0dd8f01ed9b15d89b1bdd59234d4e141b24876dd7cb613808",
+      "line_count": 208
+    },
+    {
+      "source": "code/code/inspect_gold_reasons.py",
+      "sha256": "29115ed6cb01cbdc3cadde85b142e52500803157cfe436cc8f8564072885c94b",
+      "line_count": 139
+    },
+    {
+      "source": "code/code/inspect_pools.py",
+      "sha256": "a5e0b2861d51a59654ed88108b9f4a83f89ab8bf08fe98973b5f56e423493f57",
+      "line_count": 97
+    },
+    {
+      "source": "code/code/main.py",
+      "sha256": "10d3a0f09270cbc64be6009188dff5c4f3c604bfd2e060131c2735b7b075ecad",
+      "line_count": 260
+    },
+    {
+      "source": "code/code/preflight_api.py",
+      "sha256": "033bbc07569ce608d85e9e2b84768baef1b49ddaa0fc4e599cb24657d055942c",
+      "line_count": 238
+    },
+    {
+      "source": "code/code/prompts.py",
+      "sha256": "82b751c3ca2685b10969b34df6812f3a779a409ea6745e7a3b01fd605f129c0f",
+      "line_count": 222
+    },
+    {
+      "source": "code/code/requirements.txt",
+      "sha256": "a05cd9f669052119024214fae38efea066ddc98c1feec0deb171c72c1e64af09",
+      "line_count": 13
+    },
+    {
+      "source": "code/code/router.py",
+      "sha256": "08cbcfe63278f6f92987601532da9f7e07a6893e8a66a0d9e5cbc2dfffe29617",
+      "line_count": 345
+    },
+    {
+      "source": "code/code/schema.py",
+      "sha256": "ff1de3f58863562ad0668089ac2daf40ebcc6f2dd16195abb3f8fb227c22aba6",
+      "line_count": 473
+    },
+    {
+      "source": "code/code/test_degraded.py",
+      "sha256": "85dfbd635f9b901611c4809e130b09a1e44dc291fd87c3017bfcd8b9bc82c766",
+      "line_count": 182
+    },
+    {
+      "source": "code/code/test_gates.py",
+      "sha256": "f9aa2f09edc8d4d98104bf26e189ae946de3f93985b98ea1d36cca852d0ef3d7",
+      "line_count": 571
+    },
+    {
+      "source": "code/code/test_schema.py",
+      "sha256": "90f78a350d188aa26d572803488f3416fb2ba8e314112876e74d3c94c77837e9",
+      "line_count": 223
+    },
+    {
+      "source": "code/code/test_vision.py",
+      "sha256": "66fa3b8890186b3332063b2987ff8dfc4b940dc2e2c27c47b989131cdf6f3c6a",
+      "line_count": 157
+    },
+    {
+      "source": "code/code/transcription.py",
+      "sha256": "513ae3ab5aa4964a4514ac5dc94fa54646482a18fdc6048b4059790d928b3c1c",
+      "line_count": 196
+    },
+    {
+      "source": "code/code/validate_output.py",
+      "sha256": "9a970dc4b161aec1ba9b52eda8d77d70d3c3d082e24732352b40e656069c439b",
+      "line_count": 168
+    },
+    {
+      "source": "code/code/vision.py",
+      "sha256": "8083d65760ae73dc44f713a011b378e90a56451a6db58d968919d4f70442806b",
+      "line_count": 168
+    },
+    {
+      "source": "code/code/writer.py",
+      "sha256": "ac628dc9a4101efbbc3f66daf0174fa71bf371dadff2fff20a38ac549472af7a",
+      "line_count": 111
+    },
+    {
+      "source": "code/problem_statement.md",
+      "sha256": "1b9d2e7d4d2fd9ffe473749cd97ee458e5b8e76fa90f98461a7b2f8c7d9bf965",
+      "line_count": 144
+    },
+    {
+      "source": "transcript/raw-export",
+      "sha256": "aeb6e17b4b3bb967def95b7d011aea014308d7d050df5ec0556ee06b747637c7",
+      "line_count": 1492
+    }
+  ],
+  "evidence_verification": "Exact quotes/line ranges and source hashes checked against the supplied full bundle at freeze time; no server-upload identity or authenticity attestation.",
+  "artifact_sha256": "2cac5343e018dc0cbc7db408f2adcf0402cc224b46424de9dd511959c83c32b6"
+}

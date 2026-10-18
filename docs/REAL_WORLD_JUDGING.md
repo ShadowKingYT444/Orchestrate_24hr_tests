@@ -1,5 +1,10 @@
 # Actual source/output quality judging of the public May winner
 
+The original estimates below are preserved. A later frozen published-rubric
+re-review gives code 23.10/30, with a still-material gap from official 26.4;
+[CALIBRATION.md](CALIBRATION.md) records that revision, an external case and the
+failed output-score comparison without fitting offsets.
+
 The earlier structural report was insufficient for quality grading. v0.3 adds an independent evidence-backed numerical review of the actual public agent source and saved answers, alongside the new executed benchmark/judge pipeline.
 
 Candidate: Saai Syvendra's public May-winner repository at fadb4f24e36d860a9ce4d5155bb30568df80ea4b. Input/spec identities and saved-output hashes remain verified in REAL_WORLD_VALIDATION.md. No leaderboard score was used to tune these estimates.

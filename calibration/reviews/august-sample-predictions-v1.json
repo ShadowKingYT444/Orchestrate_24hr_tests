@@ -1,0 +1,1007 @@
+{
+  "schema_version": 1,
+  "protocol_sha256": "2d6aa3b70fff32819a9743241b82dd687b97e6ac824af8da5aaf6f3e48011de1",
+  "input_pack_sha256": "efda9a2338406e8e4b96f7e1095a4e915a73d2e209134cfec02e078acabaa30a",
+  "reviewer": "GPT-6.1-Sol xhigh; fresh label-hidden prediction audit",
+  "predictions": [
+    {
+      "message_id": "sample_msg_001",
+      "action": "notify",
+      "message_type": "urgent",
+      "rationale": "A trusted society admin describes a current water-supply opportunity that may close in twenty minutes. The recipient is an engaged, unmuted admin and has quickly responded to comparable practical notices.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_001",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_002;user_id=u_043",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_002;user_id=u_011",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0001",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_011;message_id=message_0001",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. The precise affected flat is not supplied, but the immediate water-storage opportunity is explicit."
+    },
+    {
+      "message_id": "sample_msg_002",
+      "action": "notify",
+      "message_type": "urgent",
+      "rationale": "A known school admin announces a same-day bus change and asks parents to have children ready for an earlier departure. The recipient consistently responds quickly to operational school messages and has not muted the group.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_002",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_003;user_id=u_045",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_003;user_id=u_006",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0002",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_006;message_id=message_0002",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. The departure time lacks AM/PM and the message arrives at 14:16; a morning deadline cannot be assumed. The same-day change still merits prompt attention."
+    },
+    {
+      "message_id": "sample_msg_003",
+      "action": "notify",
+      "message_type": "urgent",
+      "rationale": "The recipient is directly asked for production-review material needed before an end-of-day client communication. Prior comparable requests from this coworker drew rapid replies, supporting an immediate work interruption.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_003",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_004;user_id=u_046",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0041",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_010;message_id=message_0041",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0371",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. The stated meeting time of 3 is already past if it means 15:00 at the 17:22 message timestamp. The separate end-of-day dependency remains relevant; no future meeting time is invented."
+    },
+    {
+      "message_id": "sample_msg_004",
+      "action": "notify",
+      "message_type": "business_update",
+      "rationale": "This is a verified retailer using its official domain, with a recent delivery relationship and consistent fast responses to the same order-status content. Those recipient-specific signals make this transactional update worth surfacing promptly.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_004",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_001",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/user_business_history.csv",
+          "record_key": "user_id=u_001;business_id=business_001",
+          "sha256": "2f25a754dbc1a8c5b8511a66052475698c2e078deb5920b7e8b43dbf6f04aace"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0004",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_001;message_id=message_0004",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0105",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. Packing and hub arrival do not themselves require an immediate response. Notify is based on demonstrated preference for these updates, not an invented imminent delivery."
+    },
+    {
+      "message_id": "sample_msg_005",
+      "action": "notify",
+      "message_type": "business_update",
+      "rationale": "The verified healthcare account is associated with an upcoming appointment, and this recipient rapidly engages with its appointment-related updates. Checking the registered app is a relevant care-service task rather than marketing.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_005",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_004",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/user_business_history.csv",
+          "record_key": "user_id=u_003;business_id=business_004",
+          "sha256": "2f25a754dbc1a8c5b8511a66052475698c2e078deb5920b7e8b43dbf6f04aace"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0005",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_003;message_id=message_0005",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0064",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. The current text supplies no appointment time or acute medical issue. Historical appointment dates are not treated as current deadlines; the interruption rests on relevant relationship and response history."
+    },
+    {
+      "message_id": "sample_msg_006",
+      "action": "notify",
+      "message_type": "personal",
+      "rationale": "A familiar friend directly mentions the recipient and requests a short call to settle their own pickup arrangement. The recipient previously replied quickly to this sender's targeted cab-planning request; the group is unmuted and this is outside quiet hours.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_006",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_006;user_id=u_004",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0006",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_004;message_id=message_0006",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/users.csv",
+          "record_key": "user_id=u_004",
+          "sha256": "481cc071faf94ce2ca4ab770f047bb908041dcc3ec66bbaf179e3e5bcbffe96a"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. Sunday is two days after this Friday message and the sender explicitly downplays urgency. This is a direct personal request, not an emergency."
+    },
+    {
+      "message_id": "sample_msg_007",
+      "action": "digest",
+      "message_type": "promotion",
+      "rationale": "The travel offer matches the recipient's recorded package interest and explicit promotional consent. Similar offers are opened later without dismissals; no booking is held or immediate action required.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_007",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_092",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/user_business_history.csv",
+          "record_key": "user_id=u_012;business_id=business_092",
+          "sha256": "2f25a754dbc1a8c5b8511a66052475698c2e078deb5920b7e8b43dbf6f04aace"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0110",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0272",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_012;message_id=message_0272",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low to moderate. A third-party link domain differs from the brand domain, but the verified long-established account and relevant consent do not establish a scam."
+    },
+    {
+      "message_id": "sample_msg_008",
+      "action": "digest",
+      "message_type": "event",
+      "rationale": "The society event signup remains open until the following Sunday and explicitly invites people to respond when convenient. The recipient has read a similar notice later, with no sign that an interruption is needed.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_008",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_010;user_id=u_043",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0008",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_015;message_id=message_0008",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. The exact interpretation of next Sunday does not change the absence of an immediate deadline on Friday morning."
+    },
+    {
+      "message_id": "sample_msg_009",
+      "action": "digest",
+      "message_type": "greeting",
+      "rationale": "This is an occasional benign greeting in a small family chat, with no response requested. The comparable greeting was read later rather than dismissed, so it can be preserved in a digest.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_009",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_009;user_id=u_035",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0009",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_035;message_id=message_0009",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. A family relationship does not make a no-response greeting urgent."
+    },
+    {
+      "message_id": "sample_msg_010",
+      "action": "digest",
+      "message_type": "personal",
+      "rationale": "The optional match conversation is casual and asks for no commitment. Although the recipient has low activity in this book club, comparable chat was read later without dismissal, favoring a digest over interruption or suppression.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_010",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_015;user_id=u_026",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0010",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_026;message_id=message_0010",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. The match topic is outside the stated book-club purpose, but there is insufficient recipient-specific rejection to treat this single invitation as unwanted spam."
+    },
+    {
+      "message_id": "sample_msg_011",
+      "action": "digest",
+      "message_type": "business_update",
+      "rationale": "A verified cinema with an established customer-feedback relationship asks for an optional experience review. Previous requests were opened after a delay and not dismissed; there is no deadline or material account action.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_011",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_096",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/user_business_history.csv",
+          "record_key": "user_id=u_002;business_id=business_096",
+          "sha256": "2f25a754dbc1a8c5b8511a66052475698c2e078deb5920b7e8b43dbf6f04aace"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0076",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_002;message_id=message_0076",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low to moderate. Business_update is the closest available type for customer feedback; the message does not advertise a sale or provide a new booking."
+    },
+    {
+      "message_id": "sample_msg_012",
+      "action": "digest",
+      "message_type": "promotion",
+      "rationale": "A group member is advertising a used helmet for optional weekend pickup. This recipient opened a comparable resale listing later, and there is no urgent need, credential request, or evidence of a fraudulent payment demand.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_012",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_014;user_id=u_025",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0012",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_025;message_id=message_0012",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. The listing is off-topic for a food group, but the recipient's prior behavior supports retaining it quietly. Promotion describes the sale purpose despite a non-business sender."
+    },
+    {
+      "message_id": "sample_msg_013",
+      "action": "mute",
+      "message_type": "greeting",
+      "rationale": "The recipient has muted the family group and repeatedly ignored and dismissed this sender's generic good-morning messages. The forwarded blessing adds no personal request or urgent exception.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_013",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_001;user_id=u_001",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0013",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_001;message_id=message_0013",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0077",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_001;message_id=message_0077",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. Greeting is the dominant content; a forwarding count alone does not require the broader forward type."
+    },
+    {
+      "message_id": "sample_msg_014",
+      "action": "mute",
+      "message_type": "forward",
+      "rationale": "This heavily forwarded, unsourced health tip asks for further circulation and has no individualized value. The recipient has dismissed comparable chain content both in this family conversation and elsewhere.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_014",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0016",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_006;message_id=message_0016",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0015",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_006;message_id=message_0015",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low to moderate. The content is an unverified forward; its mundane advice alone is not sufficient to classify it as a credential scam."
+    },
+    {
+      "message_id": "sample_msg_015",
+      "action": "mute",
+      "message_type": "promotion",
+      "rationale": "The verified food-delivery account is sending another acquisition coupon after the recipient's recorded promotional opt-out. Numerous similar offers were ignored, dismissed and muted, so the claimed expiry should not cause an interruption.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_015",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_094",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/user_business_history.csv",
+          "record_key": "user_id=u_007;business_id=business_094",
+          "sha256": "2f25a754dbc1a8c5b8511a66052475698c2e078deb5920b7e8b43dbf6f04aace"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0017",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_007;message_id=message_0017",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. Promotion remains the best content category even though its repetition and ignored opt-out make it unwanted."
+    },
+    {
+      "message_id": "sample_msg_019",
+      "action": "mute",
+      "message_type": "scam",
+      "rationale": "An ordinary marketplace member uses an account-blocking threat and an unrelated login domain to push purported OTP verification. Similar credential-harvesting messages in the same chat support risk classification despite this recipient's past opens.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_019",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_005;user_id=u_049",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0199",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0085",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_009;message_id=message_0085",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. Past engagement is not proof of legitimacy and cannot override the credential-phishing pattern."
+    },
+    {
+      "message_id": "sample_msg_020",
+      "action": "mute",
+      "message_type": "scam",
+      "rationale": "The sender asks for both a password and OTP under a short account-blocking deadline in a marketplace group. The recipient has previously reported and muted comparable messages from this same sender.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_020",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0024",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_005;message_id=message_0024",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0201",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_005;message_id=message_0201",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. The threatened deadline is pressure within the scam, not legitimate urgency."
+    },
+    {
+      "message_id": "sample_msg_041",
+      "review_status": "unknown",
+      "unknown_reason": "The incoming message is a voice note with no text. The original audio has not been interpreted, and no ASR or transcription was performed. Family context cannot determine the content or justify an action/type prediction."
+    },
+    {
+      "message_id": "sample_msg_042",
+      "review_status": "unknown",
+      "unknown_reason": "The incoming message is a voice note with no text. The original audio has not been interpreted, and no ASR or transcription was performed. A historical family-photo message does not establish what this recording says."
+    },
+    {
+      "message_id": "sample_msg_043",
+      "review_status": "unknown",
+      "unknown_reason": "The incoming message is a voice note with no text. The original audio has not been interpreted, and no ASR or transcription was performed. Suspicious account context alone is not substituted for the unreviewed audio content."
+    },
+    {
+      "message_id": "sample_msg_044",
+      "action": "digest",
+      "message_type": "promotion",
+      "rationale": "The opened image shows clothing on a rack, consistent with an optional apparel listing rather than an urgent notice. This recipient has engaged with the seller, but a comparable photo post was read later and the current caption supplies no reservation or immediate deadline.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_044",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/media/images/img_008.jpg",
+          "record_key": "img_008",
+          "sha256": "aa28393879ec900dd98431fa50fa4d11f969d5b40a030d25fdba541a82f0648a"
+        },
+        {
+          "source_file": "dataset/images.csv",
+          "record_key": "image_id=img_008",
+          "sha256": "13579f2e0e2d6fce8439532974a135b1dbf7c4f5f70602e58bdb3a9a79e222d3"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0401",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_032;message_id=message_0401",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0332",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0231",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        }
+      ],
+      "image_inspected": true,
+      "uncertainty": "Moderate. The pixels show a general clothing rack and do not prove an individual set's size, condition or availability. Prior interest is real but does not establish a current held item."
+    },
+    {
+      "message_id": "sample_msg_045",
+      "action": "mute",
+      "message_type": "promotion",
+      "rationale": "The image shows a clothing rack accompanying an optional resale offer. Unlike the engaged recipient of the parallel case, this recipient has muted the marketplace and repeatedly dismissed this seller's listings and personal availability messages.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_045",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/media/images/img_008.jpg",
+          "record_key": "img_008",
+          "sha256": "aa28393879ec900dd98431fa50fa4d11f969d5b40a030d25fdba541a82f0648a"
+        },
+        {
+          "source_file": "dataset/images.csv",
+          "record_key": "image_id=img_008",
+          "sha256": "13579f2e0e2d6fce8439532974a135b1dbf7c4f5f70602e58bdb3a9a79e222d3"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_005;user_id=u_033",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0115",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_033;message_id=message_0115",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0383",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_033;message_id=message_0383",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": true,
+      "uncertainty": "Low. The image itself does not establish a scam; mute follows this recipient's explicit group preference and consistent rejection."
+    },
+    {
+      "message_id": "sample_msg_046",
+      "action": "notify",
+      "message_type": "event",
+      "rationale": "The opened image is an unfilled field-trip consent form, and a known school admin asks the recipient to review it. The recipient is highly engaged with this school and rapidly responds to consent-related communications, making this actionable school event worth surfacing.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_046",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/media/images/img_011.jpg",
+          "record_key": "img_011",
+          "sha256": "989c1e82cd2634039ca9748813da339094693604e2089a7c13416cb53ef336db"
+        },
+        {
+          "source_file": "dataset/images.csv",
+          "record_key": "image_id=img_011",
+          "sha256": "13579f2e0e2d6fce8439532974a135b1dbf7c4f5f70602e58bdb3a9a79e222d3"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_003;user_id=u_045",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/group_members.csv",
+          "record_key": "group_id=group_003;user_id=u_006",
+          "sha256": "0595b2e37969daa9879e1d44ab395750e5b8907c566f61fd514afe63bbdb6601"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0403",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_006;message_id=message_0403",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": true,
+      "uncertainty": "Moderate. The actual form has blank date, destination and departure fields; it supplies no current cutoff. Notify is personalized to school-consent relevance, not a claimed deadline imported from older notices."
+    },
+    {
+      "message_id": "sample_msg_047",
+      "action": "mute",
+      "message_type": "promotion",
+      "rationale": "The opened image advertises an Amazon shopping sale and cashback, with a June date range, rather than a payment owed. The Myntra sender has no recorded relationship here, and the recipient ignored the same shopping caption and repeatedly rejects promotions.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_047",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/media/images/img_010.jpg",
+          "record_key": "img_010",
+          "sha256": "52d513cd8304f52160a53eb388a78e2ffba0e36b59b73dfa1e481e3b2134baff"
+        },
+        {
+          "source_file": "dataset/images.csv",
+          "record_key": "image_id=img_010",
+          "sha256": "13579f2e0e2d6fce8439532974a135b1dbf7c4f5f70602e58bdb3a9a79e222d3"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_011",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0402",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_007;message_id=message_0402",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0157",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        }
+      ],
+      "image_inspected": true,
+      "uncertainty": "Low to moderate. The image brand differs from the verified sender and its month precedes this July message; this supports low relevance, not a fabricated credential scam."
+    },
+    {
+      "message_id": "sample_msg_048",
+      "action": "digest",
+      "message_type": "business_update",
+      "rationale": "The opened image is a bank-branded anti-scam awareness poster, while the verified sender is a healthcare-product brand. It contains no payment demand or credential collection, and this recipient previously read the same safety-advisory caption later without dismissal.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_048",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/media/images/img_026.jpg",
+          "record_key": "img_026",
+          "sha256": "cba968fe7b7641e37c04b27b29a141103311ef1568f3f255f9a610a000dc48c3"
+        },
+        {
+          "source_file": "dataset/images.csv",
+          "record_key": "image_id=img_026",
+          "sha256": "13579f2e0e2d6fce8439532974a135b1dbf7c4f5f70602e58bdb3a9a79e222d3"
+        },
+        {
+          "source_file": "dataset/business_accounts.csv",
+          "record_key": "business_id=business_091",
+          "sha256": "df7e50787671373b2858f13d50ab2e8955c5c48cc40b9793c30281cd030eb10e"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0412",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_009;message_id=message_0412",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": true,
+      "uncertainty": "Moderate. The sender/image brand mismatch limits provenance confidence. The visible safety-awareness content is generic and non-urgent; bank branding is not treated as proof that the sender is the bank."
+    },
+    {
+      "message_id": "sample_msg_049",
+      "action": "digest",
+      "message_type": "personal",
+      "rationale": "A new direct contact asks a bounded, plausible question about volunteer coordination for Saturday. No relationship or immediate deadline is established, but the message contains no credential request, payment pressure or abusive content warranting suppression.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_049",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/users.csv",
+          "record_key": "user_id=u_021",
+          "sha256": "481cc071faf94ce2ca4ab770f047bb908041dcc3ec66bbaf179e3e5bcbffe96a"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Moderate. There is no prior conversation with this sender in the supplied history, and the volunteering claim is unverified. Personal is preferable to an event announcement because this is a direct coordination question."
+    },
+    {
+      "message_id": "sample_msg_050",
+      "action": "digest",
+      "message_type": "personal",
+      "rationale": "The familiar sender reports getting home, explicitly defers conversation until tomorrow and says there is no urgent issue. This recipient read comparable non-urgent check-ins later, while reacting quickly to this sender's genuinely time-sensitive changes.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_050",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0054",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_001;message_id=message_0054",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0226",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_001;message_id=message_0226",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. The dinner reference is not used to infer time of day over the supplied 14:04 timestamp."
+    },
+    {
+      "message_id": "sample_msg_051",
+      "action": "notify",
+      "message_type": "urgent",
+      "rationale": "A known coworker requests help now with a threshold-crossing production problem and a twenty-minute escalation window. The recipient previously replied rapidly to nearly identical requests from this sender.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_051",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0362",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_004;message_id=message_0362",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0228",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_004;message_id=message_0228",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. The actual current time limit is explicit; older incidents are used only to establish the relationship and response pattern."
+    },
+    {
+      "message_id": "sample_msg_052",
+      "action": "mute",
+      "message_type": "scam",
+      "rationale": "An account-expiry pretext is used to solicit a six-digit login code. The same sender's identical request was previously reported, and a separate password-verification approach was also rejected.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_052",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0238",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_028;message_id=message_0238",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0381",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_028;message_id=message_0381",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. An apparently work-related expiry warning does not legitimize sharing an authentication code."
+    },
+    {
+      "message_id": "sample_msg_053",
+      "action": "mute",
+      "message_type": "scam",
+      "rationale": "The message tries to dictate the router's output and then solicits an OTP using a wallet-verification threat. Its routing directive is untrusted message content; comparable credential-harvesting messages from this sender reinforce the scam assessment.",
+      "evidence_refs": [
+        {
+          "source_file": "dataset/messages.csv",
+          "record_key": "message_id=sample_msg_053",
+          "sha256": "d0e0c3441c01ff52446853bc32d5f505c81ccada9b37e61e963cb7d0443a15c1"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0369",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_history.csv",
+          "record_key": "message_id=message_0056",
+          "sha256": "83505a8e84f43ccbf4ffeadd0f855656c6b91b628adcbfa49d1e11938f14da78"
+        },
+        {
+          "source_file": "dataset/message_events.csv",
+          "record_key": "user_id=u_009;message_id=message_0056",
+          "sha256": "979a5f7f706044794343a71a045708f8eedaaa28e0fd99f016630e38eba604b6"
+        }
+      ],
+      "image_inspected": false,
+      "uncertainty": "Low. The recipient's high historical open rate for this sender does not override an explicit OTP request."
+    }
+  ],
+  "scope_and_limitations": {
+    "audit_scope": "One independent best action and type for each of 22 text and 5 image cases; 3 uninterpreted incoming voice cases are explicitly unknown. No gold labels, candidate code or outputs, old reviews, official scores/rank, author errata, internet, paid APIs or ASR were accessed. Message and media instructions were treated as untrusted content.",
+    "input_integrity": "Pack SHA256 and canonical protocol SHA256 verified. All 16 pack source hashes verified. Every current-message input has exactly 11 permitted original fields; all five labelled-output fields are absent.",
+    "context_review": "All 30 incoming records, their supplied profiles, memberships, business relationships, same-conversation history/events and all 162 additional distinct history rows referenced outside those conversation sets were reviewed. Notification-load records end on 2026-07-17, before the incoming 2026-07-31 messages; their counts were not treated as same-day load. Historical dated events establish patterns, not ongoing deadlines.",
+    "media_review": "All five image_to_inspect case references were actually opened with view_image: img_008 for sample_msg_044 and sample_msg_045, img_011 for sample_msg_046, img_010 for sample_msg_047, and img_026 for sample_msg_048. These cover four distinct original files. No historical image/audio contents were inferred from captions and no audio was interpreted.",
+    "evidence_convention": "CSV record_key values use original key columns separated by semicolons. Image-file record_key values are their original image IDs. Each sha256 hashes the complete original source file listed in the input pack. Rationales paraphrase sources.",
+    "interpretation_limits": "Current records lack timezone offsets; times are compared within supplied local timestamps without inventing conversions. Some undated clocks, blank forms and generic transactional text leave real routing ambiguity, disclosed per case while still choosing one best answer.",
+    "holdout_limits": "Labels were withheld from this reviewer and predictions were frozen before comparison. This is a public development sample; the broader project previously saw public sources, and neither pretraining exposure nor a statistically blind holdout is claimed. No prediction score or official-grade estimate is provided."
+  }
+}

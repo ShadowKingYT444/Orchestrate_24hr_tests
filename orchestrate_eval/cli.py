@@ -121,8 +121,37 @@ def main(argv=None):
     coding_run.add_argument('--allow-exec',action='store_true');coding_run.add_argument('--allow-model-turn',action='store_true')
     coding_run.add_argument('--timeout',type=float,default=120);coding_run.add_argument('--seed',type=int,default=73)
     coding_run.add_argument('--remaining-usage-percent',type=float);coding_run.add_argument('--report-dir',default='reports/codex-repair')
+    calibration=subs.add_parser('calibration',help='Freeze evidence-backed reviews and compare to separately recorded official category observations')
+    calibration_actions=calibration.add_subparsers(dest='calibration_action',required=True)
+    ce=calibration_actions.add_parser('export');ce.add_argument('--source',required=True);ce.add_argument('--protocol',required=True);ce.add_argument('--edition',choices=['may26','august26'],required=True);ce.add_argument('--transcript');ce.add_argument('--output',required=True)
+    cf=calibration_actions.add_parser('freeze-review');cf.add_argument('--bundle',required=True);cf.add_argument('--review',required=True);cf.add_argument('--output',required=True);cf.add_argument('--preserve-legacy',action='store_true')
+    cv=calibration_actions.add_parser('verify');cv.add_argument('--review',required=True);cv.add_argument('--bundle',required=True)
+    cr=calibration_actions.add_parser('report');cr.add_argument('--dataset',required=True);cr.add_argument('--report-dir',default='reports/calibration')
+    ca=calibration_actions.add_parser('audit-labels');ca.add_argument('--labels',required=True);ca.add_argument('--predictions',required=True);ca.add_argument('--protocol',required=True);ca.add_argument('--input-pack');ca.add_argument('--report-dir',default='reports/label-audit')
+    cav=calibration_actions.add_parser('verify-audit');cav.add_argument('--report',required=True);cav.add_argument('--predictions',required=True)
     args = parser.parse_args(argv)
     try:
+        if args.action=='calibration':
+            from .calibration import export_calibration_bundle,freeze_review,validate_frozen,calibration_report
+            if args.calibration_action=='audit-labels':
+                from .calibration_audit import audit_labels
+                value=audit_labels(args.labels,args.predictions,args.protocol,args.report_dir,args.input_pack)
+                print(json.dumps({'report':str(Path(args.report_dir)/'label-audit.md'),'metrics':value['metrics'],'official_score_established':False}));return 0
+            if args.calibration_action=='verify-audit':
+                from .calibration_audit import verify_audit
+                value=verify_audit(read_json(args.report),args.predictions)
+                print(json.dumps({'frozen_prediction_and_comparison_math_verified':True,'metrics':value,'original_labels_reloaded':False}));return 0
+            if args.calibration_action=='export':
+                value=export_calibration_bundle(args.source,args.output,args.protocol,args.edition,args.transcript)
+                print(json.dumps({'bundle_id':value['bundle_id'],'protocol_sha256':value['calibration_protocol']['protocol_sha256'],'official_targets_added_by_exporter':False,'source_screening':'Remove score-bearing source files before export; arbitrary source content is not guaranteed target-free.'}));return 0
+            if args.calibration_action=='freeze-review':
+                value=freeze_review(args.bundle,args.review,args.output,args.preserve_legacy)
+                print(json.dumps({'artifact_sha256':value['artifact_sha256'],'category_scores_100':value['category_scores_100']}));return 0
+            if args.calibration_action=='verify':
+                value=validate_frozen(read_json(args.review),read_json(args.bundle))
+                print(json.dumps({'exact_evidence_rechecked':True,'category_scores_100':value}));return 0
+            value=calibration_report(args.dataset,args.report_dir)
+            print(json.dumps({'report':str(Path(args.report_dir)/'calibration.md'),'numeric_fit_applied':value['numeric_fit_applied']}));return 0
         if args.action=='coding-agent':
             from .coding_agent import inspect_codex,run_coding_agent
             if args.coding_action=='inspect':
@@ -209,6 +238,6 @@ def main(argv=None):
         (destination / "run.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
         print(json.dumps({k: v for k, v in report.items() if k not in ("stdout", "stderr")}))
         return 0 if report["status"] == "pass" else 1
-    except (ValueError, OSError, TypeError, KeyError) as exc:
+    except (ValueError, OSError, TypeError, KeyError, OverflowError) as exc:
         print(f"Evaluation error: {exc}")
         return 2

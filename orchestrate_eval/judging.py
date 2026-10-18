@@ -37,6 +37,13 @@ def bundle_rubrics(bundle):
     return expected
 
 
+def _finite_number(value):
+    try:
+        return not isinstance(value, bool) and math.isfinite(value)
+    except (OverflowError, TypeError):
+        return False
+
+
 def export_bundle(source, destination, transcript=None, benchmark=None):
     selected=Path(source).resolve()
     root=selected if selected.is_dir() else selected.parent
@@ -119,7 +126,7 @@ def import_review(bundle, review):
         for name,weight in weights.items():
             entry=entries[name]
             value=entry.get('score') if isinstance(entry,dict) else None
-            if not isinstance(value,(int,float)) or isinstance(value,bool) or not math.isfinite(value) or not 0<=value<=100: raise ValueError('Criterion score must be finite0..100: '+name)
+            if not isinstance(value,(int,float)) or isinstance(value,bool) or not 0<=value<=100 or not math.isfinite(value): raise ValueError('Criterion score must be finite0..100: '+name)
             if not isinstance(entry.get('rationale'),str) or len(entry['rationale'].strip())<20: raise ValueError('Specific rationale required: '+name)
             refs=entry.get('evidence')
             if not isinstance(refs,list) or not refs: raise ValueError('Evidence citations required: '+name)
@@ -139,7 +146,7 @@ def import_review(bundle, review):
         source='benchmark/case-'+index
         if source not in evidence or not isinstance(entry,dict): raise ValueError('Unknown semantic case index')
         value=entry.get('score')
-        if not isinstance(value,(int,float)) or isinstance(value,bool) or not math.isfinite(value) or not 0<=value<=100: raise ValueError('Semantic score must be finite0..100')
+        if not isinstance(value,(int,float)) or isinstance(value,bool) or not 0<=value<=100 or not math.isfinite(value): raise ValueError('Semantic score must be finite0..100')
         if any(not isinstance(entry.get(flag),bool) for flag in ('safety_failure','contradiction','unsupported_claim','justification_invalid')): raise ValueError('Semantic safety/contradiction/claim/justification flags must be explicit booleans')
         if not isinstance(entry.get('rationale'),str) or len(entry['rationale'])<20: raise ValueError('Semantic judgment needs a specific rationale')
         refs=entry.get('evidence')
@@ -162,8 +169,8 @@ def judge_http(bundle, endpoint, model, api_key_env, max_cost_usd, input_price_p
     instructions = INSTRUCTIONS if bundle.get('rubric_version') == RUBRIC_VERSION else LEGACY_INSTRUCTIONS
     if not endpoint.startswith('https://'): raise ValueError('Judge endpoint must use HTTPS')
     for value in (max_cost_usd,input_price_per_million,output_price_per_million):
-        if not isinstance(value,(int,float)) or not math.isfinite(value) or value<0: raise ValueError('Finite nonnegative budget/prices required')
-    if not isinstance(max_output_tokens,int) or not 1<=max_output_tokens<=16000: raise ValueError('Judge output token cap1..16000 required')
+        if not isinstance(value,(int,float)) or not _finite_number(value) or value<0: raise ValueError('Finite nonnegative budget/prices required')
+    if not isinstance(max_output_tokens,int) or isinstance(max_output_tokens,bool) or not 1<=max_output_tokens<=16000: raise ValueError('Judge output token cap1..16000 required')
     user='<BEGIN_UNTRUSTED_EVIDENCE_BUNDLE>\n'+json.dumps(bundle,ensure_ascii=False)+'\n<END_UNTRUSTED_EVIDENCE_BUNDLE>'
     # Conservative byte-count input estimate, plus message framing allowance.
     input_bound=len((instructions+user).encode())+1000

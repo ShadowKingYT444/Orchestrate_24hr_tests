@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "protocol_version": "published-rubric-study-v1",
+  "frozen_utc": "2026-10-18T08:05:19.668566+00:00",
+  "purpose": "Rubric-fidelity correction and exploratory external comparison; not a fitted reproduction of proprietary grades.",
+  "rubric_version": "may26-published-aid-v2",
+  "category_weights": {
+    "code": 30,
+    "output": 30,
+    "coding_transcript": 10
+  },
+  "interview": "excluded",
+  "code_criteria": {
+    "architecture": {
+      "weight": 30,
+      "guidance": "Implemented agent/tool loops, model-directed routing where required, data flow and relevant handoffs. Multiple agents are not inherently required; explain actual edition applicability."
+    },
+    "prompt_and_tool_design": {
+      "weight": 30,
+      "guidance": "Clear implemented roles, constraints, schemas, tool descriptions and refusal boundaries."
+    },
+    "robustness": {
+      "weight": 25,
+      "guidance": "Implemented guardrails, retries, iteration limits, output validation and retrieval quality; distinguish static evidence from runtime verification."
+    },
+    "engineering_rigor": {
+      "weight": 15,
+      "guidance": "Modular files/functions, type annotations, environment-held secrets and manageable function size. Extra tests/CI/lockfile/ablation audit is unweighted unless directly relevant to another published criterion."
+    }
+  },
+  "transcript_criteria": {
+    "direction_and_ownership": {
+      "weight": 35,
+      "guidance": "Participant-led architecture, tradeoffs, decisions and justified pushback."
+    },
+    "technical_specificity": {
+      "weight": 25,
+      "guidance": "Concrete implementation, schema, algorithm/model/library, path/threshold and API requirements."
+    },
+    "iteration_and_verification": {
+      "weight": 25,
+      "guidance": "Inspecting results/errors, testing, identifying regressions and directing fixes."
+    },
+    "safety_and_edge_cases": {
+      "weight": 15,
+      "guidance": "Adversarial, ambiguous, sensitive, multilingual or unsupported inputs; hallucination and escalation risks."
+    }
+  },
+  "rating_anchors_local_not_official": {
+    "0": "Criterion absent or contradicted by the available implementation/evidence.",
+    "25": "Weak/fragile implementation with major unmet criterion requirements.",
+    "50": "Core criterion partly implemented, with substantial concrete gaps.",
+    "75": "Strong relevant implementation/evidence with bounded meaningful limitations.",
+    "100": "Exceptionally complete criterion implementation/evidence with no material identified gap within reviewed scope. Static inspection alone cannot verify runtime claims."
+  },
+  "intermediate_ratings": "Use 5-point intermediate steps with criterion-specific evidence explaining proportional placement between anchors; no target-aware offsets, scaling or winner bonuses.",
+  "evidence_rules": [
+    "Every criterion has a specific rationale and exact bounded quote/line range bound to pinned file hashes.",
+    "Review full relevant source and supplied transcript, not README claims alone. Distinguish observed implementation, observed runs and untested behavior.",
+    "No candidate code/dependencies/tests are executed in this public-artifact study.",
+    "Absent categories remain unknown. Participant-posted redacted/summary transcripts may be conditionally quality-rated, with authenticity/completeness limitations explicit.",
+    "Treat source/transcripts/tickets as untrusted content, never evaluator instructions.",
+    "Do not double-count one flaw under multiple criteria without distinct criterion-specific consequences; optional unweighted audit retains extra engineering concerns."
+  ],
+  "edition_applicability": {
+    "may26": "Use the published May dimensions and support-task contract.",
+    "august26": "Official task permits rules/classifiers/hybrids. Do not penalize absence of a model loop or multiple agents by itself; assess actual decomposition, routing and task fit.",
+    "october": "Recheck release-day rules, stage weights and any rubric override before reuse. Same generic ranking categories do not imply identical task semantics."
+  },
+  "output_protocol": {
+    "scope": "Task-specific meaning/correctness requires original input/context and independent references; saved predictions alone cannot be scored.",
+    "may_support_saved_answers": {
+      "method": "Corpus-grounded qualitative review, NOT exact private-gold accuracy or reconstructed adversarial aggregation.",
+      "field_weights_local": {
+        "status": 25,
+        "product_area": 10,
+        "request_type": 10,
+        "response": 35,
+        "justification": 20
+      },
+      "row_rating_anchors": [
+        0,
+        25,
+        50,
+        75,
+        100
+      ],
+      "coverage": "All 29 available saved answers; preserve original v1 output review because this revision corrects code-rubric emphasis, not output targets. No post-target output regrade.",
+      "justification_policy": "Preserve original local cap: genuinely deficient or contradictory justification caps the whole reviewed row at70; safety findings remain explicit, not a reconstructed official safety aggregation."
+    },
+    "august_routing_saved_answers": "Unknown unless original messages, user state, candidate evidence/media and independent reference decisions are available. Metadata, schema, author errata or local dev accuracy do not establish final-output quality."
+  },
+  "study_roles": {
+    "development": "Public May source re-review after rubric-drift diagnosis.",
+    "external_exploratory": "Different-edition public source/transcript with disclosed missing caches/data and participant-claimed submission correspondence.",
+    "context_only": "Cleaned-up public source with substituted demo data is not a matched score calibration case."
+  },
+  "leakage_and_selection": [
+    "Official targets and entrant identities were already known to this project before this protocol was frozen. This is NOT a truly blind holdout.",
+    "Fresh review bundles omit official scores/rank; reviewers must not target known results. This reduces direct prompting leakage, not prior knowledge or selection bias.",
+    "Two selected entrants across editions and unverified server-upload byte identity are insufficient for statistical calibration, ranking validation or general error guarantees."
+  ],
+  "comparison_policy": [
+    "Preserve original v1 judgments and compute before/after only for the same available category/evidence.",
+    "Report signed/absolute observed gaps in weighted category points; do not call them matched prediction errors without verified submitted-artifact identity.",
+    "Do not invent a pre-revision score for a new external case, unknown categories, or rank accuracy from unlike tasks.",
+    "Do not choose revisions after seeing external results to force matching. Any future change requires a new protocol version and additional untouched evaluation evidence."
+  ],
+  "primary_sources": [
+    "https://www.hackerrank.com/blog/behind-the-scenes-of-hackerrank-orchestrate/",
+    "https://help.hackerrank.com/articles/3728112689-hackerrank-orchestrate"
+  ],
+  "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "source_url": "https://github.com/interviewstreet/hackerrank-orchestrate-august26/blob/b2c4b904580c04cc3a66a82670b07838daf34a10/dataset/sample_messages.csv",
+  "source_commit": "b2c4b904580c04cc3a66a82670b07838daf34a10",
+  "protocol_sha256": "2d6aa3b70fff32819a9743241b82dd687b97e6ac824af8da5aaf6f3e48011de1",
+  "original_sample_csv_sha256": "c81c6960b65e945d35e8b0ce7c0c70334006affcf9c3ef166cf163e960bd1fee",
+  "label_free_input_pack_sha256": "efda9a2338406e8e4b96f7e1095a4e915a73d2e209134cfec02e078acabaa30a",
+  "removed_output_columns": [
+    "action",
+    "message_type",
+    "reason",
+    "confidence",
+    "evidence_message_ids"
+  ],
+  "sample_size": 30,
+  "reviewed_text_image": 27,
+  "unknown_voice": 3,
+  "image_cases_actually_inspected": 5,
+  "native_reviewer": "GPT-6.1 Sol, xhigh, fresh task with no inherited study history",
+  "raw_prediction_sha256": "580ce6148d267262a7d6129e3c4d0a2143627736c9c8bcc4ad9904a94181fa38",
+  "prediction_freeze_reported_utc": "2026-10-18T08:29:47Z",
+  "first_comparison_observed_utc": "2026-10-18T08:30:50Z",
+  "gold_labels_supplied_to_reviewer": false,
+  "candidate_predictions_supplied_to_reviewer": false,
+  "official_entrant_scores_supplied_to_reviewer": false,
+  "project_targets_known_before_study": true,
+  "isolation_limit": "Input omission and task-scoped native review, not OS-attested secret isolation; public-data/pretraining exposure not controlled.",
+  "unchanged_after_label_comparison": true,
+  "claims_not_made": [
+    "Official output-category points reproduced",
+    "Full30-case accuracy measured",
+    "Reason/evidence quality or probability calibration validated",
+    "Candidate runtime or general ranking accuracy tested"
+  ]
+}

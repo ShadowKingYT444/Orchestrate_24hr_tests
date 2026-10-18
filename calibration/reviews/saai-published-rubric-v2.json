@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "kind": "frozen_evidence_review",
+  "rubric_version": "may26-published-aid-v2",
+  "bundle_id": "53fc5155fb04aa42ef24ef4836d541ad05d21109233b06f20626e3036e783cf2",
+  "protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+  "edition": "may26",
+  "preserved_original": false,
+  "review": {
+    "schema_version": 1,
+    "bundle_id": "53fc5155fb04aa42ef24ef4836d541ad05d21109233b06f20626e3036e783cf2",
+    "origin": "native_model_review",
+    "reviewer": "GPT-6.1-Sol xhigh, fresh score-omitted-input review",
+    "calibration_protocol_sha256": "ed462fae1b2f5885ce08d436d01c745082c9bb60e2786c47790e7e7e4b6b707f",
+    "categories": {
+      "code": {
+        "architecture": {
+          "score": 85,
+          "rationale": "May support-task applicability: this is a genuine model-directed support agent, rather than a fixed retrieval-and-template pipeline. create_agent connects the model to a read-only, three-mode knowledge tool and a structured decision strategy. The model can choose queries, search/read/grep, filters, result count, and reranking. Separate ingestion, metadata/chunking, hybrid retrieval, pre-routing, post-processing, CSV, and TUI modules give the data flow a coherent task-specific decomposition. Weighted lexical/vector reciprocal-rank fusion is actually implemented, not just claimed in the README. A single agent is appropriate here; no multiple-agent requirement or penalty is inferred. The score is above the strong 75 anchor because the implementation connects these components end to end. It remains below exceptional completeness: retrieval trace ownership and the live callback are process-global, while process_ticket resets and consumes them as though invocation-local. The supplied headless runner is sequential and the TUI serializes submissions, so this is a bounded architecture/reuse limitation, not a demonstrated race in those entry points. This state-ownership concern is charged only here. Runtime compatibility and successful execution were not verified.",
+          "evidence": [
+            {
+              "source": "code/agent/builder.py",
+              "start_line": 49,
+              "end_line": 58,
+              "quote": "tools=[support_kb],"
+            }
+          ]
+        },
+        "prompt_and_tool_design": {
+          "score": 75,
+          "rationale": "The implemented system prompt defines the support role, six output fields, corpus-only grounding, retrieval order, refusal behavior, escalation boundaries, product-area examples, multilingual query handling, and response style. The knowledge tool has typed mode arguments, documented inputs/results, optional retrieval controls, and a concrete result-count clamp. The Pydantic decision schema supplies enum-constrained status/request_type plus field descriptions. These are strong and relevant to the May task. The score stays at the strong 75 anchor because instruction consistency has meaningful gaps: the system requires reading before a substantive reply, but the tool description makes reading conditional on snippet insufficiency; active high-risk incidents are directed to escalation, while the later reply section includes a stolen-card contact scenario; and the system prioritizes the user's product intent while the schema tells the model to choose the closest article breadcrumb. These conflicting instructions reach the same model and can change routing or grounding choices. They are design defects identified statically, not evidence that a particular saved answer failed. Their deductions are confined to this criterion; the separate implementation failures assessed under robustness are not additional penalties for these same contradictions.",
+          "evidence": [
+            {
+              "source": "code/retrieval/kb_tool.py",
+              "start_line": 69,
+              "end_line": 76,
+              "quote": "if the snippet alone is not enough"
+            }
+          ]
+        },
+        "robustness": {
+          "score": 65,
+          "rationale": "Real protections are implemented: schema-based output, explicit coercion/fallback escalation, a finite graph recursion limit, post-hoc citation filtering, path resolution confined beneath data/, SQL literal escaping, language hints, ingestion embedding retries, and reranker failure fallback. These put the system materially above the partly implemented 50 anchor. However, several concrete gaps keep it below a strong 75. First, the citation guard trusts read-call arguments, not successful article contents: the tool records a read even when read_doc returns an error, and any recorded read can preserve a reply after every citation is dropped. Thus failed/irrelevant attempted reads do not provide the claimed grounding assurance. Second, any regex injection match takes the canned refusal path before the agent can implement the prompt's legitimate-plus-malicious multi-intent exception; this is an implementation/control-flow limitation, separate from the prompt contradictions rated above. Third, the nominal eight-tool budget is a prompt instruction plus a 38-step graph recursion limit, not an eight-call runtime counter, so the configured graph bound does not establish the advertised tool-call bound. Fourth, rerank caching omits top_n and stores positional results: repeating the same candidate set with a larger top_k can reuse the smaller cached result set; reordering the same IDs can misapply cached indices. Finally, ingestion creates and incrementally populates the live table, then treats an existing table as reusable without validating build completion; interruption after a partial write can leave a partial index accepted on the next build. The latter cache/index findings are static consequences of the shown branches, not observed failures. Together these are substantial but localized gaps in otherwise meaningful safeguards; neither code execution nor adversarial success rates are claimed.",
+          "evidence": [
+            {
+              "source": "code/retrieval/reader.py",
+              "start_line": 13,
+              "end_line": 32,
+              "quote": "p.relative_to(config.DATA_DIR.resolve())"
+            }
+          ]
+        },
+        "engineering_rigor": {
+          "score": 85,
+          "rationale": "Under the frozen published meaning, engineering rigor is strong: concerns are separated into agent, middleware, ingestion, retrieval, runner, schema, and TUI modules; dataclasses and Pydantic structures describe the main records; function arguments and returns are usually annotated; model configuration is centralized and credentials are obtained from the environment rather than embedded literals. The entry point loads .env before importing configuration. Helper functions isolate parsing, filters, coercion, citations, cache writes, and CSV formatting. This supports a score above 75 without using tests, CI, or dependency pins as substitutes for the criterion. It is not exceptionally complete: several interface types are broad dict/Any contracts, agent/client/table factory return types are omitted, and process_ticket spans 119 source lines while coordinating rule routing, callbacks, model invocation, error conversion, extraction, post-processing, and trace output. Most other core functions are more manageable. The function-size/type limitations are charged only here; the architecture state-ownership and robustness behavior defects are not re-deducted. No claim is made that annotations were type-checked or dependencies successfully imported.",
+          "evidence": [
+            {
+              "source": "code/ingest/parser.py",
+              "start_line": 20,
+              "end_line": 33,
+              "quote": "breadcrumbs: list[str] = field(default_factory=list)"
+            }
+          ]
+        }
+      },
+      "coding_transcript": null,
+      "output": null
+    },
+    "unweighted_audit": [
+      {
+        "topic": "Dependency reproducibility",
+        "finding": "The supplied requirements use lower-bound ranges. A comment refers to an exact lockfile, but no lockfile is among these 29 bundled files, so exact dependency resolution and the claimed lock cannot be verified from the allowed evidence. This receives no weighted engineering-rigor deduction.",
+        "weighted_deduction": false,
+        "evidence": [
+          {
+            "source": "code/requirements.txt",
+            "start_line": 1,
+            "end_line": 16
+          },
+          {
+            "source": "code/requirements.txt",
+            "start_line": 6,
+            "end_line": 16
+          }
+        ]
+      },
+      {
+        "topic": "Verification coverage",
+        "finding": "The bundled sample evaluator compares selected labels and reports response-length/citation diagnostics. It compares only the shared row prefix when counts differ, and returns success after printing findings; it is not a demonstrated semantic-response or adversarial test suite. No unit-test or CI definitions are supplied in this bundle. Their absence here does not establish that none ever existed, nor does any evaluator presence establish runtime success. This audit is unweighted.",
+        "weighted_deduction": false,
+        "evidence": [
+          {
+            "source": "code/runner/eval_sample.py",
+            "start_line": 44,
+            "end_line": 46
+          },
+          {
+            "source": "code/runner/eval_sample.py",
+            "start_line": 87,
+            "end_line": 89
+          },
+          {
+            "source": "code/runner/eval_sample.py",
+            "start_line": 91,
+            "end_line": 131
+          }
+        ]
+      }
+    ],
+    "scope_and_uncertainty": {
+      "reviewed_inputs": "Only the specified candidate-a-bundle.json, its attached frozen protocol, and the 29 complete embedded code/config/documentation files were read. All nonempty source files were read in full; six __init__.py files are empty. No other directories, official outcomes, leaderboard, identities, or earlier reviews were consulted.",
+      "method": "Static source inspection and reviewer-written JSON/hash/quote/AST validation only. No candidate code, dependencies, tests, imports, installs, external lookups, model calls, or paid calls were executed. AST parsing is syntax inspection, not execution or runtime validation.",
+      "evidence_limits": "The corpus, persisted index/caches, installed dependency resolution, and runtime traces are not supplied in this code bundle. API compatibility, retrieval recall, model adherence, error frequencies, safety effectiveness, and submission-byte identity remain unverified. Static deductions are not presented as observed production failures. The local anchors and 5-point ratings are subjective rubric judgments, not fitted official-grade predictions.",
+      "edition_applicability": "May26 support-task dimensions apply. Model-directed routing/tool use is present and relevant. Multiple agents are not inherently required. Coding transcript and output remain unknown and ungraded because those evidence categories are absent from the supplied review inputs.",
+      "aggregation": {
+        "code_criterion_weights_percent": {
+          "architecture": 30,
+          "prompt_and_tool_design": 30,
+          "robustness": 25,
+          "engineering_rigor": 15
+        },
+        "weighted_code_score_100": 77.0,
+        "code_category_weight_points": 30,
+        "weighted_code_points_30": 23.1,
+        "calculation": "(85*0.30 + 75*0.30 + 65*0.25 + 85*0.15)*0.30 = 23.10"
+      },
+      "integrity_validation": {
+        "bundle_id_recomputed": true,
+        "bundle_id_method": "SHA-256 of Python json.dumps(bundle_without_bundle_id, sort_keys=True) with default ASCII escaping and separators, UTF-8 encoded.",
+        "input_file_sha256": "cf7e4696d58aecfb1ffa2f6d9c03ca2376f7587350116f59c807b1ed110d30d6",
+        "protocol_sha256_recomputed": true,
+        "protocol_sha256_method": "SHA-256 of sorted compact JSON for the attached protocol with protocol_sha256 removed, UTF-8 encoded.",
+        "embedded_source_hashes_validated": 29,
+        "source_text_hashes_match": true,
+        "all_evidence_quotes_within_inclusive_line_ranges": true,
+        "maximum_quoted_words_per_source_file": 25,
+        "quote_budget_method": "Count every evidence quote occurrence across weighted criteria and unweighted audit by whitespace-delimited words, summed per source file. Each total must be <=25.",
+        "evidence_quote_count_validated": 48,
+        "quoted_words_by_source": {
+          "code/agent/builder.py": 5,
+          "code/agent/classifier.py": 9,
+          "code/agent/middleware/citation_guard.py": 7,
+          "code/agent/middleware/language_normalize.py": 4,
+          "code/agent/middleware/prompt_injection.py": 2,
+          "code/agent/prompts.py": 18,
+          "code/config.py": 3,
+          "code/ingest/builder.py": 12,
+          "code/ingest/parser.py": 4,
+          "code/main.py": 2,
+          "code/requirements.txt": 10,
+          "code/retrieval/filters.py": 2,
+          "code/retrieval/kb_tool.py": 21,
+          "code/retrieval/reader.py": 12,
+          "code/retrieval/search.py": 20,
+          "code/runner/eval_sample.py": 7,
+          "code/runner/pipeline.py": 15,
+          "code/schema.py": 14,
+          "code/tui/app.py": 2
+        },
+        "maximum_actual_quoted_words_in_any_source": 21
+      }
+    },
+    "prior_target_access": "No official targets/ranks or original ratings were supplied to this review; project-level prior knowledge remains disclosed in protocol.",
+    "publication_excerpt": {
+      "full_native_review_sha256": "1cc56c9f090034777d593f7026e6a45dbf7c42df9271095b4a6a2a51d5864e87",
+      "changes": "Scores and rationales unchanged. One exact source quote retained per criterion; extra audit quotations omitted while source/range references remain. Full original native judgment retained separately, not overwritten."
+    }
+  },
+  "category_scores_100": {
+    "code": 77.0,
+    "coding_transcript": null,
+    "output": null
+  },
+  "source_manifest": [
+    {
+      "source": "code/README.md",
+      "sha256": "83d2f294c0cd017a150760deea0598e5647c5b3829aae81470fad9767fa839b8",
+      "line_count": 78
+    },
+    {
+      "source": "code/agent/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/agent/builder.py",
+      "sha256": "84ac140e6e2a43a51a64c9387da0970ccd9f28d3a15f1962e7c4d754ea29dc83",
+      "line_count": 60
+    },
+    {
+      "source": "code/agent/classifier.py",
+      "sha256": "d00a3acc9e8da3f5b446c5554a9bce010285d471ffc885a46fc0f4155c024ecb",
+      "line_count": 121
+    },
+    {
+      "source": "code/agent/middleware/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/agent/middleware/citation_guard.py",
+      "sha256": "a8ff3a6b31cb0cb6d0d0d27493829a5186da3fba15e49b8980b83c221332c72c",
+      "line_count": 72
+    },
+    {
+      "source": "code/agent/middleware/language_normalize.py",
+      "sha256": "79d34dcc89e246f1e7dcb3db42afb8653614add162eeb3a959d0d2fa0b649dd1",
+      "line_count": 61
+    },
+    {
+      "source": "code/agent/middleware/prompt_injection.py",
+      "sha256": "80a8dbbcbe2a33e6257854416d7e2494eb94cc6d4f844aadc368ba8222393e73",
+      "line_count": 66
+    },
+    {
+      "source": "code/agent/prompts.py",
+      "sha256": "4a160a1be3313736e8c0e534a8fea15f42d74e58e1f3977de8b0c78a9e3a16af",
+      "line_count": 186
+    },
+    {
+      "source": "code/config.py",
+      "sha256": "57f31b16905c8ab982a3ef3da1dc9acf23069125d72e0657a5d088c007f31bb2",
+      "line_count": 74
+    },
+    {
+      "source": "code/ingest/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/ingest/builder.py",
+      "sha256": "acbe8b533f4a466745136f653c9ca877a0e1812b652d49106bed8ad8c74df944",
+      "line_count": 168
+    },
+    {
+      "source": "code/ingest/chunker.py",
+      "sha256": "71377319487937160aad7f5ac47a5bf14d120599e17c88396331b56d521136c0",
+      "line_count": 181
+    },
+    {
+      "source": "code/ingest/parser.py",
+      "sha256": "db56eec60741ba0fc1ebf806f9c1c5a7e67deb53da8103fd80fdab8dd0a5d8df",
+      "line_count": 118
+    },
+    {
+      "source": "code/ingest/product_area.py",
+      "sha256": "4665e3c0943a1e45b6448ce41227d93e24928981f694e904fafef54a8aa7c58c",
+      "line_count": 115
+    },
+    {
+      "source": "code/main.py",
+      "sha256": "924ce5586c83a06533160842ddb63691654567ba0ce9e96c437e549a2ef57e9d",
+      "line_count": 107
+    },
+    {
+      "source": "code/requirements.txt",
+      "sha256": "b4ef9b02ebef089c4544fb0ba8cb8b513a9f2b4d9716094b1bb1b84c483d6150",
+      "line_count": 39
+    },
+    {
+      "source": "code/retrieval/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/retrieval/filters.py",
+      "sha256": "3e458bd3ac4ce20e76c4c09de2da0d5fce1797bf9265fde24cde2fea00a89fce",
+      "line_count": 33
+    },
+    {
+      "source": "code/retrieval/kb_tool.py",
+      "sha256": "a79f690f6316db99d468b3cf5d80af0604eece9a56f2e6387d426e07fedbb57c",
+      "line_count": 135
+    },
+    {
+      "source": "code/retrieval/reader.py",
+      "sha256": "cc6d58cd42732ed9c0c316d7e818fb38094af467e3efc8c7667fa6cd5ce3c844",
+      "line_count": 90
+    },
+    {
+      "source": "code/retrieval/search.py",
+      "sha256": "4de984a581bc0bd16cac322093ff66fd989af6aadfc2583da33d8f33a69c4b89",
+      "line_count": 213
+    },
+    {
+      "source": "code/runner/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/runner/csv_io.py",
+      "sha256": "c27bf293fbc08f19dc904f3350b8f4dc0638368f0d8085d2bd161bd5b9baea5b",
+      "line_count": 91
+    },
+    {
+      "source": "code/runner/eval_sample.py",
+      "sha256": "4a81c8deddd367a59203058a117bed2f087f6853093cd517944ccdba0609a863",
+      "line_count": 161
+    },
+    {
+      "source": "code/runner/pipeline.py",
+      "sha256": "bcbe8e37791307995186ffd34a50590f509a0c08b79b0b669eda6d70f3ed4cee",
+      "line_count": 376
+    },
+    {
+      "source": "code/schema.py",
+      "sha256": "117d9218601e3cd8f94523436916864a0a397cc08f9da9da6ba6971945c312ff",
+      "line_count": 96
+    },
+    {
+      "source": "code/tui/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "source": "code/tui/app.py",
+      "sha256": "5ff31ea93911f94bedbc2ad72738334bf6de61a7a7f2c02040ed88c971ceb1fb",
+      "line_count": 226
+    }
+  ],
+  "evidence_verification": "Exact quotes/line ranges and source hashes checked against the supplied full bundle at freeze time; no server-upload identity or authenticity attestation.",
+  "artifact_sha256": "736f6511431f5c32a81b157467165922bf74c4bba6f00a56f73f1e37d226f6a4"
+}

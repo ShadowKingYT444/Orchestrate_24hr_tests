@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "orchestrate-eval"
-version = "0.3.1"
+version = "0.4.0"
 description = "Offline, evidence-first local agent harness evaluation"
 requires-python = ">=3.10"
 dependencies = []

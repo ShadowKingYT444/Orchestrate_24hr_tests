@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "protocol_version": "official-labelled-sample-audit-v1",
+  "frozen_utc": "2026-10-18T08:22:27.952219+00:00",
+  "purpose": "Evaluate the reference-producing semantic judge on official sample action/type labels, not fit final-score offsets or alter prior frozen reviews.",
+  "edition": "august26",
+  "sample_size": 30,
+  "sample_source_commit": "b2c4b904580c04cc3a66a82670b07838daf34a10",
+  "sample_csv_sha256": "c81c6960b65e945d35e8b0ce7c0c70334006affcf9c3ef166cf163e960bd1fee",
+  "labels_withheld_from_judge": [
+    "action",
+    "message_type",
+    "reason",
+    "confidence",
+    "evidence_message_ids"
+  ],
+  "judge_input": "Original message input columns and relevant official context/media, with all five labelled output columns removed. No candidate outputs, prior reviews, official final scores, target-category grades, or sample gold labels.",
+  "judge_output": "One independent action and message_type for each assessable case, concise rationale and hash-bound context references. Unsupported/uninterpreted media yields explicit unknown, never fabricated transcript or forced label.",
+  "method": [
+    "Use one fresh native model reviewer with no inherited study history or target labels in its task.",
+    "Freeze the complete prediction artifact and its SHA before comparing with the separately held sample labels.",
+    "Compare exact action and message_type strings by message_id, not by position or ID suffix.",
+    "Report per-field accuracy, joint exact match, confusion counts, reviewed/unknown/total coverage and per-case disagreements.",
+    "Unknowns are excluded from reviewed-case accuracy with coverage explicit; all-case lower/upper accuracy bounds describe missing decisions, not model uncertainty.",
+    "No rerun, cap/weight change or selection of a preferred sample result after reading disagreement labels.",
+    "If errors reveal an actionable rule-interpretation issue, document it and propose a separately versioned revision; do not silently overwrite this baseline."
+  ],
+  "limits": [
+    "This is a public30-row development sample, not a secret or statistically representative holdout.",
+    "The project has prior knowledge of official entrant totals and earlier case reviews; the new reviewer input withholds the sample labels, but pretraining/public-data exposure is not controlled.",
+    "Action/type decision accuracy does not validate reason quality, evidence relevance, confidence calibration, multimodal correctness, adversarial aggregation or final category points.",
+    "There are no candidate predictions for these30 rows in this audit; it evaluates the judge as an independent decision/reference producer, not a live candidate or official-score predictor."
+  ],
+  "paid_provider_calls": false,
+  "candidate_code_execution": false,
+  "protocol_sha256": "2d6aa3b70fff32819a9743241b82dd687b97e6ac824af8da5aaf6f3e48011de1"
+}

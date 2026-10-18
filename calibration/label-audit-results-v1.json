@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "kind": "official_sample_decision_judge_audit",
+  "protocol_sha256": "2d6aa3b70fff32819a9743241b82dd687b97e6ac824af8da5aaf6f3e48011de1",
+  "predictions_sha256": "580ce6148d267262a7d6129e3c4d0a2143627736c9c8bcc4ad9904a94181fa38",
+  "input_pack_sha256": "efda9a2338406e8e4b96f7e1095a4e915a73d2e209134cfec02e078acabaa30a",
+  "input_pack_hash_verified": true,
+  "sample_csv_sha256": "c81c6960b65e945d35e8b0ce7c0c70334006affcf9c3ef166cf163e960bd1fee",
+  "rows": [
+    {
+      "message_id": "sample_msg_001",
+      "expected": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_002",
+      "expected": {
+        "action": "notify",
+        "message_type": "event"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": false,
+      "joint_correct": false
+    },
+    {
+      "message_id": "sample_msg_003",
+      "expected": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_004",
+      "expected": {
+        "action": "notify",
+        "message_type": "business_update"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "business_update"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_005",
+      "expected": {
+        "action": "notify",
+        "message_type": "event"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "business_update"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": false,
+      "joint_correct": false
+    },
+    {
+      "message_id": "sample_msg_006",
+      "expected": {
+        "action": "notify",
+        "message_type": "personal"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "personal"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_007",
+      "expected": {
+        "action": "digest",
+        "message_type": "promotion"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "promotion"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_008",
+      "expected": {
+        "action": "digest",
+        "message_type": "event"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "event"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_009",
+      "expected": {
+        "action": "digest",
+        "message_type": "greeting"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "greeting"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_010",
+      "expected": {
+        "action": "digest",
+        "message_type": "personal"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "personal"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_011",
+      "expected": {
+        "action": "digest",
+        "message_type": "business_update"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "business_update"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_012",
+      "expected": {
+        "action": "digest",
+        "message_type": "promotion"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "promotion"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_013",
+      "expected": {
+        "action": "mute",
+        "message_type": "greeting"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "greeting"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_014",
+      "expected": {
+        "action": "mute",
+        "message_type": "forward"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "forward"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_015",
+      "expected": {
+        "action": "mute",
+        "message_type": "promotion"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "promotion"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_019",
+      "expected": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_020",
+      "expected": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_041",
+      "expected": {
+        "action": "digest",
+        "message_type": "personal"
+      },
+      "predicted": null,
+      "unknown_reason": "The incoming message is a voice note with no text. The original audio has not been interpreted, and no ASR or transcription was performed. Family context cannot determine the content or justify an action/type prediction.",
+      "action_correct": null,
+      "message_type_correct": null,
+      "joint_correct": null
+    },
+    {
+      "message_id": "sample_msg_042",
+      "expected": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "predicted": null,
+      "unknown_reason": "The incoming message is a voice note with no text. The original audio has not been interpreted, and no ASR or transcription was performed. A historical family-photo message does not establish what this recording says.",
+      "action_correct": null,
+      "message_type_correct": null,
+      "joint_correct": null
+    },
+    {
+      "message_id": "sample_msg_043",
+      "expected": {
+        "action": "mute",
+        "message_type": "spam"
+      },
+      "predicted": null,
+      "unknown_reason": "The incoming message is a voice note with no text. The original audio has not been interpreted, and no ASR or transcription was performed. Suspicious account context alone is not substituted for the unreviewed audio content.",
+      "action_correct": null,
+      "message_type_correct": null,
+      "joint_correct": null
+    },
+    {
+      "message_id": "sample_msg_044",
+      "expected": {
+        "action": "digest",
+        "message_type": "promotion"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "promotion"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_045",
+      "expected": {
+        "action": "mute",
+        "message_type": "promotion"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "promotion"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_046",
+      "expected": {
+        "action": "notify",
+        "message_type": "event"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "event"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_047",
+      "expected": {
+        "action": "mute",
+        "message_type": "promotion"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "promotion"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_048",
+      "expected": {
+        "action": "digest",
+        "message_type": "business_update"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "business_update"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_049",
+      "expected": {
+        "action": "digest",
+        "message_type": "unknown"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "personal"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": false,
+      "joint_correct": false
+    },
+    {
+      "message_id": "sample_msg_050",
+      "expected": {
+        "action": "digest",
+        "message_type": "personal"
+      },
+      "predicted": {
+        "action": "digest",
+        "message_type": "personal"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_051",
+      "expected": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "predicted": {
+        "action": "notify",
+        "message_type": "urgent"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_052",
+      "expected": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    },
+    {
+      "message_id": "sample_msg_053",
+      "expected": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "predicted": {
+        "action": "mute",
+        "message_type": "scam"
+      },
+      "unknown_reason": null,
+      "action_correct": true,
+      "message_type_correct": true,
+      "joint_correct": true
+    }
+  ],
+  "metrics": {
+    "total_cases": 30,
+    "reviewed_cases": 27,
+    "unknown_cases": 3,
+    "fields": {
+      "action": {
+        "correct": 27,
+        "reviewed": 27,
+        "accuracy_on_reviewed": 1.0,
+        "all_case_accuracy_interval": [
+          0.9,
+          1.0
+        ],
+        "confusion": [
+          {
+            "expected": "digest",
+            "predicted": "digest",
+            "count": 10
+          },
+          {
+            "expected": "mute",
+            "predicted": "mute",
+            "count": 9
+          },
+          {
+            "expected": "notify",
+            "predicted": "notify",
+            "count": 8
+          }
+        ]
+      },
+      "message_type": {
+        "correct": 24,
+        "reviewed": 27,
+        "accuracy_on_reviewed": 0.8888888888888888,
+        "all_case_accuracy_interval": [
+          0.8,
+          0.9
+        ],
+        "confusion": [
+          {
+            "expected": "business_update",
+            "predicted": "business_update",
+            "count": 3
+          },
+          {
+            "expected": "event",
+            "predicted": "business_update",
+            "count": 1
+          },
+          {
+            "expected": "event",
+            "predicted": "event",
+            "count": 2
+          },
+          {
+            "expected": "event",
+            "predicted": "urgent",
+            "count": 1
+          },
+          {
+            "expected": "forward",
+            "predicted": "forward",
+            "count": 1
+          },
+          {
+            "expected": "greeting",
+            "predicted": "greeting",
+            "count": 2
+          },
+          {
+            "expected": "personal",
+            "predicted": "personal",
+            "count": 3
+          },
+          {
+            "expected": "promotion",
+            "predicted": "promotion",
+            "count": 6
+          },
+          {
+            "expected": "scam",
+            "predicted": "scam",
+            "count": 4
+          },
+          {
+            "expected": "unknown",
+            "predicted": "personal",
+            "count": 1
+          },
+          {
+            "expected": "urgent",
+            "predicted": "urgent",
+            "count": 3
+          }
+        ]
+      },
+      "joint": {
+        "correct": 24,
+        "reviewed": 27,
+        "accuracy_on_reviewed": 0.8888888888888888,
+        "all_case_accuracy_interval": [
+          0.8,
+          0.9
+        ]
+      }
+    }
+  },
+  "scope": "Independent judge action/type decisions on a public development sample. No candidate execution, official category-point prediction, final-output accuracy or open-text semantic validation.",
+  "limits": [
+    "This is a public30-row development sample, not a secret or statistically representative holdout.",
+    "The project has prior knowledge of official entrant totals and earlier case reviews; the new reviewer input withholds the sample labels, but pretraining/public-data exposure is not controlled.",
+    "Action/type decision accuracy does not validate reason quality, evidence relevance, confidence calibration, multimodal correctness, adversarial aggregation or final category points.",
+    "There are no candidate predictions for these30 rows in this audit; it evaluates the judge as an independent decision/reference producer, not a live candidate or official-score predictor."
+  ],
+  "report_sha256": "1cc220b1303127409f61411abe63a005ef89a7a1c6be205bddfae421380dabaa"
+}
