@@ -8,7 +8,7 @@ from pathlib import Path
 
 MAX_LOG = 1_000_000
 
-def run_command(command, cwd, timeout=60, trusted=False):
+def run_command(command, cwd, timeout=60, trusted=False, stdin_text=None):
     if not trusted:
         raise ValueError("Execution requires --allow-exec for trusted code; use an isolated VM for untrusted code")
     if not isinstance(command, list) or not command or not all(isinstance(x, str) for x in command) or not command[0]:
@@ -21,9 +21,13 @@ def run_command(command, cwd, timeout=60, trusted=False):
     start = time.monotonic()
     timed_out = False
     truncated = False
-    with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err:
+    if stdin_text is not None and (not isinstance(stdin_text,str) or len(stdin_text.encode())>5_000_000):
+        raise ValueError('Explicit command input must be text <=5MB')
+    with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err, tempfile.TemporaryFile() as incoming:
+        if stdin_text is not None:
+            incoming.write(stdin_text.encode()); incoming.seek(0)
         process = subprocess.Popen(command, cwd=Path(cwd).resolve(), env=env, stdout=out, stderr=err,
-                                   stdin=subprocess.DEVNULL, start_new_session=(os.name == "posix"))
+                                   stdin=incoming if stdin_text is not None else subprocess.DEVNULL, start_new_session=(os.name == "posix"))
         while process.poll() is None:
             if time.monotonic() - start > timeout or os.fstat(out.fileno()).st_size + os.fstat(err.fileno()).st_size > MAX_LOG:
                 timed_out = time.monotonic() - start > timeout

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "bundle_id": "c32f7af0229d700a658734fc1bf58c87e6c2b78c8e6df0b166052722c4b9b374",
+  "origin": "native_model_review",
+  "reviewer": "GPT-6.1-Sol xhigh; independent static evidence review; no leaderboard scores consulted",
+  "categories": {
+    "code": {
+      "architecture": {
+        "score": 75,
+        "rationale": "Strong (3/4): cleanly separates document normalization/chunking/indexing, hybrid retrieval, agent assembly, middleware, schemas, transport and TUI. Pydantic decisions and a single shared process_ticket entry point keep the vertical slice understandable. Not exceptional: global mutable tracing/caches couple components to one process; permissive dictionary postprocessing weakens typed boundaries. Current CLI/TUI paths are serialized, so concurrency concerns are future risks rather than observed failures.",
+        "evidence": [
+          {
+            "source": "code/schema.py",
+            "start_line": 11,
+            "end_line": 19,
+            "quote": "class SupportTicketDecision(BaseModel):"
+          }
+        ]
+      },
+      "prompt_and_tool_design": {
+        "score": 62.5,
+        "rationale": "Adequate-to-strong (2.5/4): explicit schema, classification boundaries, corpus-only grounding, search-read-cite sequence, escalation style and multilingual search guidance; real weighted BM25+dense retrieval with optional reranking and a constrained read-only search/read/grep interface. Half-point reflects substantive strengths offset by contradictions: stolen-card incidents appear in both escalation and reply guidance; mixed-intent support handling is requested but matched injection phrases unconditionally short-circuit; tool documentation makes reads conditional while the system makes them mandatory. No explicit trust boundary labels retrieved document text.",
+        "evidence": [
+          {
+            "source": "code/agent/prompts.py",
+            "start_line": 49,
+            "end_line": 53,
+            "quote": "canonical flow is always search -> read top hit -> reply."
+          }
+        ]
+      },
+      "robustness": {
+        "score": 50,
+        "rationale": "Adequate (2/4): resolved-path containment, SQL quoting, safe escalation on model failure or missing structured output, classifier timeout/fallback, ingestion retries and reranker-to-RRF fallback are implemented. Material static defects prevent strong: citation guard accepts attempted failed reads and retains citation-less replies after any read; rerank cache stores positional indices against sorted-ID keys and omits top_n/content, allowing wrong/truncated or excessive result lists on reuse; 8-call cap is only a prompt plus graph recursion bound, with no overall wall-clock/token/cost enforcement. Retrieval arms lack independent fallback, index builds are not atomic or validated on reuse, read/regex budgets are incompletely bounded, and classifier cache I/O can escape the safe-fallback block. These are source-derived risks/logical consequences, not runtime reproductions.",
+        "evidence": [
+          {
+            "source": "code/agent/middleware/citation_guard.py",
+            "start_line": 58,
+            "end_line": 62,
+            "quote": "if read_paths:"
+          }
+        ]
+      },
+      "experimental_rigor": {
+        "score": 37.5,
+        "rationale": "Weak-to-adequate (1.5/4): readable documented modules, centralized settings, stable CSV serialization, per-ticket traces and a real sample-label/citation-length diagnostic script. Half-point credits this useful observability above weak, but no tracked automated test suite, CI, lockfile or lint/type-check setup was found. Requirements are open-ended minima; the referenced lock is absent and direct tiktoken use is undeclared. Sample evaluator truncates comparison to min row count, warns instead of failing and returns 0 despite mismatches; no response-quality or failure-path verification is demonstrated. Runtime installability and hidden-test performance remain unverified.",
+        "evidence": [
+          {
+            "source": "code/runner/eval_sample.py",
+            "start_line": 44,
+            "end_line": 46,
+            "quote": "n = min(len(gt), len(pr))"
+          }
+        ]
+      }
+    },
+    "coding_transcript": null,
+    "output": null
+  },
+  "rating_anchor_scale": "0 absent; 1 weak; 2 adequate; 3 strong; 4 exceptional. Half-points indicate mixed adjacent-anchor evidence; score is anchor * 25.",
+  "confidence": "Medium-high on source structure/static findings, medium on anchor ratings, low on untested runtime compatibility/retrieval/performance. Read all 2750 Python lines plus requirements and code README; confirmed exact clean pinned checkout. No candidate imports, installs, execution/tests, provider calls, external communications, source edits or leaderboard-score consultation.",
+  "candidate_runtime_executed": false,
+  "official_score_prediction": false
+}

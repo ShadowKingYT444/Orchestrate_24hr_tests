@@ -98,8 +98,79 @@ def main(argv=None):
     public.add_argument("--candidate-dir", required=True)
     public.add_argument("--official-dir", required=True)
     public.add_argument("--report-dir", default="reports/public-validation")
+    bench = subs.add_parser('benchmark',help='Execute trusted agents, judge semantic/code/transcript quality, and compare local scores')
+    actions=bench.add_subparsers(dest='benchmark_action',required=True)
+    br=actions.add_parser('run')
+    br.add_argument('--command-json',required=True);br.add_argument('--cwd',required=True);br.add_argument('--allow-exec',action='store_true')
+    br.add_argument('--seed',type=int,default=0);br.add_argument('--split',choices=['dev','holdout','all'],default='holdout')
+    br.add_argument('--repeats',type=int,default=1);br.add_argument('--timeout',type=float,default=5);br.add_argument('--report-dir',default='reports/benchmark')
+    br.add_argument('--source');br.add_argument('--transcript');br.add_argument('--judge-config');br.add_argument('--allow-judge-network',action='store_true')
+    br.add_argument('--casepack',help='Your own versioned documents/cases/references JSON; gold is not sent to the agent')
+    be=actions.add_parser('judge-export');be.add_argument('--source',required=True);be.add_argument('--transcript');be.add_argument('--benchmark-report');be.add_argument('--output',required=True)
+    bi=actions.add_parser('judge-import');bi.add_argument('--bundle',required=True);bi.add_argument('--review',required=True);bi.add_argument('--benchmark-report');bi.add_argument('--report-dir',default='reports/judged')
+    bj=actions.add_parser('judge');bj.add_argument('--bundle',required=True);bj.add_argument('--output',required=True)
+    bj.add_argument('--endpoint');bj.add_argument('--model');bj.add_argument('--api-key-env',default='OPENAI_API_KEY');bj.add_argument('--allow-judge-network',action='store_true')
+    bj.add_argument('--command-json');bj.add_argument('--cwd',default='.');bj.add_argument('--allow-judge-exec',action='store_true')
+    bj.add_argument('--max-cost-usd',type=float,required=True);bj.add_argument('--input-price-per-million',type=float);bj.add_argument('--output-price-per-million',type=float);bj.add_argument('--max-output-tokens',type=int,default=6000);bj.add_argument('--repeats',type=int,default=1)
+    bc=actions.add_parser('compare');bc.add_argument('reports',nargs='+');bc.add_argument('--report-dir',default='reports/benchmark-comparison')
+    bt=actions.add_parser('cases');bt.add_argument('--output',required=True);bt.add_argument('--seed',type=int,default=0);bt.add_argument('--split',choices=['dev','holdout','all'],default='all')
     args = parser.parse_args(argv)
     try:
+        if args.action=='benchmark':
+            from .benchmark import run_benchmark,compare_benchmarks,write_benchmark_report,apply_semantics
+            from .judging import export_bundle,import_review,judge_http,aggregate_reviews
+            if args.benchmark_action=='cases':
+                from .benchmark_cases import casepack
+                Path(args.output).parent.mkdir(parents=True,exist_ok=True);Path(args.output).write_text(json.dumps(casepack(args.seed,args.split),indent=2)+'\n')
+                print(json.dumps({'casepack_template':args.output,'warning':'Contains reference answers; keep this host-side, never give it to the agent'}));return 0
+            if args.benchmark_action=='run':
+                report=run_benchmark(strict_json(args.command_json),args.cwd,args.report_dir,args.seed,args.split,args.repeats,args.timeout,args.allow_exec,args.casepack)
+                if args.judge_config:
+                    if not args.source:raise ValueError('Automatic judging requires --source and optional genuine --transcript')
+                    config=read_json(args.judge_config)
+                    bundle=export_bundle(args.source,Path(args.report_dir)/'judge-bundle.json',args.transcript,Path(args.report_dir)/'benchmark.json')
+                    accepted=judge_http(bundle,config['endpoint'],config['model'],config.get('api_key_env','OPENAI_API_KEY'),config['max_cost_usd'],config['input_price_per_million'],config['output_price_per_million'],config.get('max_output_tokens',6000),args.allow_judge_network,Path(args.report_dir)/'judge-raw-response.json')
+                    (Path(args.report_dir)/'accepted-review.json').write_text(json.dumps(accepted,indent=2)+'\n')
+                    report=apply_semantics(report,accepted);write_benchmark_report(report,args.report_dir)
+                print(json.dumps({'report':str(Path(args.report_dir)/'benchmark.html'),'machine_component_mean_85':report['machine_component_mean_85'],'output_score_100':report['output_score_100'],'semantic_judge_pending':report['output_score_100'] is None}))
+                return 0
+            if args.benchmark_action=='judge-export':
+                bundle=export_bundle(args.source,args.output,args.transcript,args.benchmark_report)
+                print(json.dumps({'bundle':args.output,'bundle_id':bundle['bundle_id'],'transcript_available':bundle['transcript_available']}));return 0
+            if args.benchmark_action=='judge-import':
+                bundle=read_json(args.bundle);accepted=import_review(bundle,read_json(args.review))
+                destination=Path(args.report_dir);destination.mkdir(parents=True,exist_ok=True)
+                (destination/'accepted-review.json').write_text(json.dumps(accepted,indent=2)+'\n')
+                if args.benchmark_report:
+                    report=apply_semantics(read_json(args.benchmark_report),accepted);write_benchmark_report(report,destination)
+                    print(json.dumps(report['scorecard']))
+                else:print(json.dumps({'category_scores':accepted['category_scores'],'estimate_only':True}))
+                return 0
+            if args.benchmark_action=='judge':
+                import math
+                if not math.isfinite(args.max_cost_usd) or args.max_cost_usd<0:raise ValueError('Judge budget must be finite and nonnegative before execution')
+                bundle=read_json(args.bundle)
+                if args.command_json:
+                    if args.allow_judge_network:raise ValueError('Choose one explicit judge adapter')
+                    if args.repeats!=1:raise ValueError('Local worker repeats are explicitly orchestrated by the worker; CLI --repeats is for the HTTP adapter')
+                    result=run_command(strict_json(args.command_json),args.cwd,120,args.allow_judge_exec,stdin_text=json.dumps({'bundle':bundle,'budget':{'max_cost_usd':args.max_cost_usd,'external_calls_allowed':args.max_cost_usd>0}})+'\n')
+                    if result['status']!='pass':raise ValueError('Local judge worker failed; no review accepted')
+                    review=strict_json(result['stdout']);accepted=import_review(bundle,review)
+                    cost=review.get('usage',{}).get('cost_usd')
+                    if cost is not None and (not isinstance(cost,(int,float)) or isinstance(cost,bool) or not math.isfinite(cost) or cost<0 or cost>args.max_cost_usd):raise ValueError('Worker-reported cost exceeds declared budget or is invalid')
+                    accepted['budget']={'max_cost_usd':args.max_cost_usd,'worker_reported_cost_usd':cost,'enforcement':'Cooperative trusted worker only; not an OS/network/payment hard cap'}
+                else:
+                    if not args.endpoint or not args.model or args.input_price_per_million is None or args.output_price_per_million is None:raise ValueError('HTTP judge requires endpoint/model and explicit current input/output prices')
+                    if not 1<=args.repeats<=5:raise ValueError('Judge repeats must be1..5')
+                    opinions=[judge_http(bundle,args.endpoint,args.model,args.api_key_env,args.max_cost_usd/args.repeats,args.input_price_per_million,args.output_price_per_million,args.max_output_tokens,args.allow_judge_network,args.output+'.raw-'+str(index)+'.json') for index in range(args.repeats)]
+                    accepted=opinions[0] if len(opinions)==1 else aggregate_reviews(bundle,opinions)
+                Path(args.output).parent.mkdir(parents=True,exist_ok=True);Path(args.output).write_text(json.dumps(accepted['review'],indent=2)+'\n');Path(args.output+'.metadata.json').write_text(json.dumps(accepted,indent=2)+'\n')
+                print(json.dumps({'review':args.output,'category_scores':accepted['category_scores']}));return 0
+            result=compare_benchmarks([read_json(path) for path in args.reports]);destination=Path(args.report_dir);destination.mkdir(parents=True,exist_ok=True)
+            (destination/'comparison.json').write_text(json.dumps(result,indent=2)+'\n')
+            import html
+            (destination/'comparison.html').write_text('<!doctype html><html><meta charset="utf-8"><h1>Local agent score comparison</h1><pre>'+html.escape(json.dumps(result,indent=2))+'</pre></html>')
+            print(json.dumps({'comparison':str(destination/'comparison.html')}));return 0
         if args.action == "evaluate":
             return evaluate(args)
         if args.action == "validate-public":

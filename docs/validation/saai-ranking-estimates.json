@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "label": "LOCAL qualitative estimates, not proprietary official points or live-agent rerun",
+  "candidate_commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+  "output_sha256": "42ee580ca5e8b9a5caa819be7d86ee026646e9035e8e82b656eaedda64d4b0fd",
+  "code_points_out_of_30": 17.8125,
+  "output_points_out_of_30": 26.08189655172414,
+  "coding_transcript_points_out_of_10": null,
+  "known_subtotal": 43.89439655172414,
+  "known_maximum": 60,
+  "possible_nonvoice_interval": [
+    43.89439655172414,
+    53.89439655172414
+  ],
+  "normalized_score": null,
+  "official_score": null,
+  "live_agent_run": false,
+  "evidence": "All27 public Python files statically reviewed; all29 saved answers judged against the supplied corpus. No candidate code or tests executed. Genuine coding transcript absent."
+}

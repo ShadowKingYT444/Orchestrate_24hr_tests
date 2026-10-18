@@ -1,6 +1,6 @@
 # Methodology and limits
 
-This repository is an independent preparation/readiness tool, not the proprietary HackerRank grader. Scope: code artifacts, deterministic output checks and coding-tool transcripts. Voice/interview is intentionally excluded. Published generic weights are 30/30/10 for these categories, and 30 for interview; all subjective scores and aggregate official score remain null. The 70% scope is potential coverage, not 70 earned points. Edition-specific instructions take priority.
+This repository is an independent evaluation tool, not the proprietary HackerRank grader. The original evaluate/archive commands provide readiness diagnostics; benchmark adds actual agent execution, reference-backed invariants and evidence-based numerical model/human judging. Voice/interview is intentionally excluded. Published generic weights are30/30/10 for code/output/coding transcript and30 for interview. Local category estimates and a complete non-voice subtotal/70 are available after required semantic/rubric reviews; the aggregate official score remains unknown. Edition-specific instructions take priority. See BENCHMARK.md for scoring caps, unknown handling and executed evidence.
 
 ## Evidence levels
 

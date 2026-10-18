@@ -1,8 +1,34 @@
-# Orchestrate local evaluation suite
+# Orchestrate agent benchmark and local judge
 
-Offline diagnostics for agent harnesses: output validation, source/packaging checks, authentic coding-transcript review, and explicitly opt-in execution. **Not an official HackerRank scorer. Voice/interview judging is excluded.**
+Run actual agents on reference-backed tasks, retain real tool traces, judge answer meaning, and estimate code/output/coding-transcript category points. **Local estimates, not the proprietary HackerRank grader. Interview is excluded.**
 
-**Real-world calibration:** checked against the May winner Saai Syvendra's pinned public saved output (29 real official tickets), all 27 Python source files, and a locally reconstructed source ZIP. Nine malformed-artifact controls are detected; valid-but-potentially-wrong routing/response changes correctly remain semantic unknowns. This is saved-artifact/static validation, not a live agent rerun or score reproduction. [Results and reproducible commands](docs/REAL_WORLD_VALIDATION.md).
+The executed, independently judged examples separate a competent policy agent from an unsafe one:
+
+- Competent: code 21.38/30 + output 26.56/30 = **47.93/60 known**
+- Unsafe: code 4.50/30 + output 5.25/30 = **9.75/60 known**
+
+These come from real 20-case agent runs plus evidence-backed model review, not file checks or invented transcript scores. Genuine coding transcripts were absent; that 10-point category stays unknown. A complete genuine transcript review produces the non-voice subtotal/70 and an explicitly local normalized/100 estimate. [Scoring, runtime protocol and full workflow](docs/BENCHMARK.md).
+
+Quickly replay the preserved actual runs and native model judgments without keys or paid calls:
+
+```sh
+python examples/replay_benchmark_scores.py
+```
+
+Open reports/demo-comparison/comparison.html. To execute a fresh agent run:
+
+```sh
+python -m orchestrate_eval benchmark run --allow-exec --cwd . --command-json '["python","examples/agents/strong.py"]' --split all --report-dir reports/fresh
+python -m orchestrate_eval benchmark judge-export --source examples/agents/strong.py --benchmark-report reports/fresh/benchmark.json --output reports/fresh/judge-bundle.json
+```
+
+Have your chosen model/human review that bundle, then use benchmark judge-import. Or use the opt-in compatible HTTP/local-worker judge adapter. A one-command run can add --source, --transcript, --judge-config and --allow-judge-network for configured automatic model grading. No provider is called by default. Use --casepack for your own frozen reference tasks; the included policy world is a development benchmark, not universal contest accuracy.
+
+The **real May winner's public agent** was also qualitatively graded: all 27 Python files and all 29 saved outputs against the supplied corpus, with numerical code/output estimates and exact evidence. That is source/saved-output review, not a live paid rerun. [Real-agent grading results](docs/REAL_WORLD_JUDGING.md).
+
+## Artifact checks and historical profiles
+
+The original offline preflight tools remain useful alongside runtime judging: schema/coverage checks, archive safety and coding-export provenance. [Original real-artifact calibration](docs/REAL_WORLD_VALIDATION.md).
 
 Python 3.10+; no runtime dependencies or API keys required. From this checkout:
 
@@ -22,7 +48,7 @@ Optional installation: `python -m pip install --no-deps .` (the build requires s
 3. Run `evaluate --task TASK.json --output OUTPUT --source SOURCE --transcript CODING_EXPORT.json --report-dir reports/RUN`. Optional `--archive submission.zip` validates a prepared ZIP. Optional `--review REVIEW.json` adds evidence-backed advisory review.
 4. Inspect individual failures, unknowns and evidence. Fix one issue, rerun, and preserve reports across configurations. Do not compare reports using different task hashes as if they were the same benchmark.
 
-A missing evaluator fails closed as **incomplete**, never invented accuracy. Code-presence checks are proxies, not quality grades. Weights remain code 30 / output 30 / coding transcript 10 / excluded interview 30; no overall score or renormalization is produced.
+For the original evaluate command, a missing evaluator fails closed as **incomplete**, never invented accuracy. Code-presence checks are proxies, not quality grades. That preflight command produces no aggregate score. The separate benchmark/judge workflow produces explicitly local category estimates and a complete subtotal/70 only when all required reviews exist.
 
 ## Measure your own labelled sample
 

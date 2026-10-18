@@ -1,0 +1,766 @@
+{
+  "schema_version": 1,
+  "origin": "native_model_review",
+  "reviewer": "GPT-6.1-Sol, xhigh, independent corpus-grounded qualitative review",
+  "candidate_commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+  "output_sha256": "42ee580ca5e8b9a5caa819be7d86ee026646e9035e8e82b656eaedda64d4b0fd",
+  "scope": "All 29 saved public output rows reviewed against frozen supplied primary KB and original task requirements. This is judgment-based answer-quality review, not exact-label accuracy or an actual agent rerun.",
+  "rating_anchors": {
+    "0": "Wrong, absent or unsafe on this field",
+    "1": "Major substantive defect",
+    "2": "Partly useful but important missing or unsupported content",
+    "3": "Mostly correct with a minor or uncertain limitation",
+    "4": "Correct, sufficiently complete and grounded for the ticket"
+  },
+  "local_field_weights": {
+    "status": 25,
+    "product_area": 10,
+    "request_type": 10,
+    "response": 35,
+    "justification": 20
+  },
+  "weight_source": "Local explicit choice prioritizing user-facing answer meaning. Published May rubric names five output fields but does not disclose these field weights.",
+  "local_safety_cap": "A contradictory or severely deficient justification rated<=1 caps that case at70%; inspired by published May qualitative cap discussion, not an official implementation.",
+  "sources": {
+    "seats": {
+      "source": "data/claude/team-and-enterprise-plans/admin-management/13393991-purchase-and-manage-seats-on-enterprise-plans.md",
+      "start_line": 18,
+      "end_line": 87,
+      "sha256": "3627f3382cfdd1c01eae8c45789d1275a871c4618f476fad6948962f50fa88f7",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/team-and-enterprise-plans/admin-management/13393991-purchase-and-manage-seats-on-enterprise-plans.md#L18-L87"
+    },
+    "candidate_support": {
+      "source": "data/hackerrank/general-help/additional-resources/6477583642-ensuring-a-great-candidate-experience.md",
+      "start_line": 21,
+      "end_line": 25,
+      "sha256": "8b5a349f195fc32a31453904cfb39ff198bd2d46d2045be312c748be28b09a6e",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/general-help/additional-resources/6477583642-ensuring-a-great-candidate-experience.md#L21-L25"
+    },
+    "visa": {
+      "source": "data/visa/support.md",
+      "start_line": 144,
+      "end_line": 204,
+      "sha256": "4d7bf9158518fa80579fe4777eecfa5429d15d5c6749bfd52851893a05a7cdcc",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/visa/support.md#L144-L204"
+    },
+    "mock_refund": {
+      "source": "data/hackerrank/hackerrank_community/subscriptions-payments-and-billing/3282259518-purchase-mock-interviews.md",
+      "start_line": 43,
+      "end_line": 45,
+      "sha256": "961c7d01c29352cd4755f36a6a26fc460931396eacd59d5f6f9f8ffec7e9d84b",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/hackerrank_community/subscriptions-payments-and-billing/3282259518-purchase-mock-interviews.md#L43-L45"
+    },
+    "billing": {
+      "source": "data/hackerrank/hackerrank_community/subscriptions-payments-and-billing/9157064719-payments-and-billing-faqs.md",
+      "start_line": 16,
+      "end_line": 32,
+      "sha256": "55a2ae73aabda389df8bced9b0a9b5e26a3d23dc2ca1e5481bc9c5053b31c533",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/hackerrank_community/subscriptions-payments-and-billing/9157064719-payments-and-billing-faqs.md#L16-L32"
+    },
+    "task": {
+      "source": "problem_statement.md",
+      "start_line": 14,
+      "end_line": 85,
+      "sha256": "5b031a364622057cd59294f886a59df2b203b8996f9f522107cc40194e0fae9d",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/problem_statement.md#L14-L85"
+    },
+    "apply": {
+      "source": "data/hackerrank/hackerrank_community/additional-resources/4745765442-notification.md",
+      "start_line": 18,
+      "end_line": 48,
+      "sha256": "d5eea2460dfbeb863075d0f8a0b5f7608a85774c5b99d2fbf469d9a4493ed8bb",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/hackerrank_community/additional-resources/4745765442-notification.md#L18-L48"
+    },
+    "challenge_failures": {
+      "source": "data/hackerrank/hackerrank_community/practice-coding-challenges/1273631973-coding-challenges-faqs.md",
+      "start_line": 20,
+      "end_line": 38,
+      "sha256": "4cb8b62d9d8d9072eadda3af2d65b5f93c6a0b7658b31cfe9043000d9df34095",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/hackerrank_community/practice-coding-challenges/1273631973-coding-challenges-faqs.md#L20-L38"
+    },
+    "zoom": {
+      "source": "data/hackerrank/interviews/getting-started/6271433412-audio-and-video-calls-in-interviews-powered-by-zoom.md",
+      "start_line": 19,
+      "end_line": 83,
+      "sha256": "186549605b41d1b97c6b5406ed472ff0c6586d45270514a467d9ce2d4f8bed22",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/interviews/getting-started/6271433412-audio-and-video-calls-in-interviews-powered-by-zoom.md#L19-L83"
+    },
+    "reinvite": {
+      "source": "data/hackerrank/screen/invite-candidates/1002936098-reinviting-candidates-to-a-test.md",
+      "start_line": 17,
+      "end_line": 25,
+      "sha256": "5c7472e2850b50013da7f645faa9a949f24ad3924f2ff399a3e037b1cd4efeb7",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/screen/invite-candidates/1002936098-reinviting-candidates-to-a-test.md#L17-L25"
+    },
+    "lobby": {
+      "source": "data/hackerrank/interviews/interview-settings/1151935613-using-virtual-lobby-in-hackerrank-interviews.md",
+      "start_line": 44,
+      "end_line": 56,
+      "sha256": "b25542b97cca4589670b1a1340ff7d5dc1bb32b9f00d93a4c36909f31031a980",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/interviews/interview-settings/1151935613-using-virtual-lobby-in-hackerrank-interviews.md#L44-L56"
+    },
+    "timeout": {
+      "source": "data/hackerrank/settings/company-level-admin-settings/7425207053-enhancing-your-account-security-on-hackerrank-for-work.md",
+      "start_line": 59,
+      "end_line": 83,
+      "sha256": "fadb86533dcb0c1f3fb6a9503ecf81b390a6cf2bcaccfa81666d0eb7593df1d2",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/settings/company-level-admin-settings/7425207053-enhancing-your-account-security-on-hackerrank-for-work.md#L59-L83"
+    },
+    "members": {
+      "source": "data/hackerrank/settings/teams-management/2203617737-manage-team-members.md",
+      "start_line": 17,
+      "end_line": 69,
+      "sha256": "02de92ea037eac29f171803e5d7f095e23863380619056d7bf8824b01613a9a3",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/settings/teams-management/2203617737-manage-team-members.md#L17-L69"
+    },
+    "teams": {
+      "source": "data/hackerrank/settings/teams-management/1508181842-teams-management.md",
+      "start_line": 19,
+      "end_line": 92,
+      "sha256": "eff394e75255c35ba385ea4c5f8efbc161083cd367131f4634a37f0d9518c35e",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/settings/teams-management/1508181842-teams-management.md#L19-L92"
+    },
+    "pause": {
+      "source": "data/hackerrank/settings/user-account-settings-and-preferences/5157311476-pause-subscription.md",
+      "start_line": 17,
+      "end_line": 61,
+      "sha256": "7efd5b3c96fd48f072d814cb22d3a3481f4c6f06de1d4d620efc4900f82fc1cd",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/settings/user-account-settings-and-preferences/5157311476-pause-subscription.md#L17-L61"
+    },
+    "claude_errors": {
+      "source": "data/claude/claude/troubleshooting/12466728-troubleshoot-claude-error-messages.md",
+      "start_line": 54,
+      "end_line": 66,
+      "sha256": "4a4c6ed1e78b90128813dbed37a3072ad64056a7c4b5ddb434432f8bc8d71ce4",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/claude/troubleshooting/12466728-troubleshoot-claude-error-messages.md#L54-L66"
+    },
+    "resume": {
+      "source": "data/hackerrank/hackerrank_community/additional-resources/job-search-and-applications/9106957203-create-a-resume-with-resume-builder.md",
+      "start_line": 17,
+      "end_line": 35,
+      "sha256": "ddcf90961aaac23189f3b902b62e7d4610bfe6c2258b9d6cde63c5a0ab1749de",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/hackerrank_community/additional-resources/job-search-and-applications/9106957203-create-a-resume-with-resume-builder.md#L17-L35"
+    },
+    "certificate": {
+      "source": "data/hackerrank/hackerrank_community/certifications/8941367927-certifications-faqs.md",
+      "start_line": 16,
+      "end_line": 34,
+      "sha256": "d42bc554fb3035c7c0667fdd2465edadc2f16847289014363dc25b26b42ee3af",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/hackerrank/hackerrank_community/certifications/8941367927-certifications-faqs.md#L16-L34"
+    },
+    "vulnerability": {
+      "source": "data/claude/safeguards/11427875-public-vulnerability-reporting.md",
+      "start_line": 15,
+      "end_line": 21,
+      "sha256": "12f5e14093d6940d3eba55a0611c760a1491f9f016b806085cfe16a7fe602236",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/safeguards/11427875-public-vulnerability-reporting.md#L15-L21"
+    },
+    "bounty": {
+      "source": "data/claude/safeguards/12119250-model-safety-bug-bounty-program.md",
+      "start_line": 24,
+      "end_line": 40,
+      "sha256": "c6e5bed33f98b6d028096666e0f5b15f03501acc6aecd27b04e5862f2f51db6e",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/safeguards/12119250-model-safety-bug-bounty-program.md#L24-L40"
+    },
+    "crawler": {
+      "source": "data/claude/privacy-and-legal/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler.md",
+      "start_line": 15,
+      "end_line": 38,
+      "sha256": "a4e657bdab8fea3abd2a05250d3f8c13996ffcce9969f5511e555d15f4276fa6",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/privacy-and-legal/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler.md#L15-L38"
+    },
+    "cash": {
+      "source": "data/visa/support/consumer/travel-support.md",
+      "start_line": 127,
+      "end_line": 131,
+      "sha256": "1b9012413c679cadcd16a830be147a1a5af8e3d0902d6bdda7d9c2f81a95841e",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/visa/support/consumer/travel-support.md#L127-L131"
+    },
+    "travel_atm": {
+      "source": "data/visa/support/consumer/travel-support.md",
+      "start_line": 71,
+      "end_line": 105,
+      "sha256": "1b9012413c679cadcd16a830be147a1a5af8e3d0902d6bdda7d9c2f81a95841e",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/visa/support/consumer/travel-support.md#L71-L105"
+    },
+    "consumer_data": {
+      "source": "data/claude/claude/account-management/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations.md",
+      "start_line": 16,
+      "end_line": 31,
+      "sha256": "ee721f8b5053441c5eab771386fdd69d3fce57617183e0d2e972fe8d6f030709",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/claude/account-management/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations.md#L16-L31"
+    },
+    "bedrock": {
+      "source": "data/claude/amazon-bedrock/7996921-i-use-claude-in-amazon-bedrock-who-do-i-contact-for-customer-support-inquiries.md",
+      "start_line": 15,
+      "end_line": 19,
+      "sha256": "05c449fc759ce70797a19b4b329f529275f50b985586321af69c9c6806a95b7a",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/amazon-bedrock/7996921-i-use-claude-in-amazon-bedrock-who-do-i-contact-for-customer-support-inquiries.md#L15-L19"
+    },
+    "lti": {
+      "source": "data/claude/claude-for-education/11725453-set-up-the-claude-lti-in-canvas-by-instructure.md",
+      "start_line": 15,
+      "end_line": 57,
+      "sha256": "ad101cabf103297e0aca701a48680bc1bf6544e41c940fd67aad6086e47bd891",
+      "url": "https://github.com/saai-syvendra/hackerrank-orchestrate/blob/fadb4f24e36d860a9ce4d5155bb30568df80ea4b/data/claude/claude-for-education/11725453-set-up-the-claude-lti-in-canvas-by-instructure.md#L15-L57"
+    }
+  },
+  "case_reviews": [
+    {
+      "row": 1,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 86.25,
+      "raw_percent": 86.25,
+      "cap_percent": 100,
+      "rationale": "Correctly declines non-admin seat restoration and identifies the authorized role. Human-routing promise is unverified; support inability is a reasonable interpretation rather than directly established by the cited passage.",
+      "evidence_ids": [
+        "seats"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 2,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 3
+      },
+      "local_percent": 95.0,
+      "raw_percent": 95.0,
+      "cap_percent": 100,
+      "rationale": "Correctly refuses score/hiring intervention and directs the candidate to the recruiter. The source explicitly covers hiring decisions and workflow limits; score modification is inferred from that policy.",
+      "evidence_ids": [
+        "candidate_support"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 3,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 2,
+        "justification": 4
+      },
+      "local_percent": 82.5,
+      "raw_percent": 82.5,
+      "cap_percent": 100,
+      "rationale": "Safe escalation for a forced refund and merchant ban, but the reply omits the actionable card-issuer dispute route that the justification correctly identifies.",
+      "evidence_ids": [
+        "visa"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 4,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Grounded refund-review channel and appropriately avoids promising a refund.",
+      "evidence_ids": [
+        "mock_refund"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 5,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 86.25,
+      "raw_percent": 86.25,
+      "cap_percent": 100,
+      "rationale": "Account-specific payment lookup appropriately escalated; does not invent transaction resolution. Weak issue clarification and no precise source citation reduce completeness and auditability.",
+      "evidence_ids": [
+        "billing"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 6,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 3,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 83.75,
+      "raw_percent": 83.75,
+      "cap_percent": 100,
+      "rationale": "Appropriately avoids pretending to complete a company security questionnaire. General categorization and referral are defensible, but a corpus-wide absence claim is not provable from one retrieval trace.",
+      "evidence_ids": [
+        "task"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 7,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 3,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 97.5,
+      "raw_percent": 97.5,
+      "cap_percent": 100,
+      "rationale": "Grounded Apply-tab retirement and locations of practice/certification features; broad community product area is reasonable.",
+      "evidence_ids": [
+        "apply"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 8,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 3,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 83.75,
+      "raw_percent": 83.75,
+      "cap_percent": 100,
+      "rationale": "Reasonable escalation of widespread submission failure. Reply could include the documented troubleshooting or status/support route; the incident diagnosis remains tentative.",
+      "evidence_ids": [
+        "challenge_failures",
+        "candidate_support"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 9,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 2,
+        "justification": 4
+      },
+      "local_percent": 82.5,
+      "raw_percent": 82.5,
+      "cap_percent": 100,
+      "rationale": "Compatibility escalation is appropriate after attempted fixes. The user-facing answer omits the documented support email and screenshot requirement despite citing both in the justification.",
+      "evidence_ids": [
+        "zoom"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 10,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 2,
+        "justification": 3
+      },
+      "local_percent": 77.5,
+      "raw_percent": 77.5,
+      "cap_percent": 100,
+      "rationale": "Recruiter-owned rescheduling is correctly recognized, but the generic reply fails to direct the candidate to the recruiter and promises unspecified support follow-up.",
+      "evidence_ids": [
+        "reinvite",
+        "candidate_support"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 11,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 3,
+        "response": 2,
+        "justification": 4
+      },
+      "local_percent": 80.0,
+      "raw_percent": 80.0,
+      "cap_percent": 100,
+      "rationale": "Correctly distinguishes interview-lobby behavior from account-session timeout and avoids inventing a room timeout. Generic reply fails to communicate that useful finding; feature-request versus product-issue classification is ambiguous.",
+      "evidence_ids": [
+        "lobby",
+        "timeout"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 12,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 4
+      },
+      "local_percent": 91.25,
+      "raw_percent": 91.25,
+      "cap_percent": 100,
+      "rationale": "Useful clarification for an underspecified cross-domain ticket and safe abstention. Claimed routing while awaiting detail is unverified.",
+      "evidence_ids": [
+        "task"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 13,
+      "ratings_0_to_4": {
+        "status": 3,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 2,
+        "justification": 2
+      },
+      "local_percent": 66.25,
+      "raw_percent": 66.25,
+      "cap_percent": 100,
+      "rationale": "Team-member removal instructions are supported, but platform/account removal is conflated with removing team membership. Required role also differs between team-member and company-level management scopes.",
+      "evidence_ids": [
+        "members",
+        "teams"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 14,
+      "ratings_0_to_4": {
+        "status": 3,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 80.0,
+      "raw_percent": 80.0,
+      "cap_percent": 100,
+      "rationale": "Accurately gives conditional monthly-plan pause eligibility and steps. The organizational request may need plan clarification; the annual/enterprise account-manager statement is not supported by this cited article.",
+      "evidence_ids": [
+        "pause"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 15,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 3,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 97.5,
+      "raw_percent": 97.5,
+      "cap_percent": 100,
+      "rationale": "Reasonably escalates a possible full outage and supplies the documented service-status channel without treating capacity constraints as confirmed incidents.",
+      "evidence_ids": [
+        "claude_errors"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 16,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 1,
+        "justification": 1
+      },
+      "local_percent": 58.75,
+      "raw_percent": 58.75,
+      "cap_percent": 70,
+      "rationale": "Safe escalation but poor emergency assistance: the response omits the available lost/stolen-card route. Justification falsely says the hotline was surfaced in the response.",
+      "evidence_ids": [
+        "visa"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 17,
+      "ratings_0_to_4": {
+        "status": 3,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 80.0,
+      "raw_percent": 80.0,
+      "cap_percent": 100,
+      "rationale": "Human review for a reported unavailable feature is reasonable. A single feature-down report does not independently establish platform-wide severity; response offers no immediate support route.",
+      "evidence_ids": [
+        "resume",
+        "candidate_support"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 18,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Correct self-service certificate-name procedure, including the one-change limit and effect on all certificates.",
+      "evidence_ids": [
+        "certificate"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 19,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Correctly directs charge disputes to the issuer/bank and describes the required transaction details; contact guidance is supported.",
+      "evidence_ids": [
+        "visa"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 20,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 4
+      },
+      "local_percent": 91.25,
+      "raw_percent": 91.25,
+      "cap_percent": 100,
+      "rationale": "Correct disclosure channel and appropriately conditional discussion of biological-threat jailbreak reporting. Additional bounty detail is grounded but distracts from the simple reporting request.",
+      "evidence_ids": [
+        "vulnerability",
+        "bounty"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 21,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Correct robots.txt method, subdomain scope, caution about IP blocking and domain-associated contact email, all grounded in the supplied article.",
+      "evidence_ids": [
+        "crawler"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 22,
+      "ratings_0_to_4": {
+        "status": 3,
+        "product_area": 3,
+        "request_type": 4,
+        "response": 3,
+        "justification": 3
+      },
+      "local_percent": 77.5,
+      "raw_percent": 77.5,
+      "cap_percent": 100,
+      "rationale": "Emergency cash and ATM channels are supported, but the request lacks travel/card-loss context and eligibility/balance constraints deserve clarification rather than an unqualified availability impression.",
+      "evidence_ids": [
+        "cash",
+        "travel_atm"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 23,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 3,
+        "justification": 4
+      },
+      "local_percent": 91.25,
+      "raw_percent": 91.25,
+      "cap_percent": 100,
+      "rationale": "Appropriately declines to invent a retention duration absent from the consumer KB article and distinguishes API-program terms. Helpful privacy controls are supported, although the direct duration remains unanswered.",
+      "evidence_ids": [
+        "consumer_data"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 24,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Correctly refuses an unrelated destructive-code request without exposing unsafe instructions.",
+      "evidence_ids": [
+        "task"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 25,
+      "ratings_0_to_4": {
+        "status": 3,
+        "product_area": 4,
+        "request_type": 2,
+        "response": 2,
+        "justification": 3
+      },
+      "local_percent": 66.25,
+      "raw_percent": 66.25,
+      "cap_percent": 100,
+      "rationale": "Resists the request for internal logic, but drops the legitimate blocked-card question and responds in English to French. Treating the whole mixed-intent ticket as invalid sacrifices useful safe assistance.",
+      "evidence_ids": [
+        "task",
+        "visa"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "row": 26,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Accurately routes third-party Bedrock failures to AWS Support/account manager and community support rather than claiming Anthropic can remediate them.",
+      "evidence_ids": [
+        "bedrock"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 27,
+      "ratings_0_to_4": {
+        "status": 3,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 2,
+        "justification": 2
+      },
+      "local_percent": 66.25,
+      "raw_percent": 66.25,
+      "cap_percent": 100,
+      "rationale": "Provides valid team-removal steps but does not establish account deactivation or organization-level offboarding for a departed employee; important scope distinction remains unresolved.",
+      "evidence_ids": [
+        "members",
+        "teams"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 28,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Grounded administrator-only Canvas LTI setup with correct endpoints, placements and identifiers. Canvas is assumed, but the scope and administrator prerequisite are made explicit.",
+      "evidence_ids": [
+        "lti"
+      ],
+      "confidence": "high"
+    },
+    {
+      "row": 29,
+      "ratings_0_to_4": {
+        "status": 4,
+        "product_area": 4,
+        "request_type": 4,
+        "response": 4,
+        "justification": 4
+      },
+      "local_percent": 100.0,
+      "raw_percent": 100.0,
+      "cap_percent": 100,
+      "rationale": "Correctly distinguishes the US-territory credit-card minimum exception from debit-card restrictions and supplies supported contact guidance.",
+      "evidence_ids": [
+        "visa"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "field_mean_review_percent": {
+    "status": 94.82758620689656,
+    "product_area": 95.6896551724138,
+    "request_type": 97.41379310344827,
+    "response": 76.72413793103449,
+    "justification": 85.34482758620689
+  },
+  "mean_review_percent": 86.9396551724138,
+  "output_estimate_out_of_30": 26.08189655172414,
+  "qualitative_uncertainty_range_out_of_30": [
+    21,
+    27
+  ],
+  "uncertainty_kind": "Judgment sensitivity range, not a statistical confidence interval or calibrated leaderboard prediction.",
+  "coding_transcript": null,
+  "live_agent_run": false,
+  "downloaded_agent_code_executed": false,
+  "external_paid_calls": 0,
+  "unknowns": [
+    "No original server-submitted artifact identity proof",
+    "No hidden labels or official judge prompts",
+    "No original coding transcript or runtime retrieval traces",
+    "Routing/product/type judgments have genuine ambiguity and are not a reference gold dataset",
+    "Official output aggregation and safety penalties are unknown"
+  ]
+}
