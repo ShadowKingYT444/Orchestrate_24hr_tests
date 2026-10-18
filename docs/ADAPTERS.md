@@ -14,6 +14,8 @@ Record dataset SHA-256, configuration/version, commit, seed where supported, sta
 
 Add a trusted Python module and register it explicitly in code to support a new task. Arbitrary plugin paths/imports from submitted task JSON are intentionally unsupported. Tests must include valid, malformed, missing, duplicate, adversarial and boundary cases. Return unknown for unimplemented semantic dimensions; never substitute schema validity for task accuracy. Prefer independently authored expected outputs and per-field metrics. Never use competitor submissions as gold answers.
 
+May's profile accepts required field names with title-case/space aliases and extra/reordered columns, since the published specification does not impose a fixed order. It checks row counts and, when all three input echoes are present, input correspondence after Unicode whitespace collapse. Product area has no fixed enum and blank areas are not automatically failed. Nonempty response/justification is a local readiness condition, not an official point allocation. Without echoed inputs, correspondence stays unknown. June and September retain their explicit ordered schemas.
+
 For October, wait for published task instructions, then create a versioned profile and checker. The historical rules can change. No October solution or hidden data is included.
 
 ## Comparing configurations

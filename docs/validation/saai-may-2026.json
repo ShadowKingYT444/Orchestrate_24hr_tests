@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "calibration_status": "pass",
+  "meaning": "Tests evaluator compatibility and specified detection boundaries on real saved public artifacts. This is not an agent score or live rerun.",
+  "candidate": {
+    "repository": "https://github.com/saai-syvendra/hackerrank-orchestrate",
+    "commit": "fadb4f24e36d860a9ce4d5155bb30568df80ea4b",
+    "winner_primary_source": "https://www.linkedin.com/posts/hackerrank_ai-is-changing-what-it-means-to-be-a-developer-activity-7473306333627277312-lhfZ",
+    "artifact_identity": "Public saved output from the May winner repository; exact identity with the submitted competition archive/run is not established.",
+    "license": "No repository-root LICENSE found at this pin. Raw third-party code/data/predictions are not vendored or redistributed here."
+  },
+  "official": {
+    "repository": "https://github.com/interviewstreet/hackerrank-orchestrate-may26",
+    "commit": "b5a301c9e89d2f05cf4a7b04136a1399b6f3f0f4",
+    "verification": "Candidate problem statement, input tickets and labelled samples are byte-identical to the pinned official Git objects."
+  },
+  "artifact_sha256": {
+    "problem_statement.md": "5b031a364622057cd59294f886a59df2b203b8996f9f522107cc40194e0fae9d",
+    "support_tickets/support_tickets.csv": "7c862a89c5353d167a8c856aedfd12a4c799fc8bcc3b1acaabfc899c70be22e3",
+    "support_tickets/sample_support_tickets.csv": "a4a1f63fee31254e8596b7a0c464e50c995d67a8fe6e71d6aaf74d0184f38419",
+    "support_tickets/output.csv": "42ee580ca5e8b9a5caa819be7d86ee026646e9035e8e82b656eaedda64d4b0fd"
+  },
+  "source": {
+    "tracked_code_files_verified_against_git_blobs": 29,
+    "python_files_parsed": 27,
+    "executed_or_imported": false,
+    "checks": [
+      {
+        "name": "setup instructions",
+        "status": "pass",
+        "kind": "proxy",
+        "evidence": [
+          "README.md"
+        ]
+      },
+      {
+        "name": "dependency declaration",
+        "status": "pass",
+        "kind": "proxy",
+        "evidence": [
+          "requirements.txt"
+        ]
+      },
+      {
+        "name": "tests present",
+        "status": "fail",
+        "kind": "proxy",
+        "evidence": [
+          "Not found"
+        ]
+      },
+      {
+        "name": "dependency lock present",
+        "status": "fail",
+        "kind": "proxy",
+        "evidence": [
+          "Not found"
+        ]
+      },
+      {
+        "name": "Python syntax (not correctness)",
+        "status": "pass",
+        "kind": "objective",
+        "evidence": [
+          "Parsed 27 Python files; no candidate code executed"
+        ]
+      },
+      {
+        "name": "code quality rubric",
+        "status": "unknown",
+        "kind": "subjective",
+        "evidence": [
+          "Human review needed: architecture, implemented behavior, robustness and reproducible experiments; presence checks do not establish quality"
+        ]
+      }
+    ]
+  },
+  "output": {
+    "input_rows": 29,
+    "saved_prediction_rows": 29,
+    "row_correspondence": "Row order plus echoed issue/subject/company; Unicode whitespace is collapsed, without changing words/case or answer labels.",
+    "rows_with_raw_echo_whitespace_differences": 13,
+    "status_distribution": {
+      "escalated": 14,
+      "replied": 15
+    },
+    "request_type_distribution": {
+      "bug": 4,
+      "invalid": 3,
+      "product_issue": 22
+    },
+    "checks": [
+      {
+        "name": "May required output columns",
+        "status": "pass",
+        "kind": "objective",
+        "evidence": [
+          "Required fields present; no unsupported fixed column order or product-area enum imposed"
+        ]
+      },
+      {
+        "name": "May input row count",
+        "status": "pass",
+        "kind": "objective",
+        "evidence": [
+          "All supplied rows satisfy this check"
+        ]
+      },
+      {
+        "name": "May echoed input identity",
+        "status": "pass",
+        "kind": "objective",
+        "evidence": [
+          "All supplied rows satisfy this check"
+        ]
+      },
+      {
+        "name": "May categorical fields",
+        "status": "pass",
+        "kind": "objective",
+        "evidence": [
+          "All supplied rows satisfy this check"
+        ]
+      },
+      {
+        "name": "May nonempty response and justification",
+        "status": "pass",
+        "kind": "objective",
+        "evidence": [
+          "All supplied rows satisfy this check"
+        ]
+      },
+      {
+        "name": "May routing and response semantics",
+        "status": "unknown",
+        "kind": "objective",
+        "evidence": [
+          "This schema checker does not compare independent labels. Schema checks cannot establish correct escalation, corpus grounding, justification quality, safety, or hidden accuracy. Product area has no published fixed enum; no slug convention is imposed."
+        ]
+      }
+    ],
+    "official_score": null,
+    "accuracy": null
+  },
+  "label_audit": {
+    "labelled_sample_rows": 10,
+    "sample_input_overlap": 0,
+    "consequence": "The saved 29-row output cannot be scored against the disjoint 10-row sample. No positional first-N comparison or winner-predictions-as-gold is performed."
+  },
+  "coding_transcript": {
+    "available": false,
+    "checks": [
+      {
+        "name": "transcript provenance",
+        "status": "unknown",
+        "kind": "objective",
+        "evidence": [
+          "No transcript supplied"
+        ]
+      }
+    ],
+    "authenticity_and_quality": "unknown"
+  },
+  "reconstructed_packaging": {
+    "status": "pass",
+    "issues": [],
+    "size_bytes": 45770,
+    "expanded_bytes": 108735,
+    "files": 29,
+    "provenance": "Built locally from the pinned public code/ files; not the original submitted ZIP."
+  },
+  "baseline_exit_code": 2,
+  "baseline_status": "incomplete",
+  "controls": [
+    {
+      "control": "missing_last_row",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May input row count"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "3e99235ed69eef46058d667baf2686e6ac90b526611f05983b2847cdb66dd4b8"
+    },
+    {
+      "control": "duplicate_extra_row",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May input row count"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "09bfa1640a78a9a1f014afa315c3e67f8b39f0ddfc06d2ab4dfc9138070d4802"
+    },
+    {
+      "control": "duplicate_ticket_same_row_count",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May echoed input identity"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "4d82403a3dd4ff12f8b1c3f711007c77ffd1aa02fcc56c82ad2c1c657799ba95"
+    },
+    {
+      "control": "swapped_input_correspondence",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May echoed input identity"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "ff9eda236637c7a7e368f1e7138b5c8f3be6453c98f90a929a0c504e55bb3ad4"
+    },
+    {
+      "control": "altered_echoed_issue",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May echoed input identity"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "158ef8e3eddee8ab121bd24abe647db2b71e6feba895b6a110531acbc9bbcb46"
+    },
+    {
+      "control": "invalid_status",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May categorical fields"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "495edf2abbaa8f5ecbdf57ae39c16e0b26b4a179d0cb04a18e469f267beeaae0"
+    },
+    {
+      "control": "blank_response",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May nonempty response and justification"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "2478029959af9d85139db4d90dc15ba18c2b81e78d7933eb938a9682d3efa961"
+    },
+    {
+      "control": "blank_justification",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May nonempty response and justification"
+      ],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "3fc5faca97a702bfa113f0264c0992ad9784ee9d350fde6faa79f8c8c20a65c7"
+    },
+    {
+      "control": "missing_required_request_type",
+      "expected": "fail",
+      "observed": "fail",
+      "calibration_pass": true,
+      "failed_checks": [
+        "May required output columns"
+      ],
+      "unknown_checks": [],
+      "mutated_output_sha256": "6dda4cd5662be6d49f2add20ad84aa2173fac7f4b178f0963fd66e48b73f7f61"
+    },
+    {
+      "control": "valid_statuses_flipped_semantics_unknown",
+      "expected": "unknown",
+      "observed": "unknown",
+      "calibration_pass": true,
+      "failed_checks": [],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "b1f92c76ef846dc7043d9db5fe9589c5c0b8031b50ea865b6c1a2705ccae5050"
+    },
+    {
+      "control": "fabricated_response_semantics_unknown",
+      "expected": "unknown",
+      "observed": "unknown",
+      "calibration_pass": true,
+      "failed_checks": [],
+      "unknown_checks": [
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "23cb5ca8d9c2430ac474cc03e8d996546b2fa195f21e142206baec12c28f75e7"
+    },
+    {
+      "control": "required_fields_only_identity_unknown",
+      "expected": "unknown",
+      "observed": "unknown",
+      "calibration_pass": true,
+      "failed_checks": [],
+      "unknown_checks": [
+        "May echoed input identity",
+        "May routing and response semantics"
+      ],
+      "mutated_output_sha256": "d99e51be9047de051258dc4466fa3b3ff5ba00879faf2ff8bed024922c73e7ec"
+    }
+  ],
+  "runtime": {
+    "agent_rerun": false,
+    "downloaded_agent_tests_run": false,
+    "model_calls_made_by_this_validation": 0,
+    "original_agent_cost_tokens_latency_memory": null
+  },
+  "limitations": [
+    "Semantic routing correctness, factual grounding, genuine coding-transcript quality and hidden accuracy remain unknown.",
+    "Schema-valid status flips and invented answer text intentionally remain unknown rather than falsely detected.",
+    "Static Python parsing and source-presence proxies do not establish engineering quality or reproduce the winner score.",
+    "June Swayam public code was considered but its current data is explicitly fake/demo and saved June predictions are absent; it is not used as genuine output calibration."
+  ]
+}

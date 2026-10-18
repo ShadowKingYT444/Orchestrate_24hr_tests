@@ -27,7 +27,7 @@ The published May code rubric (architecture 30, prompts/tools 30, robustness 25,
 
 ## Validation
 
-Unit tests use synthetic data only: passing/failing baseline outputs, malformed JSON/CSV, duplicate keys/IDs, timeout/nonzero exit/log overflow, and hostile ZIPs. No hidden tests, private answers, contest dataset or competitor code are included. June/September structural fixtures are authored for this suite. Historical validators explicitly leave task semantic correctness unknown. CI executes only our own tests and toy subprocesses, never uploaded candidate harnesses.
+Unit tests use synthetic data only: passing/failing baseline outputs, malformed JSON/CSV, duplicate keys/IDs, timeout/nonzero exit/log overflow, hostile ZIPs and authored Git-repository fixtures. No hidden tests, private answers, contest dataset or competitor code are bundled. June/September structural fixtures are authored for this suite. Historical validators explicitly leave task semantic correctness unknown. CI executes only our own tests and toy subprocesses, never uploaded candidate harnesses. Optional `validate-public` independently reads pinned real public artifacts after the user clones them; Git is required for its provenance checks. See REAL_WORLD_VALIDATION.md for actual results, boundaries and reproducible commands.
 
 ## Reproducibility and eligibility
 

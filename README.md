@@ -2,6 +2,8 @@
 
 Offline diagnostics for agent harnesses: output validation, source/packaging checks, authentic coding-transcript review, and explicitly opt-in execution. **Not an official HackerRank scorer. Voice/interview judging is excluded.**
 
+**Real-world calibration:** checked against the May winner Saai Syvendra's pinned public saved output (29 real official tickets), all 27 Python source files, and a locally reconstructed source ZIP. Nine malformed-artifact controls are detected; valid-but-potentially-wrong routing/response changes correctly remain semantic unknowns. This is saved-artifact/static validation, not a live agent rerun or score reproduction. [Results and reproducible commands](docs/REAL_WORLD_VALIDATION.md).
+
 Python 3.10+; no runtime dependencies or API keys required. From this checkout:
 
 ```sh
@@ -15,7 +17,7 @@ Optional installation: `python -m pip install --no-deps .` (the build requires s
 
 ## Evaluate your harness
 
-1. Select a task configuration. `synthetic_exact` checks explicitly supplied toy JSON targets. `june26_schema` and `september26_schema` validate published historical CSV contracts; set `input_csv` to the corresponding input CSV, relative to your current working directory. Historical fixtures are synthetic and visibly labeled. These validators cannot prove image-grounded correctness or financial cashflow safety.
+1. Select a task configuration. `synthetic_exact` checks explicitly supplied toy JSON targets. `may26_schema`, `june26_schema` and `september26_schema` validate published historical CSV contracts; set `input_csv` to the corresponding input CSV, relative to your current working directory. Bundled historical fixtures are synthetic and visibly labeled; the separate public calibration reads actual third-party artifacts from your pinned checkout. These validators cannot prove safe routing, image-grounded correctness or financial cashflow safety.
 2. Generate candidate output with your own harness. The evaluator does **not** execute source just because you supply `--source`.
 3. Run `evaluate --task TASK.json --output OUTPUT --source SOURCE --transcript CODING_EXPORT.json --report-dir reports/RUN`. Optional `--archive submission.zip` validates a prepared ZIP. Optional `--review REVIEW.json` adds evidence-backed advisory review.
 4. Inspect individual failures, unknowns and evidence. Fix one issue, rerun, and preserve reports across configurations. Do not compare reports using different task hashes as if they were the same benchmark.

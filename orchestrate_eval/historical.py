@@ -17,6 +17,7 @@ from .fileio import read_bounded
 
 MAX_CSV = 5_000_000
 JUNE_HEADERS = 'user_id,image_paths,user_claim,claim_object,evidence_standard_met,evidence_standard_met_reason,risk_flags,issue_type,object_part,claim_status,claim_status_justification,supporting_image_ids,valid_image,severity'.split(',')
+MAY_REQUIRED = ['status', 'product_area', 'response', 'justification', 'request_type']
 SEPTEMBER_HEADERS = 'request_id,amount_safe_to_pay,affordability_status,recommended_payment_method,payment_plan,earliest_date_for_full_payment,spending_changes_needed,decision_explanation'.split(',')
 PARTS = {
     'car': set('front_bumper rear_bumper door hood windshield side_mirror headlight taillight fender quarter_panel body unknown'.split()),
@@ -89,6 +90,39 @@ def _stems(value):
     else:
         paths = [value]
     return {Path(p.strip()).stem for p in paths}
+
+
+def _may_headers(headers, rows):
+    """The May sample uses title case/spaces; no output order is mandated."""
+    normalized = [name.strip().casefold().replace(' ', '_') for name in headers]
+    if len(normalized) != len(set(normalized)):
+        raise ValueError('May headers contain ambiguous normalized aliases')
+    return normalized, [{new: row[old] for old, new in zip(headers, normalized)} for row in rows]
+
+
+def may_ticket_key(row):
+    """Declared lexical normalization only; never semantic/label normalization."""
+    return tuple(' '.join(row.get(name, '').split()) for name in ('issue', 'subject', 'company'))
+
+
+def _may(inputs, outputs, echoed):
+    count, identity, enums, text = [], [], [], []
+    if len(inputs) != len(outputs):
+        count.append(f'Expected {len(inputs)} rows; received {len(outputs)}. Duplicate input tickets must be preserved.')
+    for index, (src, out) in enumerate(zip(inputs, outputs), 2):
+        if echoed and may_ticket_key(src) != may_ticket_key(out):
+            identity.append(f'Row {index}: echoed issue/subject/company differs from the corresponding input after whitespace collapse')
+    for index, row in enumerate(outputs, 2):
+        if row['status'] not in {'replied', 'escalated'}:
+            enums.append(f'Row {index}: invalid status')
+        if row['request_type'] not in {'product_issue', 'feature_request', 'bug', 'invalid'}:
+            enums.append(f'Row {index}: invalid request_type')
+        if not row['response'].strip() or not row['justification'].strip():
+            text.append(f'Row {index}: response and justification must be nonempty for this local readiness check')
+    return [_check('May input row count', count),
+            _check('May echoed input identity', identity) if echoed else result('May echoed input identity', 'unknown', ['No complete issue/subject/company echo; row count alone cannot verify input-to-output correspondence']),
+            _check('May categorical fields', enums), _check('May nonempty response and justification', text),
+            result('May routing and response semantics', 'unknown', ['This schema checker does not compare independent labels. Schema checks cannot establish correct escalation, corpus grounding, justification quality, safety, or hidden accuracy. Product area has no published fixed enum; no slug convention is imposed.'])]
 
 
 def _june(inputs, outputs):
@@ -224,7 +258,7 @@ def evaluate_historical(output_path, task):
 
     Relative input_csv and output paths resolve against the current working directory."""
     plugin = task.get('plugin')
-    if plugin not in {'june26_schema', 'september26_schema'}:
+    if plugin not in {'may26_schema', 'june26_schema', 'september26_schema'}:
         raise ValueError('Unsupported historical schema plugin')
     if not task.get('input_csv'):
         raise ValueError('Historical task requires input_csv')
@@ -233,6 +267,18 @@ def evaluate_historical(output_path, task):
         output_headers, outputs = _read(output_path)
     except (OSError, ValueError, csv.Error, UnicodeError) as exc:
         return [result('Historical CSV readability', 'fail', [str(exc)])]
+    if plugin == 'may26_schema':
+        try:
+            input_headers, inputs = _may_headers(input_headers, inputs)
+            output_headers, outputs = _may_headers(output_headers, outputs)
+        except ValueError as exc:
+            return [result('May unambiguous header names', 'fail', [str(exc)])]
+        if not {'issue', 'subject', 'company'} <= set(input_headers):
+            return [result('May required input columns', 'fail', ['Required: issue, subject, company (title-case aliases accepted)'])]
+        if not set(MAY_REQUIRED) <= set(output_headers):
+            return [result('May required output columns', 'fail', ['Required: ' + ','.join(MAY_REQUIRED) + '; additional columns and column reordering are allowed'])]
+        checks = [result('May required output columns', 'pass', ['Required fields present; no unsupported fixed column order or product-area enum imposed'])]
+        return checks + _may(inputs, outputs, {'issue', 'subject', 'company'} <= set(output_headers))
     expected = JUNE_HEADERS if plugin == 'june26_schema' else SEPTEMBER_HEADERS
     if output_headers != expected:
         return [result('Historical ordered output headers', 'fail', ['Required ordered headers: ' + ','.join(expected)])]

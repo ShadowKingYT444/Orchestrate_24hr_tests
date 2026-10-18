@@ -19,7 +19,7 @@ def evaluate(args):
     if plugin == "labelled_csv":
         from .metrics import evaluate_labelled
         output, metrics = evaluate_labelled(args.output, task)
-    elif plugin in {"june26_schema", "september26_schema"}:
+    elif plugin in {"may26_schema", "june26_schema", "september26_schema"}:
         from .historical import evaluate_historical
         output = evaluate_historical(args.output, task)
     elif plugin not in BUILTIN_PLUGINS:
@@ -94,10 +94,19 @@ def main(argv=None):
     compare = subs.add_parser("compare", help="Compare local labelled-CSV reports using identical task/reference hashes")
     compare.add_argument("reports", nargs="+")
     compare.add_argument("--report-dir", default="reports/comparison")
+    public = subs.add_parser("validate-public", help="Offline calibration against pinned public May-winner artifacts; never executes the agent")
+    public.add_argument("--candidate-dir", required=True)
+    public.add_argument("--official-dir", required=True)
+    public.add_argument("--report-dir", default="reports/public-validation")
     args = parser.parse_args(argv)
     try:
         if args.action == "evaluate":
             return evaluate(args)
+        if args.action == "validate-public":
+            from .public_validation import validate_public
+            report = validate_public(args.candidate_dir, args.official_dir, args.report_dir)
+            print(json.dumps({'status': report['calibration_status'], 'report': str(Path(args.report_dir) / 'validation.json'), 'official_score': None}))
+            return 0 if report['calibration_status'] == 'pass' else 1
         if args.action == "compare":
             from .metrics import compare_reports
             from .report import write_comparison
