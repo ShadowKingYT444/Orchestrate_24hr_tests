@@ -1,0 +1,4 @@
+case_id,label,safety
+sample-3,route-a,safe
+sample-2,route-b,review
+sample-1,route-a,safe

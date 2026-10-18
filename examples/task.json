@@ -1,0 +1,5 @@
+{
+  "profile": "synthetic-smoke-v1 (NOT contest data)",
+  "plugin": "synthetic_exact",
+  "expected": {"sum": 7, "sorted": [1, 2, 3], "empty": []}
+}

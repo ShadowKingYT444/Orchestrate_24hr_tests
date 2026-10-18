@@ -1,0 +1,8 @@
+{
+  "profile": "synthetic-local-labelled-demo-v1",
+  "plugin": "labelled_csv",
+  "reference_csv": "examples/labelled/reference.csv",
+  "reference_description": "Synthetic labels authored for this tool. Not contest data or official answers.",
+  "id_column": "case_id",
+  "fields": ["label", "safety"]
+}

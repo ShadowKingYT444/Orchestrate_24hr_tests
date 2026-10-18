@@ -1,0 +1,4 @@
+{
+  "provenance": {"source":"SYNTHETIC SCHEMA FIXTURE: never submit as a real transcript", "exported_at":"2026-10-18T00:00:00Z", "run_id":"fixture-only"},
+  "events":[{"timestamp":"2026-10-18T00:00:00Z","role":"user","content":"Synthetic formatting example only."}]
+}

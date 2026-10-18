@@ -1,0 +1,4 @@
+{
+  "plugin": "september26_schema",
+  "input_csv": "examples/historical/september-input.csv"
+}

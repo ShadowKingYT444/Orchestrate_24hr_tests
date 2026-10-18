@@ -1,0 +1,14 @@
+{
+  "origin": "human",
+  "reviewer": "REPLACE with reviewer name or configured model/version",
+  "criteria": {
+    "architecture": {"rating":"unknown","evidence":[]},
+    "prompt_and_tool_design": {"rating":"unknown","evidence":[]},
+    "robustness": {"rating":"unknown","evidence":[]},
+    "experimental_rigor": {"rating":"unknown","evidence":[]},
+    "transcript_direction_and_ownership": {"rating":"unknown","evidence":[]},
+    "transcript_technical_specificity": {"rating":"unknown","evidence":[]},
+    "transcript_iteration_and_verification": {"rating":"unknown","evidence":[]},
+    "transcript_safety_and_edge_cases": {"rating":"unknown","evidence":[]}
+  }
+}

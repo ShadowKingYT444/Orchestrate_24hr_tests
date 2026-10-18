@@ -1,0 +1,3 @@
+user_id,image_paths,user_claim,claim_object
+synthetic-user,images/synthetic-a.jpg;images/synthetic-b.jpg,Synthetic claim: a door dent,car
+synthetic-user,images/synthetic-a.jpg;images/synthetic-b.jpg,Synthetic claim: a door dent,car
