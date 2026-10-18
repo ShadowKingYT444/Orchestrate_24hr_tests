@@ -231,7 +231,7 @@ def scorecard(report, review=None):
                             'method': 'evidence_backed_rubric_judge' if rating is not None else 'unknown: judge/evidence required'}
     known = sum(value['points'] for value in categories.values() if value['points'] is not None)
     missing = sum(value['weight'] for value in categories.values() if value['points'] is None)
-    return {'categories':categories, 'known_points':round(known,4), 'known_maximum':70-missing,
+    return {'categories':categories, 'rubric_version':(review or {}).get('rubric_version'), 'known_points':round(known,4), 'known_maximum':70-missing,
             'nonvoice_points_out_of_70':round(known,4) if not missing else None,
             'possible_nonvoice_interval':[round(known,4),round(known+missing,4)],
             'normalized_nonvoice_100':round(known/70*100,4) if not missing else None,

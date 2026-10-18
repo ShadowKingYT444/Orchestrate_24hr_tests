@@ -15,5 +15,7 @@
   "normalized_score": null,
   "official_score": null,
   "live_agent_run": false,
-  "evidence": "All27 public Python files statically reviewed; all29 saved answers judged against the supplied corpus. No candidate code or tests executed. Genuine coding transcript absent."
+  "evidence": "All27 public Python files statically reviewed; all29 saved answers judged against the supplied corpus. No candidate code or tests executed. Genuine coding transcript absent.",
+  "rubric_version": "local-audit-v1-preserved",
+  "calibration_warning": "Official observed scores differ materially; see docs/OFFICIAL_SCORE_COMPARISON.md. Public artifact identity is not matched to server uploads; no fitted regrade."
 }

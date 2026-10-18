@@ -4,7 +4,7 @@ The earlier structural report was insufficient for quality grading. v0.3 adds an
 
 Candidate: Saai Syvendra's public May-winner repository at fadb4f24e36d860a9ce4d5155bb30568df80ea4b. Input/spec identities and saved-output hashes remain verified in REAL_WORLD_VALIDATION.md. No leaderboard score was used to tune these estimates.
 
-## Local category estimates
+## Original local category estimates (local-audit-v1-preserved)
 
 - Code: 17.8125/30
 - Output: 26.0819/30
@@ -13,6 +13,8 @@ Candidate: Saai Syvendra's public May-winner repository at fadb4f24e36d860a9ce4d
 - Missing-transcript interval: 43.8944–53.8944/70
 
 These are uncalibrated local model/human-style judgments, not recovered official grades or an accuracy claim. The output judgment has a qualitative sensitivity range of 21–27/30; this is not a statistical confidence interval. These saved May tasks differ from the authored support-world benchmark, so its numbers must not be used to rank the winner against our toy agents.
+
+Official code/output points are **26.4/30** and **22.8/30**. The original estimates below are preserved, not fitted to those numbers. See [the full comparison, rubric drift and artifact-identity limits](OFFICIAL_SCORE_COMPARISON.md).
 
 ## Evidence and method
 

@@ -8,7 +8,7 @@ from pathlib import Path
 
 MAX_LOG = 1_000_000
 
-def run_command(command, cwd, timeout=60, trusted=False, stdin_text=None):
+def run_command(command, cwd, timeout=60, trusted=False, stdin_text=None, environment=None):
     if not trusted:
         raise ValueError("Execution requires --allow-exec for trusted code; use an isolated VM for untrusted code")
     if not isinstance(command, list) or not command or not all(isinstance(x, str) for x in command) or not command[0]:
@@ -17,6 +17,10 @@ def run_command(command, cwd, timeout=60, trusted=False, stdin_text=None):
         raise ValueError("Timeout must be in (0, 86400]")
     # Deliberately do not pass API keys or the full environment to candidate commands.
     env = {k: os.environ[k] for k in ("PATH", "SYSTEMROOT", "LANG") if k in os.environ}
+    if environment is not None:
+        if not isinstance(environment, dict) or not all(isinstance(k, str) and isinstance(v, str) for k, v in environment.items()):
+            raise ValueError("Explicit environment must map strings to strings")
+        env.update(environment)
     env.update({"PYTHONIOENCODING": "utf-8", "ORCHESTRATE_EVAL": "1"})
     start = time.monotonic()
     timed_out = False

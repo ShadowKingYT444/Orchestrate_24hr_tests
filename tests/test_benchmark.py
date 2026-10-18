@@ -176,6 +176,47 @@ class JudgeTests(unittest.TestCase):
         self.assertEqual(accepted['category_scores']['code'],75)
         self.assertIsNone(accepted['category_scores']['coding_transcript'])
 
+    def test_versioned_rubric_keeps_original_reviews_and_new_published_meanings(self):
+        from orchestrate_eval.judging import RUBRIC_VERSION, LEGACY_RUBRIC_VERSION, aggregate_reviews
+        self.assertEqual(self.bundle['rubric_version'], RUBRIC_VERSION)
+        self.assertIn('engineering_rigor', self.bundle['rubrics']['code'])
+        self.assertNotIn('experimental_rigor', self.bundle['rubrics']['code'])
+        self.assertIn('unweighted_audit', self.bundle['trusted_instructions'])
+        folder=ROOT/'benchmarks/results'
+        legacy=json.loads((folder/'strong-bundle.json').read_text())
+        original=json.loads((folder/'strong-review.json').read_text())
+        old=import_review(legacy,original)
+        new=import_review(self.bundle,self.review)
+        self.assertEqual(old['rubric_version'],LEGACY_RUBRIC_VERSION)
+        self.assertEqual(old['category_scores']['code'],71.25)
+        for bundle,accepted in ((legacy,old),(self.bundle,new)):
+            averaged=aggregate_reviews(bundle,[accepted,accepted])
+            self.assertEqual(averaged['category_scores'],accepted['category_scores'])
+
+    def test_http_selects_fixed_instructions_for_each_rubric_version(self):
+        from unittest.mock import patch,MagicMock
+        folder=ROOT/'benchmarks/results'
+        pairs=[(self.bundle,self.review,'engineering_rigor'),
+               (json.loads((folder/'strong-bundle.json').read_text()),
+                json.loads((folder/'strong-review.json').read_text()),'experimental_rigor')]
+        for bundle,original,criterion in pairs:
+            review=copy.deepcopy(original);review['origin']='configured_judge'
+            response=MagicMock();response.__enter__.return_value.read.return_value=json.dumps({'choices':[{'message':{'content':json.dumps(review)}}]}).encode()
+            opener=MagicMock();opener.open.return_value=response
+            with patch.dict('os.environ',{'UNIT_JUDGE_KEY':'test-placeholder'}),patch('urllib.request.build_opener',return_value=opener):
+                accepted=judge_http(bundle,'https://example.invalid/chat','test-model','UNIT_JUDGE_KEY',10,1,1,allowed=True)
+            payload=json.loads(opener.open.call_args.args[0].data)
+            self.assertIn(criterion,payload['messages'][0]['content'])
+            self.assertEqual(accepted['category_scores']['code'],71.25 if criterion=='experimental_rigor' else 75)
+
+    def test_self_rehashed_unknown_rubric_is_refused(self):
+        import hashlib
+        bundle=copy.deepcopy(self.bundle);bundle['rubrics']['code']['engineering_rigor']=99
+        body=dict(bundle);body.pop('bundle_id')
+        bundle['bundle_id']=hashlib.sha256(json.dumps(body,sort_keys=True).encode()).hexdigest()
+        with self.assertRaisesRegex(ValueError,'versioned judge rubric'):
+            import_review(bundle,self.review)
+
     def test_bundle_source_or_quote_tampering_rejected(self):
         bundle=copy.deepcopy(self.bundle);bundle['untrusted_evidence_files'][0]['text']='fabricated'
         with self.assertRaises(ValueError):import_review(bundle,self.review)

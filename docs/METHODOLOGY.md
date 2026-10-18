@@ -40,3 +40,9 @@ Check counts are grouped by evidence type and category; no pass ratio is used as
 Input limits: JSON, CSV and individual Python files <=5,000,000 bytes; CSV <=50,000 data rows and 256 columns; labelled metrics <=128 fields and column names <=128 characters; JSON nesting <=128. September decimals admit up to 100 significant digits and exponents from -1000 through 1000, with exact remainder arithmetic within these local limits. Symlinks and non-regular files are refused. Comparison reports have a separate 50,000,000-byte input limit. Snapshots and digests are bounded, but these checks do not secure concurrent hostile filesystem changes. Digests bind bytes, not execution provenance.
 
 CLI source-submission hygiene additionally requires a README and rejects files under `.git`, `.venv`, `venv`, `node_modules`, `__pycache__`, `.pytest_cache`, `.mypy_cache`, `build`, `dist`, `dataset`, or `datasets`, plus Python bytecode. These are conservative local name policies, potentially stricter than edition rules. They cannot identify every supplied dataset or generated artifact under arbitrary names.
+
+## Official-score calibration and genuine coding agents
+
+The original `local-audit-v1-preserved` numerical code review used an experimental-rigor emphasis that differed from published May engineering rigor. New judge bundles use `may26-published-aid-v2` with the published criterion meanings, while original scores remain unchanged. This is rubric correction, not a fitted numeric calibration. [Official-score comparison](OFFICIAL_SCORE_COMPARISON.md) records material gaps and unverified server-artifact identity. The `evaluate` advisory audit remains separate and unweighted.
+
+[Coding-agent integration](CODING_AGENTS.md) distinguishes developer coding events from task-agent runtime. The real installed Codex attempt failed before a model turn. Unit-mocked integration success does not establish live Codex behavior or complete benchmark coverage.

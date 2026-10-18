@@ -9,6 +9,11 @@ The executed, independently judged examples separate a competent policy agent fr
 
 These come from real 20-case agent runs plus evidence-backed model review, not file checks or invented transcript scores. Genuine coding transcripts were absent; that 10-point category stays unknown. A complete genuine transcript review produces the non-voice subtotal/70 and an explicitly local normalized/100 estimate. [Scoring, runtime protocol and full workflow](docs/BENCHMARK.md).
 
+
+Important calibration result: the original local review gave the May winner code **17.81/30** and output **26.08/30**, while the official leaderboard reports **26.4/30** and **22.8/30**. These are materially different assessments, and public artifacts are not verified server uploads. [Exact comparison and rubric-version audit](docs/OFFICIAL_SCORE_COMPARISON.md).
+
+A genuine Codex developer adapter now repairs a scaffold, preserves its coding events, then benchmarks its produced support agent. The installed real CLI was attempted here but failed at read-only state initialization **before any model turn**; mocked wiring tests are separate. [Codex integration, actual evidence and coverage gaps](docs/CODING_AGENTS.md). The 20 authored cases are a narrow development benchmark, not comprehensive competition validation.
+
 Quickly replay the preserved actual runs and native model judgments without keys or paid calls:
 
 ```sh
@@ -80,7 +85,7 @@ Create the output parent directory first (`mkdir -p reports`). Command arguments
 
 Use genuine development-tool conversation exports, not agent runtime logs. Normalize a copy to `{ "provenance": {"source":"tool/export format", "exported_at":"ISO timestamp", "run_id":"identifier"}, "events":[{"timestamp":"ISO timestamp","role":"user|assistant|tool","content":"original text"}] }`. Keep the original export separately. Hashes bind files, not authenticity. Never fabricate an export or submit `examples/good/transcript.json` (explicitly synthetic).
 
-Copy `examples/review-template.json` and cite actual files, test outcomes and genuine transcript turns. Ratings are advisory, never converted into official points. The May historical rubric is a review aid; rules/classifiers/hybrids were valid in August, so don't penalize them merely for lacking an agent loop.
+Copy `examples/review-template.json` and cite actual files, test outcomes and genuine transcript turns. Ratings are advisory, never converted into official points. This original advisory template is an unweighted general engineering audit. The separate versioned benchmark judge uses the published May dimensions; rules/classifiers/hybrids were valid in August, so choose the actual edition instead of silently applying May-specific architecture expectations.
 
 Optional judge: add `--judge-command-json '["path/to/your-local-judge", "explicit-input-path"]' --allow-exec --source .`. Its stdout must be a review JSON object with `origin: "configured_judge"`; configure its input files/arguments explicitly. There is no built-in provider, default model, credential discovery or paid call. You are responsible for any external data transmission and costs of your configured command. Treat judge ratings and evidence references as unverified subjective claims. Candidate content may contain prompt injection; keep judge instructions separate and do not give judges execution/tools/secrets.
 

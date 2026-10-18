@@ -114,8 +114,22 @@ def main(argv=None):
     bj.add_argument('--max-cost-usd',type=float,required=True);bj.add_argument('--input-price-per-million',type=float);bj.add_argument('--output-price-per-million',type=float);bj.add_argument('--max-output-tokens',type=int,default=6000);bj.add_argument('--repeats',type=int,default=1)
     bc=actions.add_parser('compare');bc.add_argument('reports',nargs='+');bc.add_argument('--report-dir',default='reports/benchmark-comparison')
     bt=actions.add_parser('cases');bt.add_argument('--output',required=True);bt.add_argument('--seed',type=int,default=0);bt.add_argument('--split',choices=['dev','holdout','all'],default='all')
+    coding=subs.add_parser('coding-agent',help='Inspect or explicitly run one real Codex developer repair task, then benchmark its produced agent')
+    coding_actions=coding.add_subparsers(dest='coding_action',required=True)
+    coding_inspect=coding_actions.add_parser('inspect');coding_inspect.add_argument('--codex-path',default='codex');coding_inspect.add_argument('--allow-exec',action='store_true')
+    coding_run=coding_actions.add_parser('run');coding_run.add_argument('--codex-path',default='codex');coding_run.add_argument('--model',required=True)
+    coding_run.add_argument('--allow-exec',action='store_true');coding_run.add_argument('--allow-model-turn',action='store_true')
+    coding_run.add_argument('--timeout',type=float,default=120);coding_run.add_argument('--seed',type=int,default=73)
+    coding_run.add_argument('--remaining-usage-percent',type=float);coding_run.add_argument('--report-dir',default='reports/codex-repair')
     args = parser.parse_args(argv)
     try:
+        if args.action=='coding-agent':
+            from .coding_agent import inspect_codex,run_coding_agent
+            if args.coding_action=='inspect':
+                print(json.dumps(inspect_codex(args.codex_path,args.allow_exec),indent=2));return 0
+            report=run_coding_agent(args.report_dir,args.model,args.timeout,args.allow_exec,args.allow_model_turn,args.codex_path,args.seed,args.remaining_usage_percent)
+            print(json.dumps({'status':report['status'],'model_turn_completed':report['model_turn_completed'],'report':str(Path(args.report_dir)/'coding-run.json'),'blocker':report.get('blocker'),'benchmark_report':report.get('benchmark_report')}))
+            return 0 if report['status']=='executed' else 2
         if args.action=='benchmark':
             from .benchmark import run_benchmark,compare_benchmarks,write_benchmark_report,apply_semantics
             from .judging import export_bundle,import_review,judge_http,aggregate_reviews

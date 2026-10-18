@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "codex_scaffold_repair_smoke",
+  "started_utc": "2026-10-18T07:44:32.843186+00:00",
+  "model_requested": "gpt-6.1",
+  "reasoning_effort_requested": "xhigh",
+  "preflight": {
+    "executable": "/opt/codex/bin/codex",
+    "version": "codex-cli 0.159.2",
+    "auth_type": "chatgpt",
+    "remaining_usage_percent": null,
+    "paid_api_allowed": false,
+    "scope": "Read-only local CLI version/login checks; no model turn"
+  },
+  "remaining_usage_percent": null,
+  "usage_policy": "One attempt only; no retries/batch, no new paid API budget. 10% reserve checked when supplied; unknown quota cannot guarantee a reserve.",
+  "status": "blocked",
+  "model_turn_completed": false,
+  "cost_usd": null,
+  "benchmark_report": null,
+  "limits": "Disposable task directory and Codex workspace-write request; not independent VM/container containment. CLI integration smoke, not comprehensive contest evaluation.",
+  "source_before_sha256": "f01f1238db1dee9937e891c14f8c17705900543ef5256b28b1200872cacb40fd",
+  "model_turn_started": false,
+  "execution": {
+    "command": [
+      "/opt/codex/bin/codex",
+      "exec",
+      "--json",
+      "--ephemeral",
+      "--sandbox",
+      "workspace-write",
+      "--color",
+      "never",
+      "--model",
+      "gpt-6.1",
+      "-c",
+      "model_reasoning_effort=\"xhigh\"",
+      "-C",
+      "<REPORT_DIR>/workspace",
+      "-"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 4.3322,
+    "timed_out": false,
+    "log_limit_exceeded": false,
+    "status": "fail",
+    "resource_limits": "Wall time and sampled log size only; no memory/network/filesystem sandbox",
+    "tokens": null,
+    "cost": null,
+    "peak_memory_bytes": null
+  },
+  "malformed_event_lines": 0,
+  "event_types": [],
+  "source_after_sha256": "f01f1238db1dee9937e891c14f8c17705900543ef5256b28b1200872cacb40fd",
+  "source_changed": false,
+  "blocker": "Codex did not complete a model turn; inspect preserved CLI stderr/events. No produced-agent score or coding-transcript grade claimed.",
+  "finished_utc": "2026-10-18T07:44:37.180008+00:00",
+  "evidence": {
+    "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Read-only file system (os error 30)\nError: failed to initialize in-process app-server client: Read-only file system (os error 30)\n",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "event_count": 0,
+    "source_changed": false
+  },
+  "notes": [
+    "Actual installed CLI attempt, not a mocked completion.",
+    "Existing ChatGPT auth confirmed; model availability and model usage were not confirmed because initialization failed.",
+    "No API-key fallback, credential copy, login, or permission bypass."
+  ]
+}

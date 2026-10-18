@@ -1,0 +1,103 @@
+{
+  "source_url": "https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/leaderboard",
+  "retrieved_utc": "2026-10-18T07:41:10Z",
+  "json_path": "props.pageProps.dehydrateState.queries[2].state.data",
+  "query_key": [
+    "getHackathonLeaderboard",
+    "hackerrank-orchestrate-may26",
+    "support-agent",
+    1,
+    "",
+    0
+  ],
+  "first_entry": {
+    "rank": 1,
+    "username": "saaisyvendras",
+    "score": 76,
+    "is_current_user": false,
+    "display_name": "Saai Syvendra",
+    "country": "Sri Lanka",
+    "breakdown": {
+      "code_zip": 26.4,
+      "chat_transcript": 8.2,
+      "output_csv": 22.8,
+      "interview": 18.6
+    },
+    "hacker_id": 20964231,
+    "rank_improved": false,
+    "medal": "gold"
+  },
+  "evaluation": {
+    "current_stage": 4,
+    "next_release_date": null,
+    "total_max_score": 100,
+    "stages": [
+      {
+        "key": "chat_transcript",
+        "label": "Chat Transcript Evaluation",
+        "max_score": 10,
+        "release_date": "2026-05-15T06:30:00Z",
+        "released": true
+      },
+      {
+        "key": "interview",
+        "label": "Interview Evaluation",
+        "max_score": 30,
+        "release_date": "2026-05-15T06:30:00Z",
+        "released": true
+      },
+      {
+        "key": "output_csv",
+        "label": "Output Evaluation",
+        "max_score": 30,
+        "release_date": "2026-05-15T06:30:00Z",
+        "released": true
+      },
+      {
+        "key": "code_zip",
+        "label": "Technical Review & Final Results",
+        "max_score": 30,
+        "release_date": "2026-05-15T06:30:00Z",
+        "released": true
+      }
+    ]
+  },
+  "is_final": true,
+  "last_updated_at": "2026-09-03T10:53:40Z",
+  "context_entries": [
+    {
+      "rank": 2,
+      "username": "bhavyakaku98",
+      "score": 75.7,
+      "is_current_user": false,
+      "display_name": "Bhavya Khatri",
+      "country": "India",
+      "breakdown": {
+        "code_zip": 24.9,
+        "chat_transcript": 8.8,
+        "output_csv": 21.6,
+        "interview": 20.4
+      },
+      "hacker_id": 3032681,
+      "rank_improved": false,
+      "medal": "gold"
+    },
+    {
+      "rank": 3,
+      "username": "faraazmohdkhan",
+      "score": 74.7,
+      "is_current_user": false,
+      "display_name": "Faraaz Khan",
+      "country": "India",
+      "breakdown": {
+        "code_zip": 25.5,
+        "chat_transcript": 7.2,
+        "output_csv": 19.8,
+        "interview": 22.2
+      },
+      "hacker_id": 655575,
+      "rank_improved": false,
+      "medal": "gold"
+    }
+  ]
+}
