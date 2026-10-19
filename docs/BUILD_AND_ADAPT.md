@@ -265,13 +265,17 @@ official hidden labels or score calibration.
    use one small smoke first and preserve the required quota reserve. Unknown
    allowance is not permission for a large batch. Use an isolated trusted setup;
    the harness itself does not contain untrusted code.
-9. **Run smoke, negative controls and regressions.** Confirm IDs align, schema is
-   correct, tools are really used, wrong/unsafe answers lose points, evaluator
-   errors remain unknown and source/transcript review cites actual evidence.
+9. **Run smoke, negative controls and regressions.** Export the required CSV and
+   validate its exact columns, schema, encoding and row IDs against the release-day
+   instructions; do not assume a historical edition's format. Confirm tools are
+   really used, wrong/unsafe answers lose points, evaluator errors remain unknown
+   and source/transcript review cites actual evidence.
 10. **Produce the report and inspect failures.** Compare identical references and
     settings, retain all repeats, review uncertain cases, and label local
-    estimates honestly. Check the final archive/entry point/output and actual
-    edition rules. Do not mistake a local /70 estimate for official ranking.
+    estimates honestly. Retain the required CSV output alongside the source ZIP,
+    README and original AI coding chat transcript. Check the final archive, entry
+    point and every submission artifact against the actual edition rules. Do not
+    mistake a local /70 estimate for official ranking.
 
 The fastest safe adaptation is to reuse the runner, evidence binding and report
 interfaces while replacing the task references/checker. Reusing an old task's
